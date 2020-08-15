@@ -6,4 +6,7 @@ Convolution of a 32X32 image matrix with a 4X4 kernel using two independently wo
 ## Problem statement
 Can be found in ```midsem problemDescription.pdf``` file
 
+### Aa files and Testbech
+Present inside ```Trial_04_10_19/src``` folder
+
 
