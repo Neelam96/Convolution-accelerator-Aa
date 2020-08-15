@@ -1,0 +1,11 @@
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+#include <Pipes.h>
+#include <SocketLib.h>
+void accMemAccessDaemon();
+void accelerator();
+void global_storage_initializer_();
+void memAccessDaemon();
+void memAccessDaemon2();

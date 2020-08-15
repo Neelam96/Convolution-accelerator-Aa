@@ -1,0 +1,399 @@
+$pipe  acc_mem_request_1 : $uint<32>  $depth 2 
+// can point into 
+$pipe  acc_mem_request_2 : $uint<32>  $depth 2 
+// can point into 
+$pipe  acc_mem_response_1 : $uint<16>  $depth 2 
+// can point into 
+$pipe  acc_mem_response_2 : $uint<16>  $depth 2 
+// can point into 
+$pipe  accelerator_done : $uint<16>  $depth 2 
+// can point into 
+$pipe  env_mem_request_1 : $uint<32>  $depth 5 
+// can point into 
+$pipe  env_mem_request_2 : $uint<32>  $depth 8 
+// can point into 
+$pipe  env_mem_response_1 : $uint<16>  $depth 2 
+// can point into 
+$pipe  env_mem_response_2 : $uint<16>  $depth 2 
+// can point into 
+$storage  filter : $array[4][4] $of $uint<16> // memory space index = 0  base address = 0  word size = 16
+// can point into 
+$pipe  filter_fill_request : $uint<32>  $depth 2 
+// can point into 
+$pipe  filter_response : $uint<16>  $depth 2 
+// can point into 
+$constant  filter_start_addr : $uint<6>:= 8  
+$storage  ifmaps : $array[4][4] $of $uint<16> // memory space index = 1  base address = 0  word size = 16
+// can point into 
+$storage  ifmaps2 : $array[4][4] $of $uint<16> // memory space index = 2  base address = 0  word size = 16
+// can point into 
+$constant  last_value_J : $uint<5>:= 4  
+$storage  mem_array : $array[12][8] $of $uint<16> // memory space index = 3  base address = 0  word size = 16
+// can point into 
+$constant  read_signal : $uint<1>:= 1  
+$pipe  read_sums : $uint<16>  $depth 2 
+// can point into 
+$pipe  start_accelerator : $uint<16>  $depth 2 
+// can point into 
+$constant  start_accelerator_col : $uint<5>:= 5  
+$constant  start_accelerator_row : $uint<6>:= 9  
+$constant  unused_const : $uint<4>:= 0  
+$constant  write_data_one : $uint<16>:= 1  
+$constant  write_data_zero : $uint<16>:= 0  
+$constant  write_signal : $uint<1>:= 0  
+$pipeline $depth 7 $buffering 1 $module [accessMem]
+$in ( read_write_bar_1 : $uint<1>   row_index : $uint<6>   col_index : $uint<5>   write_data_1 : $uint<16>  )
+$out ( read_data_1 : $uint<16>  )
+$is
+{
+  $guard (read_write_bar_1) t_read_data_11 := mem_array[row_index][col_index]// bits of buffering = 16. 
+  $guard (~read_write_bar_1) mem_array[row_index][col_index] := write_data_1// bits of buffering = 16. 
+  read_data_1 := ( $mux read_write_bar_1 t_read_data_11  0  ) // bits of buffering = 16. 
+}
+$module [accMemAccessDaemon]
+$in ()
+$out ()
+$is
+{
+  $branchblock [loop]
+  {
+    $dopipeline $depth 20 $buffering 2
+    $fullrate 
+    $merge $entry $loopback 
+    $endmerge
+    cmd_1 := acc_mem_request_1// bits of buffering = 32. 
+    $volatile wdata1 := ( $slice cmd_1 31 16 ) 
+    $volatile row_index1 := ( $slice cmd_1 15 10 ) 
+    $volatile col_index1 := ( $slice cmd_1 9 5 ) 
+    $volatile unused1 := ( $slice cmd_1 4 1 ) 
+    $volatile rwbar1 := ( $slice cmd_1 0 0 ) 
+    $call accessMem (rwbar1 row_index1 col_index1 wdata1 ) (rdata1 ) 
+    acc_mem_response_1 := rdata1// bits of buffering = 16. 
+    $while 1 
+  }
+}
+$module [initFilter]
+$in ( start_row_filter : $uint<6>  )
+$out ( filter_initialized : $uint<2>  )
+$is
+{
+  $branchblock [loop]
+  {
+    $dopipeline $depth 7 $buffering 2
+    $fullrate 
+    $merge $entry $loopback 
+    $phi ele := 			  ($bitcast ($uint<5>) 0  ) $on   $entry 			  n_ele $on   $loopback 
+    // type of target is $uint<5>
+    $phi J := 			  ($bitcast ($uint<5>) 0  ) $on   $entry 			  n_J $on   $loopback 
+    // type of target is $uint<5>
+    $phi I := 			  ($bitcast ($uint<6>) filter_start_addr ) $on   $entry 			  n_I $on   $loopback 
+    // type of target is $uint<6>
+    $endmerge
+    $volatile n_ele := (ele + 1 )
+    $volatile n_J := ( $mux (J <= 2 ) (J + 1 )  ($bitcast ($uint<5>) 0  ) ) 
+    $volatile n_I := ( $mux (J == 3 ) ($bitcast ($uint<6>) (I + 1 ) )  I ) 
+    $call accessMem (read_signal I J write_data_zero ) (rdata ) 
+    filter[I][J] := rdata// bits of buffering = 16. 
+    $while (ele < 15 )
+  }
+  filter_initialized := ($bitcast ($uint<2>) 1  )// bits of buffering = 2. 
+}
+$module [initIfMaps]
+$in ( start : $uint<1>   I : $uint<6>   J : $uint<5>   col_to_be_replaced : $uint<2>  )
+$out ( finished : $uint<2>  )
+$is
+{
+  cmd := start// bits of buffering = 1.  Orphaned statement with target cmd ?? 
+  $volatile checkJZero := ( $mux (J == 0 ) ($bitcast ($uint<1>) 0  )  ($bitcast ($uint<1>) 1  ) ) 
+  rowI := ($bitcast ($uint<6>) I )// bits of buffering = 6. 
+  rowI_1 := ($bitcast ($uint<6>) (I + 1 ) )// bits of buffering = 6. 
+  rowI_2 := ($bitcast ($uint<6>) (I + 2 ) )// bits of buffering = 6. 
+  rowI_3 := ($bitcast ($uint<6>) (I + 3 ) )// bits of buffering = 6. 
+  rowI_4 := ($bitcast ($uint<6>) (I + 4 ) )// bits of buffering = 6. 
+  col0 := ($bitcast ($uint<5>) 0  )// bits of buffering = 5. 
+  col1 := ($bitcast ($uint<5>) 1  )// bits of buffering = 5. 
+  col2 := ($bitcast ($uint<5>) 2  )// bits of buffering = 5. 
+  col3 := ($bitcast ($uint<5>) 3  )// bits of buffering = 5.  Orphaned statement with target col3 ?? 
+  $guard (~checkJZero) $call accessMem (read_signal rowI col0 write_data_zero ) (rdata_I00 ) 
+  $guard (~checkJZero) ifmaps[0 ][0 ] := rdata_I00// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI col1 write_data_zero ) (rdata_I01 ) 
+  $guard (~checkJZero) ifmaps[0 ][1 ] := rdata_I01// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI col2 write_data_zero ) (rdata_I02 ) 
+  $guard (~checkJZero) ifmaps[0 ][2 ] := rdata_I02// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_1 col0 write_data_zero ) (rdata_I10 ) 
+  $guard (~checkJZero) ifmaps[1 ][0 ] := rdata_I10// bits of buffering = 16. 
+  $guard (~checkJZero) ifmaps2[0 ][0 ] := rdata_I10// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_1 col1 write_data_zero ) (rdata_I11 ) 
+  $guard (~checkJZero) ifmaps[1 ][1 ] := rdata_I11// bits of buffering = 16. 
+  $guard (~checkJZero) ifmaps2[0 ][1 ] := rdata_I11// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_1 col2 write_data_zero ) (rdata_I12 ) 
+  $guard (~checkJZero) ifmaps[1 ][2 ] := rdata_I12// bits of buffering = 16. 
+  $guard (~checkJZero) ifmaps2[0 ][2 ] := rdata_I12// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_2 col0 write_data_zero ) (rdata_I20 ) 
+  $guard (~checkJZero) ifmaps[2 ][0 ] := rdata_I20// bits of buffering = 16. 
+  $guard (~checkJZero) ifmaps2[1 ][0 ] := rdata_I20// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_2 col1 write_data_zero ) (rdata_I21 ) 
+  $guard (~checkJZero) ifmaps[2 ][1 ] := rdata_I21// bits of buffering = 16. 
+  $guard (~checkJZero) ifmaps2[1 ][1 ] := rdata_I21// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_2 col2 write_data_zero ) (rdata_I22 ) 
+  $guard (~checkJZero) ifmaps[2 ][2 ] := rdata_I22// bits of buffering = 16. 
+  $guard (~checkJZero) ifmaps2[1 ][2 ] := rdata_I22// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_3 col0 write_data_zero ) (rdata_I30 ) 
+  $guard (~checkJZero) ifmaps[3 ][0 ] := rdata_I30// bits of buffering = 16. 
+  $guard (~checkJZero) ifmaps2[2 ][0 ] := rdata_I30// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_3 col1 write_data_zero ) (rdata_I31 ) 
+  $guard (~checkJZero) ifmaps[3 ][1 ] := rdata_I31// bits of buffering = 16. 
+  $guard (~checkJZero) ifmaps2[2 ][1 ] := rdata_I31// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_3 col2 write_data_zero ) (rdata_I32 ) 
+  $guard (~checkJZero) ifmaps[3 ][2 ] := rdata_I32// bits of buffering = 16. 
+  $guard (~checkJZero) ifmaps2[2 ][2 ] := rdata_I32// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_4 col0 write_data_zero ) (rdata_I40 ) 
+  $guard (~checkJZero) ifmaps2[3 ][0 ] := rdata_I40// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_4 col1 write_data_zero ) (rdata_I41 ) 
+  $guard (~checkJZero) ifmaps2[3 ][1 ] := rdata_I41// bits of buffering = 16. 
+  $guard (~checkJZero) $call accessMem (read_signal rowI_4 col2 write_data_zero ) (rdata_I42 ) 
+  $guard (~checkJZero) ifmaps2[3 ][2 ] := rdata_I42// bits of buffering = 16. 
+  J_3 := ($bitcast ($uint<5>) (J + 3 ) )// bits of buffering = 5. 
+  $call accessMem (read_signal rowI J_3 write_data_zero ) (rdata_ifmap0 ) 
+  ifmaps[0 ][col_to_be_replaced] := rdata_ifmap0// bits of buffering = 16. 
+  $call accessMem (read_signal rowI_1 J_3 write_data_zero ) (rdata_ifmap1 ) 
+  ifmaps[1 ][col_to_be_replaced] := rdata_ifmap1// bits of buffering = 16. 
+  ifmaps2[0 ][col_to_be_replaced] := rdata_ifmap1// bits of buffering = 16. 
+  $call accessMem (read_signal rowI_2 J_3 write_data_zero ) (rdata_ifmap2 ) 
+  ifmaps[2 ][col_to_be_replaced] := rdata_ifmap2// bits of buffering = 16. 
+  ifmaps2[1 ][col_to_be_replaced] := rdata_ifmap2// bits of buffering = 16. 
+  $call accessMem (read_signal rowI_3 J_3 write_data_zero ) (rdata_ifmap3 ) 
+  ifmaps[3 ][col_to_be_replaced] := rdata_ifmap3// bits of buffering = 16. 
+  ifmaps2[2 ][col_to_be_replaced] := rdata_ifmap3// bits of buffering = 16. 
+  $call accessMem (read_signal rowI_4 J_3 write_data_zero ) (rdata_ifmap4 ) 
+  ifmaps2[3 ][col_to_be_replaced] := rdata_ifmap4// bits of buffering = 16. 
+  finished := ($bitcast ($uint<2>) 1  )// bits of buffering = 2. 
+}
+$module [cal_col_to_be_replaced]
+$in ( J : $uint<5>   col_to_be_replaced : $uint<2>  )
+$out ( new_col_to_be_replaced : $uint<2>  )
+$is
+{
+  col_to_be_replaced_3 := ($bitcast ($uint<2>) 3  )// bits of buffering = 2. 
+  col_to_be_replaced_other := ( $mux (col_to_be_replaced == 3 ) ($bitcast ($uint<2>) 0  )  ($bitcast ($uint<2>) (col_to_be_replaced + 1 ) ) ) // bits of buffering = 2. 
+  $volatile checkJZero := ( $mux (J == last_value_J) ($bitcast ($uint<1>) 0  )  ($bitcast ($uint<1>) 1  ) ) 
+  new_col_to_be_replaced := ( $mux checkJZero col_to_be_replaced_other  col_to_be_replaced_3 ) // bits of buffering = 2. 
+}
+$module [mainAcc]
+$in ( I : $uint<6>   J : $uint<5>   col_to_be_replaced : $uint<2>  )
+$out ( ofmap_pixel : $uint<16>  )
+$is
+{
+  rowI := ($bitcast ($uint<6>) I )// bits of buffering = 6.  Orphaned statement with target rowI ?? 
+  rowI_1 := ($bitcast ($uint<6>) (I + 1 ) )// bits of buffering = 6.  Orphaned statement with target rowI_1 ?? 
+  rowI_2 := ($bitcast ($uint<6>) (I + 2 ) )// bits of buffering = 6.  Orphaned statement with target rowI_2 ?? 
+  rowI_3 := ($bitcast ($uint<6>) (I + 3 ) )// bits of buffering = 6.  Orphaned statement with target rowI_3 ?? 
+  col0 := ($bitcast ($uint<5>) 0  )// bits of buffering = 5.  Orphaned statement with target col0 ?? 
+  col1 := ($bitcast ($uint<5>) 1  )// bits of buffering = 5.  Orphaned statement with target col1 ?? 
+  col2 := ($bitcast ($uint<5>) 2  )// bits of buffering = 5.  Orphaned statement with target col2 ?? 
+  col3 := ($bitcast ($uint<5>) 3  )// bits of buffering = 5.  Orphaned statement with target col3 ?? 
+  zero := ($bitcast ($uint<2>) 0  )// bits of buffering = 2. 
+  one := ($bitcast ($uint<2>) 1  )// bits of buffering = 2. 
+  two := ($bitcast ($uint<2>) 2  )// bits of buffering = 2. 
+  three := ($bitcast ($uint<2>) 3  )// bits of buffering = 2. 
+  col_to_be_replaced_1 := ( $mux (col_to_be_replaced == 0 ) ($bitcast ($uint<2>) 3  )  ($bitcast ($uint<2>) (col_to_be_replaced - 1 ) ) ) // bits of buffering = 2. 
+  col_to_be_replaced_2 := ( $mux (col_to_be_replaced >= 2 ) ($bitcast ($uint<2>) (col_to_be_replaced - 2 ) )  ($bitcast ($uint<2>) (col_to_be_replaced + 2 ) ) ) // bits of buffering = 2. 
+  col_to_be_replaced_3 := ( $mux (col_to_be_replaced == 3 ) ($bitcast ($uint<2>) 0  )  ($bitcast ($uint<2>) (col_to_be_replaced + 1 ) ) ) // bits of buffering = 2. 
+  pp03 := ($bitcast ($uint<16>) (ifmaps[0 ][col_to_be_replaced] * filter[zero][three]) )// bits of buffering = 16. 
+  pp13 := ($bitcast ($uint<16>) (ifmaps[1 ][col_to_be_replaced] * filter[one][three]) )// bits of buffering = 16. 
+  pp23 := ($bitcast ($uint<16>) (ifmaps[2 ][col_to_be_replaced] * filter[two][three]) )// bits of buffering = 16. 
+  pp33 := ($bitcast ($uint<16>) (ifmaps[3 ][col_to_be_replaced] * filter[three][three]) )// bits of buffering = 16. 
+  pp02 := ($bitcast ($uint<16>) (ifmaps[0 ][col_to_be_replaced_1] * filter[zero][two]) )// bits of buffering = 16. 
+  pp12 := ($bitcast ($uint<16>) (ifmaps[1 ][col_to_be_replaced_1] * filter[one][two]) )// bits of buffering = 16. 
+  pp22 := ($bitcast ($uint<16>) (ifmaps[2 ][col_to_be_replaced_1] * filter[two][two]) )// bits of buffering = 16. 
+  pp32 := ($bitcast ($uint<16>) (ifmaps[3 ][col_to_be_replaced_1] * filter[three][two]) )// bits of buffering = 16. 
+  pp01 := ($bitcast ($uint<16>) (ifmaps[0 ][col_to_be_replaced_2] * filter[zero][one]) )// bits of buffering = 16. 
+  pp11 := ($bitcast ($uint<16>) (ifmaps[1 ][col_to_be_replaced_2] * filter[one][one]) )// bits of buffering = 16. 
+  pp21 := ($bitcast ($uint<16>) (ifmaps[2 ][col_to_be_replaced_2] * filter[two][one]) )// bits of buffering = 16. 
+  pp31 := ($bitcast ($uint<16>) (ifmaps[3 ][col_to_be_replaced_2] * filter[three][one]) )// bits of buffering = 16. 
+  pp00 := ($bitcast ($uint<16>) (ifmaps[0 ][col_to_be_replaced_3] * filter[zero][zero]) )// bits of buffering = 16. 
+  pp10 := ($bitcast ($uint<16>) (ifmaps[1 ][col_to_be_replaced_3] * filter[one][zero]) )// bits of buffering = 16. 
+  pp20 := ($bitcast ($uint<16>) (ifmaps[2 ][col_to_be_replaced_3] * filter[two][zero]) )// bits of buffering = 16. 
+  pp30 := ($bitcast ($uint<16>) (ifmaps[3 ][col_to_be_replaced_3] * filter[three][zero]) )// bits of buffering = 16. 
+  sum0 := ($bitcast ($uint<16>) (pp00 + pp01) )// bits of buffering = 16. 
+  sum1 := ($bitcast ($uint<16>) (pp02 + pp03) )// bits of buffering = 16. 
+  sum2 := ($bitcast ($uint<16>) (pp10 + pp11) )// bits of buffering = 16. 
+  sum3 := ($bitcast ($uint<16>) (pp12 + pp13) )// bits of buffering = 16. 
+  sum4 := ($bitcast ($uint<16>) (pp20 + pp21) )// bits of buffering = 16. 
+  sum5 := ($bitcast ($uint<16>) (pp22 + pp23) )// bits of buffering = 16. 
+  sum6 := ($bitcast ($uint<16>) (pp30 + pp31) )// bits of buffering = 16. 
+  sum7 := ($bitcast ($uint<16>) (pp32 + pp33) )// bits of buffering = 16. 
+  sum10 := ($bitcast ($uint<16>) (sum0 + sum1) )// bits of buffering = 16. 
+  sum11 := ($bitcast ($uint<16>) (sum2 + sum3) )// bits of buffering = 16. 
+  sum12 := ($bitcast ($uint<16>) (sum4 + sum5) )// bits of buffering = 16. 
+  sum13 := ($bitcast ($uint<16>) (sum6 + sum7) )// bits of buffering = 16. 
+  sum20 := ($bitcast ($uint<16>) (sum10 + sum11) )// bits of buffering = 16. 
+  sum21 := ($bitcast ($uint<16>) (sum12 + sum13) )// bits of buffering = 16. 
+  ofmap_pixel := ($bitcast ($uint<16>) (sum20 + sum21) )// bits of buffering = 16. 
+}
+$module [mainAcc2]
+$in ( I : $uint<6>   J : $uint<5>   col_to_be_replaced : $uint<2>  )
+$out ( ofmap_pixel : $uint<16>  )
+$is
+{
+  rowI := ($bitcast ($uint<6>) I )// bits of buffering = 6.  Orphaned statement with target rowI ?? 
+  rowI_1 := ($bitcast ($uint<6>) (I + 1 ) )// bits of buffering = 6.  Orphaned statement with target rowI_1 ?? 
+  rowI_2 := ($bitcast ($uint<6>) (I + 2 ) )// bits of buffering = 6.  Orphaned statement with target rowI_2 ?? 
+  rowI_3 := ($bitcast ($uint<6>) (I + 3 ) )// bits of buffering = 6.  Orphaned statement with target rowI_3 ?? 
+  col0 := ($bitcast ($uint<5>) 0  )// bits of buffering = 5.  Orphaned statement with target col0 ?? 
+  col1 := ($bitcast ($uint<5>) 1  )// bits of buffering = 5.  Orphaned statement with target col1 ?? 
+  col2 := ($bitcast ($uint<5>) 2  )// bits of buffering = 5.  Orphaned statement with target col2 ?? 
+  col3 := ($bitcast ($uint<5>) 3  )// bits of buffering = 5.  Orphaned statement with target col3 ?? 
+  zero := ($bitcast ($uint<2>) 0  )// bits of buffering = 2. 
+  one := ($bitcast ($uint<2>) 1  )// bits of buffering = 2. 
+  two := ($bitcast ($uint<2>) 2  )// bits of buffering = 2. 
+  three := ($bitcast ($uint<2>) 3  )// bits of buffering = 2. 
+  col_to_be_replaced_1 := ( $mux (col_to_be_replaced == 0 ) ($bitcast ($uint<2>) 3  )  ($bitcast ($uint<2>) (col_to_be_replaced - 1 ) ) ) // bits of buffering = 2. 
+  col_to_be_replaced_2 := ( $mux (col_to_be_replaced >= 2 ) ($bitcast ($uint<2>) (col_to_be_replaced - 2 ) )  ($bitcast ($uint<2>) (col_to_be_replaced + 2 ) ) ) // bits of buffering = 2. 
+  col_to_be_replaced_3 := ( $mux (col_to_be_replaced == 3 ) ($bitcast ($uint<2>) 0  )  ($bitcast ($uint<2>) (col_to_be_replaced + 1 ) ) ) // bits of buffering = 2. 
+  pp03 := ($bitcast ($uint<16>) (ifmaps2[0 ][col_to_be_replaced] * filter[zero][three]) )// bits of buffering = 16. 
+  pp13 := ($bitcast ($uint<16>) (ifmaps2[1 ][col_to_be_replaced] * filter[one][three]) )// bits of buffering = 16. 
+  pp23 := ($bitcast ($uint<16>) (ifmaps2[2 ][col_to_be_replaced] * filter[two][three]) )// bits of buffering = 16. 
+  pp33 := ($bitcast ($uint<16>) (ifmaps[3 ][col_to_be_replaced] * filter[three][three]) )// bits of buffering = 16. 
+  pp02 := ($bitcast ($uint<16>) (ifmaps2[0 ][col_to_be_replaced_1] * filter[zero][two]) )// bits of buffering = 16. 
+  pp12 := ($bitcast ($uint<16>) (ifmaps2[1 ][col_to_be_replaced_1] * filter[one][two]) )// bits of buffering = 16. 
+  pp22 := ($bitcast ($uint<16>) (ifmaps2[2 ][col_to_be_replaced_1] * filter[two][two]) )// bits of buffering = 16. 
+  pp32 := ($bitcast ($uint<16>) (ifmaps2[3 ][col_to_be_replaced_1] * filter[three][two]) )// bits of buffering = 16. 
+  pp01 := ($bitcast ($uint<16>) (ifmaps2[0 ][col_to_be_replaced_2] * filter[zero][one]) )// bits of buffering = 16. 
+  pp11 := ($bitcast ($uint<16>) (ifmaps2[1 ][col_to_be_replaced_2] * filter[one][one]) )// bits of buffering = 16. 
+  pp21 := ($bitcast ($uint<16>) (ifmaps2[2 ][col_to_be_replaced_2] * filter[two][one]) )// bits of buffering = 16. 
+  pp31 := ($bitcast ($uint<16>) (ifmaps2[3 ][col_to_be_replaced_2] * filter[three][one]) )// bits of buffering = 16. 
+  pp00 := ($bitcast ($uint<16>) (ifmaps2[0 ][col_to_be_replaced_3] * filter[zero][zero]) )// bits of buffering = 16. 
+  pp10 := ($bitcast ($uint<16>) (ifmaps2[1 ][col_to_be_replaced_3] * filter[one][zero]) )// bits of buffering = 16. 
+  pp20 := ($bitcast ($uint<16>) (ifmaps2[2 ][col_to_be_replaced_3] * filter[two][zero]) )// bits of buffering = 16. 
+  pp30 := ($bitcast ($uint<16>) (ifmaps2[3 ][col_to_be_replaced_3] * filter[three][zero]) )// bits of buffering = 16. 
+  sum0 := ($bitcast ($uint<16>) (pp00 + pp01) )// bits of buffering = 16. 
+  sum1 := ($bitcast ($uint<16>) (pp02 + pp03) )// bits of buffering = 16. 
+  sum2 := ($bitcast ($uint<16>) (pp10 + pp11) )// bits of buffering = 16. 
+  sum3 := ($bitcast ($uint<16>) (pp12 + pp13) )// bits of buffering = 16. 
+  sum4 := ($bitcast ($uint<16>) (pp20 + pp21) )// bits of buffering = 16. 
+  sum5 := ($bitcast ($uint<16>) (pp22 + pp23) )// bits of buffering = 16. 
+  sum6 := ($bitcast ($uint<16>) (pp30 + pp31) )// bits of buffering = 16. 
+  sum7 := ($bitcast ($uint<16>) (pp32 + pp33) )// bits of buffering = 16. 
+  sum10 := ($bitcast ($uint<16>) (sum0 + sum1) )// bits of buffering = 16. 
+  sum11 := ($bitcast ($uint<16>) (sum2 + sum3) )// bits of buffering = 16. 
+  sum12 := ($bitcast ($uint<16>) (sum4 + sum5) )// bits of buffering = 16. 
+  sum13 := ($bitcast ($uint<16>) (sum6 + sum7) )// bits of buffering = 16. 
+  sum20 := ($bitcast ($uint<16>) (sum10 + sum11) )// bits of buffering = 16. 
+  sum21 := ($bitcast ($uint<16>) (sum12 + sum13) )// bits of buffering = 16. 
+  ofmap_pixel := ($bitcast ($uint<16>) (sum20 + sum21) )// bits of buffering = 16. 
+}
+$module [accelerator]
+$in ()
+$out ()
+$is
+{
+  $branchblock [check_start]
+  {
+    $merge $entry check_for_start 
+    $phi iter := 			  ($bitcast ($uint<16>) 1  ) $on   $entry 			  n_iter $on   check_for_start 
+    // type of target is $uint<16>
+    $endmerge
+    $volatile cmd := start_accelerator
+    $if (cmd == iter) $then 
+    $volatile n_iter := (iter + 1 )
+    $call initFilter (filter_start_addr ) (initialized_filter ) 
+    $volatile check_both := ($bitcast ($uint<2>) initialized_filter )
+    $branchblock [check_filter]
+    {
+      $merge $entry check_for_filter 
+      $endmerge
+      $if (check_both == 1 ) $then 
+      $branchblock [loop]
+      {
+        $dopipeline $depth 20 $buffering 2
+        $fullrate 
+        $merge $entry $loopback 
+        $phi ele := 					  ($bitcast ($uint<7>) 0  ) $on   $entry 					  n_ele $on   $loopback 
+        // type of target is $uint<7>
+        $phi J := 					  ($bitcast ($uint<5>) 0  ) $on   $entry 					  n_J $on   $loopback 
+        // type of target is $uint<5>
+        $phi I := 					  ($bitcast ($uint<6>) 0  ) $on   $entry 					  n_I $on   $loopback 
+        // type of target is $uint<6>
+        $phi col_to_be_replaced := 					  ($bitcast ($uint<2>) 3  ) $on   $entry 					  n_col_to_be_replaced $on   $loopback 
+        // type of target is $uint<2>
+        $endmerge
+        $volatile checkJZero := ( $mux (J == 0 ) ($bitcast ($uint<1>) 0  )  ($bitcast ($uint<1>) 1  ) ) 
+        $volatile I_1 := ($bitcast ($uint<6>) (I + 1 ) )
+        $call initIfMaps (($bitcast ($uint<1>) 1  ) I J col_to_be_replaced ) (initialized_ifmaps ) 
+        $volatile n_ele := ($bitcast ($uint<7>) (ele + 1 ) )
+        $volatile n_J := ( $mux (J < 4 ) (J + 1 )  ($bitcast ($uint<5>) 0  ) ) 
+        $volatile n_I := ( $mux (J == 4 ) ($bitcast ($uint<6>) (I + 2 ) )  I ) 
+        $call cal_col_to_be_replaced (J col_to_be_replaced ) (new_col_to_be_replaced ) 
+        $volatile n_col_to_be_replaced := new_col_to_be_replaced
+        $call mainAcc (I J col_to_be_replaced ) (ofmap_pixel ) 
+        $volatile checkIFour := ( $mux (I == 4 ) ($bitcast ($uint<1>) 1  )  ($bitcast ($uint<1>) 0  ) ) 
+        $guard (~checkIFour) $call mainAcc2 (I_1 J col_to_be_replaced ) (ofmap_pixel2 ) 
+        read_sums := ($bitcast ($uint<16>) ele )// bits of buffering = 16. 
+        $call accessMem (write_signal I J ofmap_pixel ) (r_data_sum_cal ) 
+        $guard (~checkIFour) $call accessMem (write_signal I_1 J ofmap_pixel2 ) (r_data_sum_cal2 ) 
+        $while (ele < 14 )
+      }
+      accelerator_done := ($bitcast ($uint<16>) 1  )// bits of buffering = 16. 
+      $place[check_for_filter]
+      $endif
+    }
+    $place[check_for_start]
+    $endif
+  }
+}
+$module [global_storage_initializer_]
+$in ()
+$out ()
+$is
+{
+  $null
+}
+$module [memAccessDaemon]
+$in ()
+$out ()
+$is
+{
+  $branchblock [loop]
+  {
+    $dopipeline $depth 20 $buffering 2
+    $fullrate 
+    $merge $entry $loopback 
+    $endmerge
+    cmd_1 := env_mem_request_1// bits of buffering = 32. 
+    $volatile wdata1 := ( $slice cmd_1 31 16 ) 
+    $volatile row_index1 := ( $slice cmd_1 15 10 ) 
+    $volatile col_index1 := ( $slice cmd_1 9 5 ) 
+    $volatile unused1 := ( $slice cmd_1 4 1 ) 
+    $volatile rwbar1 := ( $slice cmd_1 0 0 ) 
+    $call accessMem (rwbar1 row_index1 col_index1 wdata1 ) (rdata1 ) 
+    env_mem_response_1 := rdata1// bits of buffering = 16. 
+    $while 1 
+  }
+}
+$module [memAccessDaemon2]
+$in ()
+$out ()
+$is
+{
+  $branchblock [loop]
+  {
+    $dopipeline $depth 20 $buffering 2
+    $fullrate 
+    $merge $entry $loopback 
+    $endmerge
+    cmd_2 := env_mem_request_2// bits of buffering = 32. 
+    $volatile wdata2 := ( $slice cmd_2 31 16 ) 
+    $volatile row_index2 := ( $slice cmd_2 15 10 ) 
+    $volatile col_index2 := ( $slice cmd_2 9 5 ) 
+    $volatile unused2 := ( $slice cmd_2 4 1 ) 
+    $volatile rwbar2 := ( $slice cmd_2 0 0 ) 
+    $call accessMem (rwbar2 row_index2 col_index2 wdata2 ) (rdata2 ) 
+    env_mem_response_2 := rdata2// bits of buffering = 16. 
+    $while 1 
+  }
+}
+// Memory space 0: filter 
+// Memory space 1: ifmaps 
+// Memory space 2: ifmaps2 
+// Memory space 3: mem_array 

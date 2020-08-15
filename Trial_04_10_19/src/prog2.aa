@@ -1,0 +1,320 @@
+
+$storage filter: $array [4][4] $of $uint<16>
+
+$storage ifmaps: $array [4][4] $of $uint<16>
+
+$storage ifmaps2: $array [4][4] $of $uint<16>
+
+$pipe filter_fill_request: $uint<32> $depth 2
+
+$pipe filter_response: $uint<16> $depth 2
+
+$pipe start_accelerator: $uint<16> $depth 2
+$pipe start_accelerator2: $uint<16> $depth 2
+
+$constant start_accelerator_row: $uint<6> := 9
+$constant start_accelerator_col: $uint<5> := 5
+
+$constant write_signal: $uint<1> := 0
+$constant read_signal: $uint<1> := 1
+$constant unused_const: $uint<4> := 0
+$constant write_data_zero: $uint<16> := 0
+$constant write_data_one: $uint<16> := 1
+
+$constant filter_start_addr: $uint<6> := 8
+
+$storage mem_array: $array[12][8] $of $uint<16>
+
+$pipeline $depth 7 $module [accessMem]
+$in (read_write_bar_1: $uint<1>  row_index: $uint<6> col_index: $uint<5> write_data_1: $uint<16> )
+$out (read_data_1: $uint<16> ) $is
+{
+	
+	$guard (read_write_bar_1) t_read_data_11 := mem_array[row_index][col_index]
+
+
+	$guard (~read_write_bar_1) mem_array[row_index][col_index] := write_data_1 
+
+
+
+	//G: if(1) then last parameter is taken
+	read_data_1 := ($mux read_write_bar_1  t_read_data_11 0)
+	
+
+}
+// bits [31] = read_write_bar
+// [30:27] =unused
+// [26:16] = write-address.
+// [15:0] = write-data
+$pipe env_mem_request_1: $uint<32> $depth 5
+$pipe env_mem_request_2: $uint<32> $depth 8
+// read data.
+$pipe env_mem_response_1: $uint<16> $depth 2
+$pipe env_mem_response_2: $uint<16> $depth 2
+
+
+$module [memAccessDaemon] $in () $out () $is
+{
+	
+
+	$branchblock[loop] {
+		$dopipeline $depth 20 $buffering 2 $fullrate
+
+		$merge $entry $loopback $endmerge
+
+		cmd_1 := env_mem_request_1
+		
+
+
+		//G: I reversed the order
+		$volatile $split (cmd_1 16 6 5 4 1) (wdata1 row_index1 col_index1 unused1 rwbar1)
+		
+
+		$call accessMem (rwbar1  row_index1 col_index1 wdata1 ) (rdata1 )
+		
+		env_mem_response_1 := rdata1
+		
+	$while 1
+	}
+}
+
+$module [memAccessDaemon2] $in () $out () $is
+{
+	$branchblock[loop] {
+		$dopipeline $depth 20 $buffering 2 $fullrate
+
+		$merge $entry $loopback $endmerge
+
+		
+		cmd_2 := env_mem_request_2
+
+
+		//G: I reversed the order
+		
+		$volatile $split (cmd_2 16 6 5 4 1) (wdata2 row_index2 col_index2 unused2 rwbar2)
+
+		
+		$call accessMem (rwbar2  row_index2 col_index2 wdata2 ) (rdata2 )
+		
+		env_mem_response_2 := rdata2
+	$while 1
+	}
+}
+// bits [31] = read_write_bar
+// [30:27] =unused
+// [26:16] = write-address.
+// [15:0] = write-data
+
+$pipe acc_mem_request_1: $uint<32> $depth 2
+$pipe acc_mem_request_2: $uint<32> $depth 2
+// read data.
+$pipe acc_mem_response_1: $uint<16> $depth 2
+$pipe acc_mem_response_2: $uint<16> $depth 2
+
+
+$module [accMemAccessDaemon] $in () $out () $is
+{
+	$branchblock[loop] {
+		$dopipeline $depth 20 $buffering 2 $fullrate
+
+		$merge $entry $loopback $endmerge
+
+		cmd_1 := acc_mem_request_1
+		
+
+		$volatile $split (cmd_1 16 6 5 4 1) (wdata1 row_index1 col_index1 unused1 rwbar1)
+		
+
+		$call accessMem (rwbar1  row_index1 col_index1  wdata1 ) (rdata1 )
+		
+		
+
+	$while 1
+	}
+}
+
+$module [initFilter] $in(start_row_filter: $uint<6> ) $out(filter_initialized: $uint<1> ) $is
+{
+
+	$branchblock[loop] {
+		$dopipeline $depth 7 $buffering 2 $fullrate
+
+		$merge $entry $loopback
+				$phi ele := ($bitcast ($uint<5>) 0) $on $entry n_ele $on $loopback
+				$phi J := ($bitcast ($uint<5>) 0) $on $entry n_J $on $loopback
+				$phi I := ($bitcast ($uint<6>) 0) $on $entry n_I $on $loopback
+			$endmerge
+
+			$volatile n_J := ($mux (J <= 2) (J + 1) ($bitcast ($uint<5>) 0))
+			$volatile n_I := ($mux (J == 3) ($bitcast ($uint<6>) (I + 1)) I)
+			$call accessMem (read_signal  I J  write_data_zero ) (rdata )
+			filter[I][J] := rdata
+		$while (ele < 15)
+	}
+		
+	filter_initialized := ($bitcast ($uint<1>) 1)
+}
+
+$pipeline $depth 31 $buffering 2 
+$fullrate $module [initIfMaps] $in (start: $uint<1>)
+$out (finished: $uint<1>) $is
+{	
+	$guard (start) $call accessMem (read_signal rowI col0 write_data_zero ) (rdata_I00 )
+	$guard (start) ifmaps[0][0] := rdata_I00
+
+	$guard (start) $call accessMem (read_signal rowI col1 write_data_zero ) (rdata_I01 )
+	$guard (start) ifmaps[0][1] := rdata_I01
+
+	$guard (start) $call accessMem (read_signal rowI col2 write_data_zero ) (rdata_I02 )
+	$guard (start) ifmaps[0][2] := rdata_I02
+
+	$guard (start) $call accessMem (read_signal rowI_1 col0 write_data_zero ) (rdata_I10 )
+	$guard (start) ifmaps[1][0] := rdata_I10
+
+	$guard (start) $call accessMem (read_signal rowI_1 col1 write_data_zero ) (rdata_I11 )
+	$guard (start) ifmaps[1][1] := rdata_I11
+
+	$guard (start) $call accessMem (read_signal rowI_1 col2 write_data_zero ) (rdata_I12 )
+	$guard (start) ifmaps[1][2] := rdata_I12
+
+	$guard (start) $call accessMem (read_signal rowI_2 col0 write_data_zero ) (rdata_I20 )
+	$guard (start) ifmaps[2][0] := rdata_I20
+
+	$guard (start) $call accessMem (read_signal rowI_2 col1 write_data_zero ) (rdata_I21 )
+	$guard (start) ifmaps[2][1] := rdata_I21
+
+	$guard (start) $call accessMem (read_signal rowI_2 col2 write_data_zero ) (rdata_I22 )
+	$guard (start) ifmaps[2][2] := rdata_I22
+
+	$guard (start) $call accessMem (read_signal rowI_3 col0 write_data_zero ) (rdata_I30 )
+	$guard (start) ifmaps[3][0] := rdata_I30
+
+	$guard (start) $call accessMem (read_signal rowI_3 col1 write_data_zero ) (rdata_I31 )
+	$guard (start) ifmaps[3][1] := rdata_I31
+
+	$guard (start) $call accessMem (read_signal rowI_3 col2 write_data_zero ) (rdata_I32 )
+	$guard (start) ifmaps[3][2] := rdata_I32
+
+	finished := ($bitcast ($uint<1>) 1)
+}
+
+
+$pipeline $depth 31 $buffering 2 
+$fullrate $module [mainAcc] $in (I: $uint<6> J: $uint<5> col_to_be_replaced: $uint<2>)
+$out (ofmap_pixel: $uint<16>) $is
+{	
+	J_3 := ($bitcast ($uint<5>) (J + 3))
+	$call accessMem (read_signal rowI J_3 write_data_zero ) (rdata_ifmap0 )
+	ifmaps[0][col_to_be_replaced] := rdata_ifmap0
+
+	$call accessMem (read_signal rowI_1 J_3 write_data_zero ) (rdata_ifmap1 )
+	ifmaps[1][col_to_be_replaced] := rdata_ifmap1
+
+	$call accessMem (read_signal rowI_2 J_3 write_data_zero ) (rdata_ifmap2 )
+	ifmaps[2][col_to_be_replaced] := rdata_ifmap2
+
+	$call accessMem (read_signal rowI_3 J_3 write_data_zero ) (rdata_ifmap3 )
+	ifmaps[3][col_to_be_replaced] := rdata_ifmap3
+
+							///////////////////// Generating PPs //////////////////////////
+							
+	zero := ($bitcast ($uint<2>) 0)
+	one := ($bitcast ($uint<2>) 1)
+	two := ($bitcast ($uint<2>) 2)
+	three := ($bitcast ($uint<2>) 3)
+
+	col_to_be_replaced_1 := ($mux (col_to_be_replaced == 0) ($bitcast ($uint<2>) 3) ($bitcast ($uint<2>) (col_to_be_replaced - 1))) //col_to_be_replaced -1%4
+	col_to_be_replaced_2 := ($mux (col_to_be_replaced >= 2) ($bitcast ($uint<2>) (col_to_be_replaced - 2)) ($bitcast ($uint<2>) (col_to_be_replaced + 2)))
+	col_to_be_replaced_3 := ($mux (col_to_be_replaced == 3) ($bitcast ($uint<2>) 0) ($bitcast ($uint<2>) (col_to_be_replaced + 1)))
+
+	$parallelblock [pps]{
+		pp03 := ($bitcast ($uint<16>) (ifmaps[0][col_to_be_replaced] * filter[zero][three]))
+		pp13 := ($bitcast ($uint<16>) (ifmaps[1][col_to_be_replaced] * filter[one][three]))
+		pp23 := ($bitcast ($uint<16>) (ifmaps[2][col_to_be_replaced] * filter[two][three]))
+		pp33 := ($bitcast ($uint<16>) (ifmaps[3][col_to_be_replaced] * filter[three][three]))
+
+		pp02 := ($bitcast ($uint<16>) (ifmaps[0][col_to_be_replaced_1] * filter[zero][two]))
+		pp12 := ($bitcast ($uint<16>) (ifmaps[1][col_to_be_replaced_1] * filter[one][two]))
+		pp22 := ($bitcast ($uint<16>) (ifmaps[2][col_to_be_replaced_1] * filter[two][two]))
+		pp32 := ($bitcast ($uint<16>) (ifmaps[3][col_to_be_replaced_1] * filter[three][two]))
+
+		pp01 := ($bitcast ($uint<16>) (ifmaps[0][col_to_be_replaced_2] * filter[zero][one]))
+		pp11 := ($bitcast ($uint<16>) (ifmaps[1][col_to_be_replaced_2] * filter[one][one]))
+		pp21 := ($bitcast ($uint<16>) (ifmaps[2][col_to_be_replaced_2] * filter[two][one]))
+		pp31 := ($bitcast ($uint<16>) (ifmaps[3][col_to_be_replaced_2] * filter[three][one]))
+
+		pp00 := ($bitcast ($uint<16>) (ifmaps[0][col_to_be_replaced_3] * filter[zero][zero]))
+		pp10 := ($bitcast ($uint<16>) (ifmaps[1][col_to_be_replaced_3] * filter[one][zero]))
+		pp20 := ($bitcast ($uint<16>) (ifmaps[2][col_to_be_replaced_3] * filter[two][zero]))
+		pp30 := ($bitcast ($uint<16>) (ifmaps[3][col_to_be_replaced_3] * filter[three][zero]))
+		} (pp03 => pp03 pp13 => pp13 pp23 => pp23 pp33 => pp33 pp02 => pp02 pp12 => pp12 pp22 => pp22 pp32 => pp32 pp01 => pp01 pp11 => pp11 pp21 => pp21 pp31 => pp31 pp00 => pp00 pp10 => pp10 pp20 => pp20 pp30 => pp30)
+
+		$parallelblock [sums_l0]{
+			sum0 := ($bitcast ($uint<16>) (pp00 + pp01))
+			sum1 := ($bitcast ($uint<16>) (pp02 + pp03))
+			sum2 := ($bitcast ($uint<16>) (pp10 + pp11))
+			sum3 := ($bitcast ($uint<16>) (pp12 + pp13))
+			sum4 := ($bitcast ($uint<16>) (pp20 + pp21))
+			sum5 := ($bitcast ($uint<16>) (pp22 + pp23))
+			sum6 := ($bitcast ($uint<16>) (pp30 + pp31))
+			sum7 := ($bitcast ($uint<16>) (pp32 + pp33))
+		} (sum0 => sum0 sum1 => sum1 sum2 => sum2 sum3 => sum3 sum4 => sum4 sum5 => sum5 sum6 => sum6 sum7 => sum7)
+
+		$parallelblock [sums_l1]{
+			sum10 := ($bitcast ($uint<16>) (sum0 + sum1))
+			sum11 := ($bitcast ($uint<16>) (sum2 + sum3))
+			sum12 := ($bitcast ($uint<16>) (sum4 + sum5))
+			sum13 := ($bitcast ($uint<16>) (sum6 + sum7))
+		} (sum10 => sum10 sum11 => sum11 sum12 => sum12 sum13 => sum13)
+
+		$parallelblock [sums_l2]{
+			sum20 := ($bitcast ($uint<16>) (sum10 + sum11))
+			sum21 := ($bitcast ($uint<16>) (sum12 + sum13))
+		} (sum20 => sum20 sum21 => sum21)
+
+		ofmap_pixel := ($bitcast ($uint<16>) (sum20 + sum21))
+}
+
+$module [accelerator] $in() $out() $is{
+	$branchblock [check_start] {
+		$merge $entry check_for_start $endmerge
+		cmd := start_accelerator
+		$if (cmd == 1) $then
+			$call initFilter (filter_start_addr ) (initialized_filter)
+			$call initIfMaps (($bitcast ($uint<1>) 1)) (initialized_ifmaps)
+
+			$volatile check_both := (($bitcast ($uint<2>) (initialized_filter + initialized_ifmaps))
+			$branchblock [check_filter] {
+				$merge $entry check_for_filter $endmerge
+				
+				$if (check_both == 2) $then
+
+					$branchblock[loop] {
+						$dopipeline $depth 7 $buffering 2 $fullrate
+
+						$merge $entry $loopback
+								$phi ele := ($bitcast ($uint<7>) 0) $on $entry n_ele $on $loopback
+								$phi J := ($bitcast ($uint<5>) 0) $on $entry n_J $on $loopback
+								$phi I := ($bitcast ($uint<6>) 0) $on $entry n_I $on $loopback
+								$phi col_to_be_replaced := ($bitcast ($uint<2>) 3) $on $entry n_col_to_be_replaced $on $loopback
+						$endmerge
+							$volatile n_J := ($mux (J < 7) (J + 1) ($bitcast ($uint<5>) 0))
+							$volatile n_I := ($mux (J == 7) ($bitcast ($uint<6>) (I + 1)) I)//try replacing I by I+0
+							$volatile n_col_to_be_replaced := ($mux (col_to_be_replaced == 3) ($bitcast ($uint<2>) 0) ($bitcast ($uint<2>) (col_to_be_replaced + 1)))
+							$call mainAcc (I J col_to_be_replaced) (ofmap_pixel)
+							$call accessMem (write_signal I J ofmap_pixel ) (r_data_sum_cal)
+
+
+						$while (ele < 63)
+						}				
+
+					$place [check_filter]
+				$endif
+			}
+
+		$place [check_for_start]
+		$endif
+	}
+
+}
+

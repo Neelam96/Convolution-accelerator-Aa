@@ -1,0 +1,5112 @@
+AaLinkExtMem ./src/prog.aa | vcFormat > prog.linked.aa
+Info: Added module accessMem
+Info: Added module memAccessDaemon
+Info: Added module memAccessDaemon2
+Info: Added module accMemAccessDaemon
+Info: Added module initFilter
+Info: Added module initIfMaps
+Info: Added module mainAcc
+Info: Added module mainAcc2
+Info: Added module cal_col_to_be_replaced
+Info: Added module accelerator
+Info: finished parsing file ./src/prog.aa
+Info: Added module global_storage_initializer_
+Info: elaborating the program .... initializing the call-graph
+Info: mapping target object references..
+Info: mapping source object references..
+Info: checking for cycles in the call-graph ... 
+Info: module order:
+	accessMem
+	accMemAccessDaemon
+	initFilter
+	initIfMaps
+	cal_col_to_be_replaced
+	mainAcc
+	mainAcc2
+	accelerator
+	global_storage_initializer_
+	memAccessDaemon
+	memAccessDaemon2
+Info: marking modules reachable from root-modules ... 
+Info: module accMemAccessDaemon is reachable from a specified root module.
+Info: module accessMem is reachable from a specified root module.
+Info: module accelerator is reachable from a specified root module.
+Info: module initFilter is reachable from a specified root module.
+Info: module initIfMaps is reachable from a specified root module.
+Info: module mainAcc is reachable from a specified root module.
+Info: module mainAcc2 is reachable from a specified root module.
+Info: module cal_col_to_be_replaced is reachable from a specified root module.
+Info: module global_storage_initializer_ is reachable from a specified root module.
+Info: module memAccessDaemon is reachable from a specified root module.
+Info: module memAccessDaemon2 is reachable from a specified root module.
+Info: propagating types in the program ... 
+Info: coalescing storage into distinct memory spaces ... 
+Info: Marking foreign pointers in modules which are not called from the program
+Info: Coalescing storage from native objects..
+Info: Finished coalescing storage.. identified 4 disjoint memory space(s)
+Info: Memory space 0: filter 
+Info: Memory space 1: ifmaps 
+Info: Memory space 2: ifmaps2 
+Info: Memory space 3: mem_array 
+Info: propagating constants in the program ... 
+AaOpt -B prog.linked.aa | vcFormat > prog.linked.opt.aa
+Info: Added module accessMem
+Info: Added module accMemAccessDaemon
+Info: Added module initFilter
+Info: Added module initIfMaps
+Info: Added module cal_col_to_be_replaced
+Info: Added module mainAcc
+Info: Added module mainAcc2
+Info: Added module accelerator
+Info: Added module global_storage_initializer_
+Info: Added module memAccessDaemon
+Info: Added module memAccessDaemon2
+Info: elaborating the program .... initializing the call-graph
+Info: mapping target object references..
+Info: mapping source object references..
+Info: checking for cycles in the call-graph ... 
+Info: module order:
+	accessMem
+	accMemAccessDaemon
+	initFilter
+	initIfMaps
+	cal_col_to_be_replaced
+	mainAcc
+	mainAcc2
+	accelerator
+	global_storage_initializer_
+	memAccessDaemon
+	memAccessDaemon2
+Info: marking modules reachable from root-modules ... 
+Info: module accMemAccessDaemon is reachable from a specified root module.
+Info: module accessMem is reachable from a specified root module.
+Info: module accelerator is reachable from a specified root module.
+Info: module initFilter is reachable from a specified root module.
+Info: module initIfMaps is reachable from a specified root module.
+Info: module cal_col_to_be_replaced is reachable from a specified root module.
+Info: module mainAcc is reachable from a specified root module.
+Info: module mainAcc2 is reachable from a specified root module.
+Info: module global_storage_initializer_ is reachable from a specified root module.
+Info: module memAccessDaemon is reachable from a specified root module.
+Info: module memAccessDaemon2 is reachable from a specified root module.
+Info: propagating types in the program ... 
+Info: coalescing storage into distinct memory spaces ... 
+Info: Marking foreign pointers in modules which are not called from the program
+Info: Coalescing storage from native objects..
+Info: Finished coalescing storage.. identified 4 disjoint memory space(s)
+Info: Memory space 0: filter 
+Info: Memory space 1: ifmaps 
+Info: Memory space 2: ifmaps2 
+Info: Memory space 3: mem_array 
+Info: propagating constants in the program ... 
+Info:  started path balancing for module accessMem
+Info: Longest path in accessMem is 5
+Info: added 4 buffering bits during path balancing
+Info:  started equalizing paths for do-while statement do_while_stmt_79 in module accMemAccessDaemon
+Info: Longest path in do_while_stmt_79 is 8
+Info: ignored orphan statement: 			$volatile unused1 := ( $slice cmd_1 4 1 ) 
+
+Info:  started equalizing paths for do-while statement do_while_stmt_122 in module initFilter
+Info: Longest path in do_while_stmt_122 is 8
+Info: added 42 buffering bits during path balancing
+Info: added 35 buffering bits during path balancing
+Info: ignored orphan statement: 	cmd := start// bits of buffering = 1.  Orphaned statement with target cmd ?? 
+
+Info: ignored orphan statement: 	col3 := ($bitcast ($uint<5>) 3  )// bits of buffering = 5.  Orphaned statement with target col3 ?? 
+
+Info: ignored orphan statement: 	rowI := ($bitcast ($uint<6>) I )// bits of buffering = 6.  Orphaned statement with target rowI ?? 
+
+Info: ignored orphan statement: 	rowI_1 := ($bitcast ($uint<6>) (I + 1 ) )// bits of buffering = 6.  Orphaned statement with target rowI_1 ?? 
+
+Info: ignored orphan statement: 	rowI_2 := ($bitcast ($uint<6>) (I + 2 ) )// bits of buffering = 6.  Orphaned statement with target rowI_2 ?? 
+
+Info: ignored orphan statement: 	rowI_3 := ($bitcast ($uint<6>) (I + 3 ) )// bits of buffering = 6.  Orphaned statement with target rowI_3 ?? 
+
+Info: ignored orphan statement: 	col0 := ($bitcast ($uint<5>) 0  )// bits of buffering = 5.  Orphaned statement with target col0 ?? 
+
+Info: ignored orphan statement: 	col1 := ($bitcast ($uint<5>) 1  )// bits of buffering = 5.  Orphaned statement with target col1 ?? 
+
+Info: ignored orphan statement: 	col2 := ($bitcast ($uint<5>) 2  )// bits of buffering = 5.  Orphaned statement with target col2 ?? 
+
+Info: ignored orphan statement: 	col3 := ($bitcast ($uint<5>) 3  )// bits of buffering = 5.  Orphaned statement with target col3 ?? 
+
+Info: ignored orphan statement: 	rowI := ($bitcast ($uint<6>) I )// bits of buffering = 6.  Orphaned statement with target rowI ?? 
+
+Info: ignored orphan statement: 	rowI_1 := ($bitcast ($uint<6>) (I + 1 ) )// bits of buffering = 6.  Orphaned statement with target rowI_1 ?? 
+
+Info: ignored orphan statement: 	rowI_2 := ($bitcast ($uint<6>) (I + 2 ) )// bits of buffering = 6.  Orphaned statement with target rowI_2 ?? 
+
+Info: ignored orphan statement: 	rowI_3 := ($bitcast ($uint<6>) (I + 3 ) )// bits of buffering = 6.  Orphaned statement with target rowI_3 ?? 
+
+Info: ignored orphan statement: 	col0 := ($bitcast ($uint<5>) 0  )// bits of buffering = 5.  Orphaned statement with target col0 ?? 
+
+Info: ignored orphan statement: 	col1 := ($bitcast ($uint<5>) 1  )// bits of buffering = 5.  Orphaned statement with target col1 ?? 
+
+Info: ignored orphan statement: 	col2 := ($bitcast ($uint<5>) 2  )// bits of buffering = 5.  Orphaned statement with target col2 ?? 
+
+Info: ignored orphan statement: 	col3 := ($bitcast ($uint<5>) 3  )// bits of buffering = 5.  Orphaned statement with target col3 ?? 
+
+Info:  started equalizing paths for do-while statement do_while_stmt_1349 in module accelerator
+Info: Longest path in do_while_stmt_1349 is 12
+Info: added 24 buffering bits during path balancing
+Info: added 20 buffering bits during path balancing
+Info: added 4 buffering bits during path balancing
+Info: added 24 buffering bits during path balancing
+Info: added 20 buffering bits during path balancing
+Info: ignored orphan statement: 					$volatile checkJZero := ( $mux (J == 0 ) ($bitcast ($uint<1>) 0  )  ($bitcast ($uint<1>) 1  ) ) 
+
+Info:  started equalizing paths for do-while statement do_while_stmt_1490 in module memAccessDaemon
+Info: Longest path in do_while_stmt_1490 is 8
+Info: ignored orphan statement: 			$volatile unused1 := ( $slice cmd_1 4 1 ) 
+
+Info:  started equalizing paths for do-while statement do_while_stmt_1530 in module memAccessDaemon2
+Info: Longest path in do_while_stmt_1530 is 8
+Info: ignored orphan statement: 			$volatile unused2 := ( $slice cmd_2 4 1 ) 
+
+Info: added 173 bits of buffering during path balancing.
+Aa2VC -O -C prog.linked.opt.aa | vcFormat > prog.vc
+Info: -O option selected, will parallelize straight-line sequences
+Info: -C option selected, will generate C-stubs for mixed C-VHDL simulation
+Info: Added module accessMem
+Info: Added module accMemAccessDaemon
+Info: Added module initFilter
+Info: Added module initIfMaps
+Info: Added module cal_col_to_be_replaced
+Info: Added module mainAcc
+Info: Added module mainAcc2
+Info: Added module accelerator
+Info: Added module global_storage_initializer_
+Info: Added module memAccessDaemon
+Info: Added module memAccessDaemon2
+Info: elaborating the program .... initializing the call-graph
+Info: mapping target object references..
+Info: mapping source object references..
+Info: checking for cycles in the call-graph ... 
+Info: module order:
+	accessMem
+	accMemAccessDaemon
+	initFilter
+	initIfMaps
+	cal_col_to_be_replaced
+	mainAcc
+	mainAcc2
+	accelerator
+	global_storage_initializer_
+	memAccessDaemon
+	memAccessDaemon2
+Info: marking modules reachable from root-modules ... 
+Info: module accMemAccessDaemon is reachable from a specified root module.
+Info: module accessMem is reachable from a specified root module.
+Info: module accelerator is reachable from a specified root module.
+Info: module initIfMaps is reachable from a specified root module.
+Info: module initFilter is reachable from a specified root module.
+Info: module cal_col_to_be_replaced is reachable from a specified root module.
+Info: module mainAcc is reachable from a specified root module.
+Info: module mainAcc2 is reachable from a specified root module.
+Info: module global_storage_initializer_ is reachable from a specified root module.
+Info: module memAccessDaemon is reachable from a specified root module.
+Info: module memAccessDaemon2 is reachable from a specified root module.
+Info: propagating types in the program ... 
+Info: coalescing storage into distinct memory spaces ... 
+Info: Marking foreign pointers in modules which are not called from the program
+Info: Coalescing storage from native objects..
+Info: Finished coalescing storage.. identified 4 disjoint memory space(s)
+Info: Memory space 0: filter 
+Info: Memory space 1: ifmaps 
+Info: Memory space 2: ifmaps2 
+Info: Memory space 3: mem_array 
+Info: propagating constants in the program ... 
+Info: Writing optimized VC model.. 
+Aa2VC Error: Expression start_accelerator is not trivial but appears in a volatile assignment statement.: file prog.linked.opt.aa, line 282
+Info: Done writing optimized VC model.. 
+Error: there were errors during elaboration, check the log
+vc2vhdl -D -O -S 4 -I 2 -v -a -C -e ahir_system -w -s ghdl -T memAccessDaemon -T memAccessDaemon2 -T accMemAccessDaemon -T accelerator  -f prog.vc 
+Info: -D option selected: VHDL will have debug assertions..
+Info: -O option selected, will try to compress control-path..
+Info: -S option selected: bypass stride will be set to 4.
+Info: -I option is deprecated.. has no effect.
+Info: -v option selected: lots of info will be printed (to stderr, and also dot-files of control-paths if -O option is selected).
+Info: -a option selected: will try for minimum overall circuit area.
+Info: -C option selected: will generate testbench which connects to foreign link.
+Info: -e ahir_system top-level VHDL entity will have name ahir_system.unformatted_vhdl
+Info: -w ahir_system will write separate system and testbench VHDL files.
+Info: -s ghdl option selected: will generate testbench with VHPI link.
+Info: module memAccessDaemon set as one of the ever-running top modules. 
+   NOTE: memAccessDaemon cannot have any input/output arguments.
+Info: module memAccessDaemon2 set as one of the ever-running top modules. 
+   NOTE: memAccessDaemon2 cannot have any input/output arguments.
+Info: module accMemAccessDaemon set as one of the ever-running top modules. 
+   NOTE: accMemAccessDaemon cannot have any input/output arguments.
+Info: module accelerator set as one of the ever-running top modules. 
+   NOTE: accelerator cannot have any input/output arguments.
+Warning: in equivalence operator array_obj_ref_62_index_0_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_62_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_67_index_0_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_67_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: control-path links to flow-through DPE array_obj_ref_62_index_0_resize ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_62_index_1_resize ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_62_index_1_rename ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_62_index_offset ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_62_root_address_inst ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_62_addr_0 ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_62_gather_scatter ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_67_index_0_resize ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_67_index_1_resize ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_67_index_1_rename ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_67_index_offset ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_67_root_address_inst ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_67_addr_0 ignored,  in module accessMem
+Warning: control-path links to flow-through DPE array_obj_ref_67_gather_scatter ignored,  in module accessMem
+Warning: in equivalence operator array_obj_ref_180_index_0_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_180_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: control-path links to flow-through DPE array_obj_ref_180_index_0_resize ignored,  in module initFilter
+Warning: control-path links to flow-through DPE array_obj_ref_180_index_1_resize ignored,  in module initFilter
+Warning: control-path links to flow-through DPE array_obj_ref_180_index_1_rename ignored,  in module initFilter
+Warning: control-path links to flow-through DPE array_obj_ref_180_index_offset ignored,  in module initFilter
+Warning: control-path links to flow-through DPE array_obj_ref_180_root_address_inst ignored,  in module initFilter
+Warning: control-path links to flow-through DPE array_obj_ref_180_addr_0 ignored,  in module initFilter
+Warning: control-path links to flow-through DPE array_obj_ref_180_gather_scatter ignored,  in module initFilter
+Warning: in equivalence operator array_obj_ref_512_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_523_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_528_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_539_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_544_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_555_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_560_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_571_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: control-path links to flow-through DPE array_obj_ref_259_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_272_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_285_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_298_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_304_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_317_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_323_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_336_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_342_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_355_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_361_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_374_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_380_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_393_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_399_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_412_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_418_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_431_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_437_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_450_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_456_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_469_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_482_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_495_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_512_index_1_resize ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_512_index_1_rename ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_512_root_address_inst ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_512_addr_0 ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_512_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_523_index_1_resize ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_523_index_1_rename ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_523_root_address_inst ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_523_addr_0 ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_523_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_528_index_1_resize ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_528_index_1_rename ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_528_root_address_inst ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_528_addr_0 ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_528_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_539_index_1_resize ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_539_index_1_rename ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_539_root_address_inst ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_539_addr_0 ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_539_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_544_index_1_resize ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_544_index_1_rename ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_544_root_address_inst ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_544_addr_0 ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_544_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_555_index_1_resize ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_555_index_1_rename ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_555_root_address_inst ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_555_addr_0 ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_555_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_560_index_1_resize ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_560_index_1_rename ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_560_root_address_inst ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_560_addr_0 ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_560_gather_scatter ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_571_index_1_resize ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_571_index_1_rename ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_571_root_address_inst ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_571_addr_0 ignored,  in module initIfMaps
+Warning: control-path links to flow-through DPE array_obj_ref_571_gather_scatter ignored,  in module initIfMaps
+Warning: in equivalence operator array_obj_ref_678_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_688_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_698_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_708_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_718_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_728_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_738_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_748_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_758_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_768_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_778_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_788_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_798_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_808_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_818_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_828_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: control-path links to flow-through DPE array_obj_ref_678_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_678_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_678_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_678_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_678_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_681_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_688_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_688_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_688_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_688_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_688_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_691_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_698_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_698_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_698_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_698_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_698_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_701_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_708_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_708_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_708_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_708_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_708_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_711_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_718_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_718_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_718_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_718_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_718_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_721_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_728_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_728_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_728_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_728_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_728_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_731_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_738_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_738_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_738_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_738_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_738_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_741_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_748_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_748_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_748_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_748_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_748_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_751_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_758_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_758_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_758_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_758_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_758_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_761_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_768_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_768_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_768_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_768_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_768_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_771_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_778_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_778_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_778_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_778_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_778_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_781_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_788_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_788_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_788_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_788_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_788_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_791_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_798_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_798_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_798_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_798_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_798_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_801_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_808_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_808_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_808_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_808_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_808_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_811_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_818_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_818_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_818_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_818_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_818_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_821_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_828_index_1_resize ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_828_index_1_rename ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_828_root_address_inst ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_828_addr_0 ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_828_gather_scatter ignored,  in module mainAcc
+Warning: control-path links to flow-through DPE array_obj_ref_831_gather_scatter ignored,  in module mainAcc
+Warning: in equivalence operator array_obj_ref_988_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_998_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1008_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1018_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1028_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1038_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1048_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1058_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1068_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1078_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1088_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1098_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1108_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1118_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1128_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_1138_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: control-path links to flow-through DPE array_obj_ref_988_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_988_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_988_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_988_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_988_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_991_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_998_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_998_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_998_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_998_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_998_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1001_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1008_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1008_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1008_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1008_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1008_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1011_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1018_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1018_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1018_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1018_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1018_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1021_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1028_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1028_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1028_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1028_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1028_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1031_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1038_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1038_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1038_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1038_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1038_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1041_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1048_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1048_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1048_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1048_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1048_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1051_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1058_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1058_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1058_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1058_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1058_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1061_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1068_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1068_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1068_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1068_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1068_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1071_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1078_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1078_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1078_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1078_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1078_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1081_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1088_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1088_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1088_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1088_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1088_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1091_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1098_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1098_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1098_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1098_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1098_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1101_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1108_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1108_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1108_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1108_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1108_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1111_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1118_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1118_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1118_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1118_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1118_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1121_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1128_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1128_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1128_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1128_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1128_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1131_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1138_index_1_resize ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1138_index_1_rename ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1138_root_address_inst ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1138_addr_0 ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1138_gather_scatter ignored,  in module mainAcc2
+Warning: control-path links to flow-through DPE array_obj_ref_1141_gather_scatter ignored,  in module mainAcc2
+Warning: module global_storage_initializer_ is not reachable from a top-level module, ignored
+Warning: all elements not reachable from entry in region branch_block_stmt_81/do_while_stmt_82/do_while_stmt_82_loop_body
+	 un-visited elements
+	back_edge_to_loop_body
+	first_time_through_loop_body
+	loop_body_start
+	condition_evaluated
+	call_stmt_108_update_start_
+	call_stmt_108_update_completed_
+	call_stmt_108_Update
+	WPIPE_acc_mem_response_1_109_sample_start_
+	WPIPE_acc_mem_response_1_109_sample_completed_
+	WPIPE_acc_mem_response_1_109_update_start_
+	WPIPE_acc_mem_response_1_109_update_completed_
+	WPIPE_acc_mem_response_1_109_Sample
+	WPIPE_acc_mem_response_1_109_Update
+	loop_body_delay_to_condition_start
+	$exit
+Warning: exit not reachable from every element in region branch_block_stmt_81/do_while_stmt_82/do_while_stmt_82_loop_body
+	 un-visited elements
+	back_edge_to_loop_body
+	first_time_through_loop_body
+	loop_body_start
+	condition_evaluated
+	RPIPE_acc_mem_request_1_85_sample_start_
+	RPIPE_acc_mem_request_1_85_sample_completed_
+	RPIPE_acc_mem_request_1_85_update_start_
+	RPIPE_acc_mem_request_1_85_update_completed_
+	RPIPE_acc_mem_request_1_85_Sample
+	RPIPE_acc_mem_request_1_85_Update
+	call_stmt_108_sample_start_
+	call_stmt_108_sample_completed_
+	call_stmt_108_Sample
+	loop_body_delay_to_condition_start
+	$entry
+Info: removed redundant marked link: [call_stmt_108_update_start_] o<-& [call_stmt_108_update_completed_]
+Info: reducing Control-path 
+Info: finding nucleii 
+Info:  Total number of strongly-connected-components is 16
+Info: SCC 0
+	e_0
+Info: SCC 1
+	e_1
+Info: SCC 2
+	e_2
+Info: SCC 3
+	e_24
+Info: SCC 4
+	e_3
+Info: SCC 5
+	e_4
+Info: SCC 6
+	e_22
+Info: SCC 7
+	e_23
+Info: SCC 8
+	e_5
+Info: SCC 9
+	e_6
+Info: SCC 10
+	e_7
+Info: SCC 11
+	e_8
+Info: SCC 12
+	e_10
+	e_16
+	e_12
+	e_13
+	e_14
+	e_11
+Info: SCC 13
+	e_21
+Info: SCC 14
+	e_9
+Info: SCC 15
+	e_20
+	e_19
+	e_18
+	e_17
+	e_15
+Info: Info: transition [phi_stmt_1273_merged_reqs] is isolated, removed.
+Info: Info: transition [phi_stmt_1279_merged_reqs] is isolated, removed.
+Info: Info: transition [phi_stmt_1284_merged_reqs] is isolated, removed.
+Info: Info: transition [phi_stmt_1289_merged_reqs] is isolated, removed.
+Warning: exit not reachable from every element in region branch_block_stmt_1237/assign_stmt_1256_to_assign_stmt_1263
+	 un-visited elements
+	call_stmt_1259_sample_start_
+	call_stmt_1259_sample_completed_
+	call_stmt_1259_Sample
+Info: reducing Control-path 
+Info: removed CP-element dead_transition maybe it was dead?
+Info: removed CP-element $exit maybe it was dead?
+Info: removed CP-element dead_transition maybe it was dead?
+Info: removed CP-element $exit maybe it was dead?
+Info: removed CP-element dead_transition maybe it was dead?
+Info: removed CP-element $exit maybe it was dead?
+Info: removed CP-element dead_transition maybe it was dead?
+Info: removed CP-element $exit maybe it was dead?
+Info: finding nucleii 
+Info:  Total number of strongly-connected-components is 124
+Info: SCC 0
+	e_5
+Info: SCC 1
+	e_7
+Info: SCC 2
+	e_4
+Info: SCC 3
+	e_2
+	e_6
+	e_8
+	e_3
+	e_1
+	e_161
+	e_163
+	e_164
+	e_165
+	e_166
+	e_167
+Info: SCC 4
+	e_162
+Info: SCC 5
+	e_0
+Info: SCC 6
+	e_160
+Info: SCC 7
+	e_159
+Info: SCC 8
+	e_9
+Info: SCC 9
+	e_10
+Info: SCC 10
+	e_158
+Info: SCC 11
+	e_11
+Info: SCC 12
+	e_12
+Info: SCC 13
+	e_156
+Info: SCC 14
+	e_157
+Info: SCC 15
+	e_13
+Info: SCC 16
+	e_14
+Info: SCC 17
+	e_27
+Info: SCC 18
+	e_46
+Info: SCC 19
+	e_65
+Info: SCC 20
+	e_84
+Info: SCC 21
+	e_15
+Info: SCC 22
+	e_29
+Info: SCC 23
+	e_48
+Info: SCC 24
+	e_67
+Info: SCC 25
+	e_86
+Info: SCC 26
+	e_16
+Info: SCC 27
+	e_42
+Info: SCC 28
+	e_61
+Info: SCC 29
+	e_80
+Info: SCC 30
+	e_19
+Info: SCC 31
+	e_23
+Info: SCC 32
+	e_44
+Info: SCC 33
+	e_63
+Info: SCC 34
+	e_82
+Info: SCC 35
+	e_21
+Info: SCC 36
+	e_24
+Info: SCC 37
+	e_40
+Info: SCC 38
+	e_41
+Info: SCC 39
+	e_59
+Info: SCC 40
+	e_60
+Info: SCC 41
+	e_78
+Info: SCC 42
+	e_79
+Info: SCC 43
+	e_18
+Info: SCC 44
+	e_148
+Info: SCC 45
+	e_17
+Info: SCC 46
+	e_155
+Info: SCC 47
+	e_102
+	e_104
+Info: SCC 48
+	e_20
+Info: SCC 49
+	e_22
+Info: SCC 50
+	e_25
+Info: SCC 51
+	e_113
+	e_115
+Info: SCC 52
+	e_26
+Info: SCC 53
+	e_28
+Info: SCC 54
+	e_30
+Info: SCC 55
+	e_31
+Info: SCC 56
+	e_32
+Info: SCC 57
+	e_34
+Info: SCC 58
+	e_35
+Info: SCC 59
+	e_33
+Info: SCC 60
+	e_38
+Info: SCC 61
+	e_36
+Info: SCC 62
+	e_39
+Info: SCC 63
+	e_37
+Info: SCC 64
+	e_43
+Info: SCC 65
+	e_97
+	e_99
+Info: SCC 66
+	e_101
+	e_103
+Info: SCC 67
+	e_105
+	e_107
+Info: SCC 68
+	e_109
+	e_111
+Info: SCC 69
+	e_124
+	e_126
+Info: SCC 70
+	e_140
+	e_142
+Info: SCC 71
+	e_45
+Info: SCC 72
+	e_47
+Info: SCC 73
+	e_49
+Info: SCC 74
+	e_50
+Info: SCC 75
+	e_51
+Info: SCC 76
+	e_53
+Info: SCC 77
+	e_54
+Info: SCC 78
+	e_52
+Info: SCC 79
+	e_57
+Info: SCC 80
+	e_55
+Info: SCC 81
+	e_58
+Info: SCC 82
+	e_56
+Info: SCC 83
+	e_62
+Info: SCC 84
+	e_120
+	e_122
+Info: SCC 85
+	e_132
+	e_134
+Info: SCC 86
+	e_136
+	e_138
+Info: SCC 87
+	e_64
+Info: SCC 88
+	e_66
+Info: SCC 89
+	e_68
+Info: SCC 90
+	e_69
+Info: SCC 91
+	e_70
+Info: SCC 92
+	e_72
+Info: SCC 93
+	e_73
+Info: SCC 94
+	e_71
+Info: SCC 95
+	e_76
+Info: SCC 96
+	e_74
+Info: SCC 97
+	e_77
+Info: SCC 98
+	e_75
+Info: SCC 99
+	e_81
+Info: SCC 100
+	e_83
+Info: SCC 101
+	e_85
+Info: SCC 102
+	e_87
+Info: SCC 103
+	e_88
+Info: SCC 104
+	e_89
+Info: SCC 105
+	e_91
+Info: SCC 106
+	e_92
+Info: SCC 107
+	e_90
+Info: SCC 108
+	e_95
+Info: SCC 109
+	e_93
+Info: SCC 110
+	e_96
+Info: SCC 111
+	e_94
+Info: SCC 112
+	e_149
+Info: SCC 113
+	e_150
+Info: SCC 114
+	e_154
+Info: SCC 115
+	e_106
+	e_108
+	e_121
+	e_123
+	e_125
+	e_127
+	e_128
+	e_130
+Info: SCC 116
+	e_151
+Info: SCC 117
+	e_153
+Info: SCC 118
+	e_98
+	e_100
+Info: SCC 119
+	e_110
+	e_112
+	e_133
+	e_135
+	e_137
+	e_139
+	e_141
+	e_143
+	e_144
+	e_146
+Info: SCC 120
+	e_114
+	e_116
+	e_117
+	e_118
+	e_119
+Info: SCC 121
+	e_152
+Info: SCC 122
+	e_129
+	e_131
+Info: SCC 123
+	e_145
+	e_147
+Info: Info: transition [array_obj_ref_62_base_address_calculated] is isolated, removed.
+Info: reducing Control-path 
+Info: finding nucleii 
+Info:  Total number of strongly-connected-components is 25
+Info: SCC 0
+	e_0
+Info: SCC 1
+	e_42
+Info: SCC 2
+	e_2
+Info: SCC 3
+	e_5
+Info: SCC 4
+	e_7
+	e_15
+	e_17
+	e_18
+	e_20
+	e_28
+	e_30
+	e_31
+	e_41
+Info: SCC 5
+	e_10
+	e_12
+Info: SCC 6
+	e_4
+Info: SCC 7
+	e_3
+Info: SCC 8
+	e_9
+	e_14
+	e_16
+Info: SCC 9
+	e_11
+	e_13
+Info: SCC 10
+	e_23
+	e_25
+Info: SCC 11
+	e_22
+	e_27
+	e_29
+Info: SCC 12
+	e_24
+	e_26
+Info: SCC 13
+	e_33
+	e_35
+Info: SCC 14
+	e_1
+Info: SCC 15
+	e_38
+	e_40
+Info: SCC 16
+	e_6
+Info: SCC 17
+	e_8
+	e_19
+	e_34
+	e_36
+	e_37
+	e_39
+Info: SCC 18
+	e_21
+	e_32
+Info: SCC 19
+	e_43
+Info: SCC 20
+	e_44
+Info: SCC 21
+	e_45
+Info: SCC 22
+	e_46
+Info: SCC 23
+	e_47
+Info: SCC 24
+	e_48
+Warning: exit not reachable from every element in region assign_stmt_586_to_assign_stmt_614
+	 un-visited elements
+	MUX_597_sample_start_
+	MUX_597_sample_completed_
+	MUX_597_update_start_
+	MUX_597_update_completed_
+	MUX_597_start
+	MUX_597_complete
+	MUX_613_sample_start_
+	MUX_613_sample_completed_
+	MUX_613_start
+Info: reducing Control-path 
+Info: finding nucleii 
+Info:  Total number of strongly-connected-components is 5
+Info: SCC 0
+	e_1
+Info: SCC 1
+	e_3
+Info: SCC 2
+	e_2
+Info: SCC 3
+	e_4
+Info: SCC 4
+	e_0
+Info: Info: transition [phi_stmt_123_merged_reqs] is isolated, removed.
+Info: Info: transition [phi_stmt_128_merged_reqs] is isolated, removed.
+Info: Info: transition [phi_stmt_133_merged_reqs] is isolated, removed.
+Warning: all elements not reachable from entry in region branch_block_stmt_120/do_while_stmt_121/do_while_stmt_121_loop_body
+	 un-visited elements
+	back_edge_to_loop_body
+	first_time_through_loop_body
+	loop_body_start
+	phi_stmt_123_loopback_trigger
+	phi_stmt_123_entry_trigger
+	phi_stmt_123_phi_mux_ack
+	phi_stmt_128_loopback_trigger
+	phi_stmt_128_entry_trigger
+	phi_stmt_128_phi_mux_ack
+	phi_stmt_133_loopback_trigger
+	phi_stmt_133_entry_trigger
+	phi_stmt_133_phi_mux_ack
+	call_stmt_171_update_start_
+	call_stmt_171_update_completed_
+	call_stmt_171_Update
+	assign_stmt_174_update_start_
+	assign_stmt_174_update_completed_
+	assign_stmt_174_Update
+	assign_stmt_177_update_start_
+	assign_stmt_177_update_completed_
+	assign_stmt_177_Update
+	array_obj_ref_180_update_start_
+	array_obj_ref_180_update_completed_
+	array_obj_ref_180_index_resized_0
+	array_obj_ref_180_index_computed_0
+	array_obj_ref_180_index_resize_0
+	array_obj_ref_180_index_scale_0_sample_start
+	array_obj_ref_180_index_scale_0_sample_complete
+	array_obj_ref_180_index_scale_0_Sample
+	array_obj_ref_180_index_resized_1
+	array_obj_ref_180_index_scaled_1
+	array_obj_ref_180_index_computed_1
+	array_obj_ref_180_index_resize_1
+	array_obj_ref_180_index_scale_1
+	array_obj_ref_180_Update
+	loop_body_delay_to_condition_start
+Warning: exit not reachable from every element in region branch_block_stmt_120/do_while_stmt_121/do_while_stmt_121_loop_body
+	 un-visited elements
+	condition_evaluated
+	aggregated_phi_update_req
+	aggregated_phi_update_ack
+	phi_stmt_123_update_start_
+	phi_stmt_123_update_completed_
+	phi_stmt_123_update_start__ps
+	phi_stmt_123_update_completed__ps
+	phi_stmt_123_loopback_sample_req
+	phi_stmt_123_loopback_sample_req_ps
+	phi_stmt_123_entry_sample_req
+	phi_stmt_123_entry_sample_req_ps
+	phi_stmt_123_phi_mux_ack
+	phi_stmt_123_phi_mux_ack_ps
+	type_cast_126_update_start__ps
+	type_cast_126_update_completed__ps
+	type_cast_126_update_start_
+	type_cast_126_update_completed_
+	R_n_ele_127_update_start__ps
+	R_n_ele_127_update_completed__ps
+	R_n_ele_127_update_start_
+	R_n_ele_127_update_completed_
+	R_n_ele_127_Update
+	phi_stmt_128_update_start_
+	phi_stmt_128_update_completed_
+	phi_stmt_128_update_start__ps
+	phi_stmt_128_update_completed__ps
+	phi_stmt_128_loopback_sample_req
+	phi_stmt_128_loopback_sample_req_ps
+	phi_stmt_128_entry_sample_req
+	phi_stmt_128_entry_sample_req_ps
+	phi_stmt_128_phi_mux_ack
+	phi_stmt_128_phi_mux_ack_ps
+	type_cast_131_update_start__ps
+	type_cast_131_update_completed__ps
+	type_cast_131_update_start_
+	type_cast_131_update_completed_
+	R_n_J_132_update_start__ps
+	R_n_J_132_update_completed__ps
+	R_n_J_132_update_start_
+	R_n_J_132_update_completed_
+	R_n_J_132_Update
+	phi_stmt_133_update_start_
+	phi_stmt_133_update_completed_
+	phi_stmt_133_update_start__ps
+	phi_stmt_133_update_completed__ps
+	phi_stmt_133_loopback_sample_req
+	phi_stmt_133_loopback_sample_req_ps
+	phi_stmt_133_entry_sample_req
+	phi_stmt_133_entry_sample_req_ps
+	phi_stmt_133_phi_mux_ack
+	phi_stmt_133_phi_mux_ack_ps
+	type_cast_136_update_start__ps
+	type_cast_136_update_completed__ps
+	type_cast_136_update_start_
+	type_cast_136_update_completed_
+	R_n_I_137_update_start__ps
+	R_n_I_137_update_completed__ps
+	R_n_I_137_update_start_
+	R_n_I_137_update_completed_
+	R_n_I_137_Update
+	call_stmt_171_sample_start_
+	call_stmt_171_sample_completed_
+	call_stmt_171_update_start_
+	call_stmt_171_update_completed_
+	call_stmt_171_Sample
+	call_stmt_171_Update
+	assign_stmt_174_sample_start_
+	assign_stmt_174_sample_completed_
+	assign_stmt_174_Sample
+	assign_stmt_177_sample_start_
+	assign_stmt_177_sample_completed_
+	assign_stmt_177_Sample
+	array_obj_ref_180_sample_start_
+	array_obj_ref_180_sample_completed_
+	array_obj_ref_180_word_address_calculated
+	array_obj_ref_180_root_address_calculated
+	array_obj_ref_180_offset_calculated
+	array_obj_ref_180_partial_sum_1_update_start
+	array_obj_ref_180_partial_sum_1_update_complete
+	array_obj_ref_180_partial_sum_1_Update
+	array_obj_ref_180_final_index_sum_regn
+	array_obj_ref_180_base_plus_offset
+	array_obj_ref_180_word_addrgen
+	array_obj_ref_180_Sample
+	loop_body_delay_to_condition_start
+Info: removed redundant fork point [type_cast_126_sample_start__ps] &-> [type_cast_126_sample_completed__ps]
+Info: removed redundant join point [type_cast_126_sample_completed__ps] <-& [type_cast_126_sample_start__ps]
+Info: removed redundant fork point [R_n_ele_127_sample_start__ps] &-> [R_n_ele_127_sample_completed__ps]
+Info: removed redundant join point [R_n_ele_127_sample_completed__ps] <-& [R_n_ele_127_sample_start__ps]
+Info: removed redundant fork point [type_cast_131_sample_start__ps] &-> [type_cast_131_sample_completed__ps]
+Info: removed redundant join point [type_cast_131_sample_completed__ps] <-& [type_cast_131_sample_start__ps]
+Info: removed redundant fork point [R_n_J_132_sample_start__ps] &-> [R_n_J_132_sample_completed__ps]
+Info: removed redundant join point [R_n_J_132_sample_completed__ps] <-& [R_n_J_132_sample_start__ps]
+Info: removed redundant fork point [type_cast_136_sample_start__ps] &-> [type_cast_136_sample_completed__ps]
+Info: removed redundant join point [type_cast_136_sample_completed__ps] <-& [type_cast_136_sample_start__ps]
+Info: removed redundant fork point [R_n_I_137_sample_start__ps] &-> [R_n_I_137_sample_completed__ps]
+Info: removed redundant join point [R_n_I_137_sample_completed__ps] <-& [R_n_I_137_sample_start__ps]
+Info: removed redundant fork point [type_cast_126_update_start__ps] &-> [type_cast_126_update_completed__ps]
+Info: removed redundant join point [type_cast_126_update_completed__ps] <-& [type_cast_126_update_start__ps]
+Info: removed redundant fork point [phi_stmt_123_update_completed_] &-> [condition_evaluated]
+Info: removed redundant join point [condition_evaluated] <-& [phi_stmt_123_update_completed_]
+Info: removed redundant fork point [R_n_ele_127_update_start__ps] &-> [R_n_ele_127_update_completed__ps]
+Info: removed redundant join point [R_n_ele_127_update_completed__ps] <-& [R_n_ele_127_update_start__ps]
+Info: removed redundant fork point [type_cast_131_update_start__ps] &-> [type_cast_131_update_completed__ps]
+Info: removed redundant join point [type_cast_131_update_completed__ps] <-& [type_cast_131_update_start__ps]
+Info: removed redundant fork point [R_n_J_132_update_start__ps] &-> [R_n_J_132_update_completed__ps]
+Info: removed redundant join point [R_n_J_132_update_completed__ps] <-& [R_n_J_132_update_start__ps]
+Info: removed redundant fork point [type_cast_136_update_start__ps] &-> [type_cast_136_update_completed__ps]
+Info: removed redundant join point [type_cast_136_update_completed__ps] <-& [type_cast_136_update_start__ps]
+Info: removed redundant fork point [R_n_I_137_update_start__ps] &-> [R_n_I_137_update_completed__ps]
+Info: removed redundant join point [R_n_I_137_update_completed__ps] <-& [R_n_I_137_update_start__ps]
+Info: removed redundant marked link: [array_obj_ref_180_partial_sum_1_update_start] o<-& [array_obj_ref_180_partial_sum_1_update_complete]
+Info: removed redundant marked link: [phi_stmt_128_update_start_] o<-& [phi_stmt_128_update_completed_]
+Info: removed redundant marked link: [phi_stmt_133_update_start_] o<-& [phi_stmt_133_update_completed_]
+Info: removed redundant marked link: [call_stmt_171_update_start_] o<-& [call_stmt_171_update_completed_]
+Info: removed redundant marked link: [assign_stmt_177_update_start_] o<-& [assign_stmt_177_update_completed_]
+Info: removed redundant join point [array_obj_ref_180_offset_calculated] <-& [array_obj_ref_180_partial_sum_1_update_complete]
+Info: removed redundant fork point [array_obj_ref_180_partial_sum_1_update_complete] &-> [array_obj_ref_180_offset_calculated]
+Info: removed redundant join point [type_cast_126_sample_completed__ps] <-& [type_cast_126_sample_start__ps]
+Info: removed redundant fork point [type_cast_126_sample_start__ps] &-> [type_cast_126_sample_completed__ps]
+Info: removed redundant join point [type_cast_126_update_completed__ps] <-& [type_cast_126_update_start__ps]
+Info: removed redundant fork point [type_cast_126_update_start__ps] &-> [type_cast_126_update_completed__ps]
+Info: removed redundant join point [R_n_ele_127_sample_completed__ps] <-& [R_n_ele_127_sample_start__ps]
+Info: removed redundant fork point [R_n_ele_127_sample_start__ps] &-> [R_n_ele_127_sample_completed__ps]
+Info: removed redundant join point [R_n_ele_127_update_completed__ps] <-& [R_n_ele_127_update_start__ps]
+Info: removed redundant fork point [R_n_ele_127_update_start__ps] &-> [R_n_ele_127_update_completed__ps]
+Info: removed redundant join point [type_cast_131_sample_completed__ps] <-& [type_cast_131_sample_start__ps]
+Info: removed redundant fork point [type_cast_131_sample_start__ps] &-> [type_cast_131_sample_completed__ps]
+Info: removed redundant join point [type_cast_131_update_completed__ps] <-& [type_cast_131_update_start__ps]
+Info: removed redundant fork point [type_cast_131_update_start__ps] &-> [type_cast_131_update_completed__ps]
+Info: removed redundant join point [R_n_J_132_sample_completed__ps] <-& [R_n_J_132_sample_start__ps]
+Info: removed redundant fork point [R_n_J_132_sample_start__ps] &-> [R_n_J_132_sample_completed__ps]
+Info: removed redundant join point [R_n_J_132_update_completed__ps] <-& [R_n_J_132_update_start__ps]
+Info: removed redundant fork point [R_n_J_132_update_start__ps] &-> [R_n_J_132_update_completed__ps]
+Info: removed redundant join point [type_cast_136_sample_completed__ps] <-& [type_cast_136_sample_start__ps]
+Info: removed redundant fork point [type_cast_136_sample_start__ps] &-> [type_cast_136_sample_completed__ps]
+Info: removed redundant join point [type_cast_136_update_completed__ps] <-& [type_cast_136_update_start__ps]
+Info: removed redundant fork point [type_cast_136_update_start__ps] &-> [type_cast_136_update_completed__ps]
+Info: removed redundant join point [R_n_I_137_sample_completed__ps] <-& [R_n_I_137_sample_start__ps]
+Info: removed redundant fork point [R_n_I_137_sample_start__ps] &-> [R_n_I_137_sample_completed__ps]
+Info: removed redundant join point [R_n_I_137_update_completed__ps] <-& [R_n_I_137_update_start__ps]
+Info: removed redundant fork point [R_n_I_137_update_start__ps] &-> [R_n_I_137_update_completed__ps]
+Info: reducing Control-path 
+Info: finding nucleii 
+Info:  Total number of strongly-connected-components is 84
+Info: SCC 0
+	e_0
+Info: SCC 1
+	e_1
+Info: SCC 2
+	e_2
+Info: SCC 3
+	e_99
+Info: SCC 4
+	e_3
+Info: SCC 5
+	e_4
+Info: SCC 6
+	e_97
+Info: SCC 7
+	e_98
+Info: SCC 8
+	e_5
+Info: SCC 9
+	e_6
+Info: SCC 10
+	e_19
+Info: SCC 11
+	e_57
+Info: SCC 12
+	e_38
+Info: SCC 13
+	e_7
+Info: SCC 14
+	e_21
+Info: SCC 15
+	e_59
+Info: SCC 16
+	e_40
+Info: SCC 17
+	e_8
+Info: SCC 18
+	e_53
+Info: SCC 19
+	e_34
+Info: SCC 20
+	e_11
+Info: SCC 21
+	e_15
+Info: SCC 22
+	e_55
+Info: SCC 23
+	e_36
+Info: SCC 24
+	e_13
+Info: SCC 25
+	e_16
+Info: SCC 26
+	e_96
+Info: SCC 27
+	e_85
+	e_87
+Info: SCC 28
+	e_75
+	e_77
+Info: SCC 29
+	e_84
+	e_89
+	e_91
+	e_79
+	e_81
+Info: SCC 30
+	e_86
+	e_88
+Info: SCC 31
+	e_90
+	e_92
+	e_93
+	e_82
+	e_71
+	e_73
+Info: SCC 32
+	e_52
+Info: SCC 33
+	e_10
+Info: SCC 34
+	e_95
+Info: SCC 35
+	e_51
+Info: SCC 36
+	e_32
+Info: SCC 37
+	e_33
+Info: SCC 38
+	e_9
+Info: SCC 39
+	e_12
+Info: SCC 40
+	e_14
+Info: SCC 41
+	e_17
+Info: SCC 42
+	e_18
+Info: SCC 43
+	e_20
+Info: SCC 44
+	e_22
+Info: SCC 45
+	e_23
+Info: SCC 46
+	e_24
+Info: SCC 47
+	e_26
+Info: SCC 48
+	e_27
+Info: SCC 49
+	e_25
+Info: SCC 50
+	e_30
+Info: SCC 51
+	e_28
+Info: SCC 52
+	e_31
+Info: SCC 53
+	e_29
+Info: SCC 54
+	e_35
+Info: SCC 55
+	e_80
+	e_78
+Info: SCC 56
+	e_70
+	e_72
+Info: SCC 57
+	e_37
+Info: SCC 58
+	e_39
+Info: SCC 59
+	e_41
+Info: SCC 60
+	e_42
+Info: SCC 61
+	e_43
+Info: SCC 62
+	e_45
+Info: SCC 63
+	e_46
+Info: SCC 64
+	e_44
+Info: SCC 65
+	e_49
+Info: SCC 66
+	e_47
+Info: SCC 67
+	e_50
+Info: SCC 68
+	e_48
+Info: SCC 69
+	e_54
+Info: SCC 70
+	e_74
+	e_76
+Info: SCC 71
+	e_56
+Info: SCC 72
+	e_58
+Info: SCC 73
+	e_60
+Info: SCC 74
+	e_61
+Info: SCC 75
+	e_62
+Info: SCC 76
+	e_64
+Info: SCC 77
+	e_65
+Info: SCC 78
+	e_63
+Info: SCC 79
+	e_68
+Info: SCC 80
+	e_66
+Info: SCC 81
+	e_69
+Info: SCC 82
+	e_67
+Info: SCC 83
+	e_94
+	e_83
+Warning: exit not reachable from every element in region assign_stmt_208_to_assign_stmt_577
+	 un-visited elements
+	type_cast_211_sample_start_
+	type_cast_211_sample_completed_
+	type_cast_211_update_start_
+	type_cast_211_update_completed_
+	type_cast_211_Sample
+	type_cast_211_Update
+	type_cast_217_sample_start_
+	type_cast_217_sample_completed_
+	type_cast_217_update_start_
+	type_cast_217_update_completed_
+	type_cast_217_Sample
+	type_cast_217_Update
+	type_cast_223_sample_start_
+	type_cast_223_sample_completed_
+	type_cast_223_update_start_
+	type_cast_223_update_completed_
+	type_cast_223_Sample
+	type_cast_223_Update
+	type_cast_229_sample_start_
+	type_cast_229_sample_completed_
+	type_cast_229_update_start_
+	type_cast_229_update_completed_
+	type_cast_229_Sample
+	type_cast_229_Update
+	type_cast_235_sample_start_
+	type_cast_235_sample_completed_
+	type_cast_235_update_start_
+	type_cast_235_update_completed_
+	type_cast_235_Sample
+	type_cast_235_Update
+	call_stmt_255_sample_start_
+	call_stmt_255_sample_completed_
+	call_stmt_255_update_start_
+	call_stmt_255_update_completed_
+	call_stmt_255_Sample
+	call_stmt_255_Update
+	array_obj_ref_259_sample_start_
+	array_obj_ref_259_sample_completed_
+	array_obj_ref_259_word_address_calculated
+	array_obj_ref_259_root_address_calculated
+	array_obj_ref_259_Sample
+	call_stmt_268_sample_start_
+	call_stmt_268_sample_completed_
+	call_stmt_268_update_start_
+	call_stmt_268_update_completed_
+	call_stmt_268_Sample
+	call_stmt_268_Update
+	array_obj_ref_272_sample_start_
+	array_obj_ref_272_sample_completed_
+	array_obj_ref_272_word_address_calculated
+	array_obj_ref_272_root_address_calculated
+	array_obj_ref_272_Sample
+	call_stmt_281_sample_start_
+	call_stmt_281_sample_completed_
+	call_stmt_281_update_start_
+	call_stmt_281_update_completed_
+	call_stmt_281_Sample
+	call_stmt_281_Update
+	array_obj_ref_285_sample_start_
+	array_obj_ref_285_sample_completed_
+	array_obj_ref_285_word_address_calculated
+	array_obj_ref_285_root_address_calculated
+	array_obj_ref_285_Sample
+	call_stmt_294_sample_start_
+	call_stmt_294_sample_completed_
+	call_stmt_294_update_start_
+	call_stmt_294_update_completed_
+	call_stmt_294_Sample
+	call_stmt_294_Update
+	array_obj_ref_298_sample_start_
+	array_obj_ref_298_sample_completed_
+	array_obj_ref_298_word_address_calculated
+	array_obj_ref_298_root_address_calculated
+	array_obj_ref_298_Sample
+	array_obj_ref_304_sample_start_
+	array_obj_ref_304_sample_completed_
+	array_obj_ref_304_word_address_calculated
+	array_obj_ref_304_root_address_calculated
+	array_obj_ref_304_Sample
+	call_stmt_313_sample_start_
+	call_stmt_313_sample_completed_
+	call_stmt_313_update_start_
+	call_stmt_313_update_completed_
+	call_stmt_313_Sample
+	call_stmt_313_Update
+	array_obj_ref_317_sample_start_
+	array_obj_ref_317_sample_completed_
+	array_obj_ref_317_word_address_calculated
+	array_obj_ref_317_root_address_calculated
+	array_obj_ref_317_Sample
+	array_obj_ref_323_sample_start_
+	array_obj_ref_323_sample_completed_
+	array_obj_ref_323_word_address_calculated
+	array_obj_ref_323_root_address_calculated
+	array_obj_ref_323_Sample
+	call_stmt_332_sample_start_
+	call_stmt_332_sample_completed_
+	call_stmt_332_update_start_
+	call_stmt_332_update_completed_
+	call_stmt_332_Sample
+	call_stmt_332_Update
+	array_obj_ref_336_sample_start_
+	array_obj_ref_336_sample_completed_
+	array_obj_ref_336_word_address_calculated
+	array_obj_ref_336_root_address_calculated
+	array_obj_ref_336_Sample
+	array_obj_ref_342_sample_start_
+	array_obj_ref_342_sample_completed_
+	array_obj_ref_342_word_address_calculated
+	array_obj_ref_342_root_address_calculated
+	array_obj_ref_342_Sample
+	call_stmt_351_sample_start_
+	call_stmt_351_sample_completed_
+	call_stmt_351_update_start_
+	call_stmt_351_update_completed_
+	call_stmt_351_Sample
+	call_stmt_351_Update
+	array_obj_ref_355_sample_start_
+	array_obj_ref_355_sample_completed_
+	array_obj_ref_355_word_address_calculated
+	array_obj_ref_355_root_address_calculated
+	array_obj_ref_355_Sample
+	array_obj_ref_361_sample_start_
+	array_obj_ref_361_sample_completed_
+	array_obj_ref_361_word_address_calculated
+	array_obj_ref_361_root_address_calculated
+	array_obj_ref_361_Sample
+	call_stmt_370_sample_start_
+	call_stmt_370_sample_completed_
+	call_stmt_370_update_start_
+	call_stmt_370_update_completed_
+	call_stmt_370_Sample
+	call_stmt_370_Update
+	array_obj_ref_374_sample_start_
+	array_obj_ref_374_sample_completed_
+	array_obj_ref_374_word_address_calculated
+	array_obj_ref_374_root_address_calculated
+	array_obj_ref_374_Sample
+	array_obj_ref_380_sample_start_
+	array_obj_ref_380_sample_completed_
+	array_obj_ref_380_word_address_calculated
+	array_obj_ref_380_root_address_calculated
+	array_obj_ref_380_Sample
+	call_stmt_389_sample_start_
+	call_stmt_389_sample_completed_
+	call_stmt_389_update_start_
+	call_stmt_389_update_completed_
+	call_stmt_389_Sample
+	call_stmt_389_Update
+	array_obj_ref_393_sample_start_
+	array_obj_ref_393_sample_completed_
+	array_obj_ref_393_word_address_calculated
+	array_obj_ref_393_root_address_calculated
+	array_obj_ref_393_Sample
+	array_obj_ref_399_sample_start_
+	array_obj_ref_399_sample_completed_
+	array_obj_ref_399_word_address_calculated
+	array_obj_ref_399_root_address_calculated
+	array_obj_ref_399_Sample
+	call_stmt_408_sample_start_
+	call_stmt_408_sample_completed_
+	call_stmt_408_update_start_
+	call_stmt_408_update_completed_
+	call_stmt_408_Sample
+	call_stmt_408_Update
+	array_obj_ref_412_sample_start_
+	array_obj_ref_412_sample_completed_
+	array_obj_ref_412_word_address_calculated
+	array_obj_ref_412_root_address_calculated
+	array_obj_ref_412_Sample
+	array_obj_ref_418_sample_start_
+	array_obj_ref_418_sample_completed_
+	array_obj_ref_418_word_address_calculated
+	array_obj_ref_418_root_address_calculated
+	array_obj_ref_418_Sample
+	call_stmt_427_sample_start_
+	call_stmt_427_sample_completed_
+	call_stmt_427_update_start_
+	call_stmt_427_update_completed_
+	call_stmt_427_Sample
+	call_stmt_427_Update
+	array_obj_ref_431_sample_start_
+	array_obj_ref_431_sample_completed_
+	array_obj_ref_431_word_address_calculated
+	array_obj_ref_431_root_address_calculated
+	array_obj_ref_431_Sample
+	array_obj_ref_437_sample_start_
+	array_obj_ref_437_sample_completed_
+	array_obj_ref_437_word_address_calculated
+	array_obj_ref_437_root_address_calculated
+	array_obj_ref_437_Sample
+	call_stmt_446_sample_start_
+	call_stmt_446_sample_completed_
+	call_stmt_446_update_start_
+	call_stmt_446_update_completed_
+	call_stmt_446_Sample
+	call_stmt_446_Update
+	array_obj_ref_450_sample_start_
+	array_obj_ref_450_sample_completed_
+	array_obj_ref_450_word_address_calculated
+	array_obj_ref_450_root_address_calculated
+	array_obj_ref_450_Sample
+	array_obj_ref_456_sample_start_
+	array_obj_ref_456_sample_completed_
+	array_obj_ref_456_word_address_calculated
+	array_obj_ref_456_root_address_calculated
+	array_obj_ref_456_Sample
+	call_stmt_465_sample_start_
+	call_stmt_465_sample_completed_
+	call_stmt_465_update_start_
+	call_stmt_465_update_completed_
+	call_stmt_465_Sample
+	call_stmt_465_Update
+	array_obj_ref_469_sample_start_
+	array_obj_ref_469_sample_completed_
+	array_obj_ref_469_word_address_calculated
+	array_obj_ref_469_root_address_calculated
+	array_obj_ref_469_Sample
+	call_stmt_478_sample_start_
+	call_stmt_478_sample_completed_
+	call_stmt_478_update_start_
+	call_stmt_478_update_completed_
+	call_stmt_478_Sample
+	call_stmt_478_Update
+	array_obj_ref_482_sample_start_
+	array_obj_ref_482_sample_completed_
+	array_obj_ref_482_word_address_calculated
+	array_obj_ref_482_root_address_calculated
+	array_obj_ref_482_Sample
+	call_stmt_491_sample_start_
+	call_stmt_491_sample_completed_
+	call_stmt_491_update_start_
+	call_stmt_491_update_completed_
+	call_stmt_491_Sample
+	call_stmt_491_Update
+	array_obj_ref_495_sample_start_
+	array_obj_ref_495_sample_completed_
+	array_obj_ref_495_word_address_calculated
+	array_obj_ref_495_root_address_calculated
+	array_obj_ref_495_Sample
+	type_cast_502_sample_start_
+	type_cast_502_sample_completed_
+	type_cast_502_update_start_
+	type_cast_502_update_completed_
+	type_cast_502_Sample
+	type_cast_502_Update
+	call_stmt_509_sample_start_
+	call_stmt_509_sample_completed_
+	call_stmt_509_update_start_
+	call_stmt_509_update_completed_
+	call_stmt_509_Sample
+	call_stmt_509_Update
+	array_obj_ref_512_sample_start_
+	array_obj_ref_512_sample_completed_
+	array_obj_ref_512_word_address_calculated
+	array_obj_ref_512_root_address_calculated
+	array_obj_ref_512_offset_calculated
+	array_obj_ref_512_final_index_sum_regn_update_start
+	array_obj_ref_512_final_index_sum_regn_Update
+	array_obj_ref_512_base_plus_offset
+	array_obj_ref_512_word_addrgen
+	array_obj_ref_512_Sample
+	call_stmt_520_sample_start_
+	call_stmt_520_sample_completed_
+	call_stmt_520_update_start_
+	call_stmt_520_update_completed_
+	call_stmt_520_Sample
+	call_stmt_520_Update
+	array_obj_ref_523_sample_start_
+	array_obj_ref_523_sample_completed_
+	array_obj_ref_523_word_address_calculated
+	array_obj_ref_523_root_address_calculated
+	array_obj_ref_523_offset_calculated
+	array_obj_ref_523_final_index_sum_regn_update_start
+	array_obj_ref_523_final_index_sum_regn_Update
+	array_obj_ref_523_base_plus_offset
+	array_obj_ref_523_word_addrgen
+	array_obj_ref_523_Sample
+	array_obj_ref_528_sample_start_
+	array_obj_ref_528_sample_completed_
+	array_obj_ref_528_word_address_calculated
+	array_obj_ref_528_root_address_calculated
+	array_obj_ref_528_offset_calculated
+	array_obj_ref_528_final_index_sum_regn_update_start
+	array_obj_ref_528_final_index_sum_regn_Update
+	array_obj_ref_528_base_plus_offset
+	array_obj_ref_528_word_addrgen
+	array_obj_ref_528_Sample
+	call_stmt_536_sample_start_
+	call_stmt_536_sample_completed_
+	call_stmt_536_update_start_
+	call_stmt_536_update_completed_
+	call_stmt_536_Sample
+	call_stmt_536_Update
+	array_obj_ref_539_sample_start_
+	array_obj_ref_539_sample_completed_
+	array_obj_ref_539_word_address_calculated
+	array_obj_ref_539_root_address_calculated
+	array_obj_ref_539_offset_calculated
+	array_obj_ref_539_final_index_sum_regn_update_start
+	array_obj_ref_539_final_index_sum_regn_Update
+	array_obj_ref_539_base_plus_offset
+	array_obj_ref_539_word_addrgen
+	array_obj_ref_539_Sample
+	array_obj_ref_544_sample_start_
+	array_obj_ref_544_sample_completed_
+	array_obj_ref_544_word_address_calculated
+	array_obj_ref_544_root_address_calculated
+	array_obj_ref_544_offset_calculated
+	array_obj_ref_544_final_index_sum_regn_update_start
+	array_obj_ref_544_final_index_sum_regn_Update
+	array_obj_ref_544_base_plus_offset
+	array_obj_ref_544_word_addrgen
+	array_obj_ref_544_Sample
+	call_stmt_552_sample_start_
+	call_stmt_552_sample_completed_
+	call_stmt_552_update_start_
+	call_stmt_552_update_completed_
+	call_stmt_552_Sample
+	call_stmt_552_Update
+	array_obj_ref_555_sample_start_
+	array_obj_ref_555_sample_completed_
+	array_obj_ref_555_word_address_calculated
+	array_obj_ref_555_root_address_calculated
+	array_obj_ref_555_offset_calculated
+	array_obj_ref_555_final_index_sum_regn_update_start
+	array_obj_ref_555_final_index_sum_regn_Update
+	array_obj_ref_555_base_plus_offset
+	array_obj_ref_555_word_addrgen
+	array_obj_ref_555_Sample
+	array_obj_ref_560_sample_start_
+	array_obj_ref_560_sample_completed_
+	array_obj_ref_560_word_address_calculated
+	array_obj_ref_560_root_address_calculated
+	array_obj_ref_560_offset_calculated
+	array_obj_ref_560_final_index_sum_regn_update_start
+	array_obj_ref_560_final_index_sum_regn_Update
+	array_obj_ref_560_base_plus_offset
+	array_obj_ref_560_word_addrgen
+	array_obj_ref_560_Sample
+	call_stmt_568_sample_start_
+	call_stmt_568_sample_completed_
+	call_stmt_568_update_start_
+	call_stmt_568_update_completed_
+	call_stmt_568_Sample
+	call_stmt_568_Update
+	array_obj_ref_571_sample_start_
+	array_obj_ref_571_sample_completed_
+	array_obj_ref_571_word_address_calculated
+	array_obj_ref_571_root_address_calculated
+	array_obj_ref_571_offset_calculated
+	array_obj_ref_571_final_index_sum_regn_update_start
+	array_obj_ref_571_final_index_sum_regn_Update
+	array_obj_ref_571_base_plus_offset
+	array_obj_ref_571_word_addrgen
+	array_obj_ref_571_Sample
+	array_obj_ref_304_array_obj_ref_323_delay
+	array_obj_ref_323_array_obj_ref_342_delay
+	array_obj_ref_342_array_obj_ref_361_delay
+	array_obj_ref_361_array_obj_ref_380_delay
+	array_obj_ref_380_array_obj_ref_399_delay
+	array_obj_ref_399_array_obj_ref_418_delay
+	array_obj_ref_418_array_obj_ref_437_delay
+	array_obj_ref_437_array_obj_ref_456_delay
+	array_obj_ref_456_array_obj_ref_469_delay
+	array_obj_ref_469_array_obj_ref_482_delay
+	array_obj_ref_482_array_obj_ref_495_delay
+	array_obj_ref_495_array_obj_ref_528_delay
+	array_obj_ref_528_array_obj_ref_544_delay
+	array_obj_ref_544_array_obj_ref_560_delay
+	array_obj_ref_560_array_obj_ref_571_delay
+	call_stmt_255_call_stmt_268_delay
+	call_stmt_268_call_stmt_281_delay
+	call_stmt_281_call_stmt_294_delay
+	call_stmt_294_call_stmt_313_delay
+	call_stmt_313_call_stmt_332_delay
+	call_stmt_332_call_stmt_351_delay
+	call_stmt_351_call_stmt_370_delay
+	call_stmt_370_call_stmt_389_delay
+	call_stmt_389_call_stmt_408_delay
+	call_stmt_408_call_stmt_427_delay
+	call_stmt_427_call_stmt_446_delay
+	call_stmt_446_call_stmt_465_delay
+	call_stmt_465_call_stmt_478_delay
+	call_stmt_478_call_stmt_491_delay
+	call_stmt_491_call_stmt_509_delay
+	call_stmt_509_call_stmt_520_delay
+	call_stmt_520_call_stmt_536_delay
+	call_stmt_536_call_stmt_552_delay
+	call_stmt_552_call_stmt_568_delay
+	array_obj_ref_259_array_obj_ref_272_delay
+	array_obj_ref_272_array_obj_ref_285_delay
+	array_obj_ref_285_array_obj_ref_298_delay
+	array_obj_ref_298_array_obj_ref_317_delay
+	array_obj_ref_317_array_obj_ref_336_delay
+	array_obj_ref_336_array_obj_ref_355_delay
+	array_obj_ref_355_array_obj_ref_374_delay
+	array_obj_ref_374_array_obj_ref_393_delay
+	array_obj_ref_393_array_obj_ref_412_delay
+	array_obj_ref_412_array_obj_ref_431_delay
+	array_obj_ref_431_array_obj_ref_450_delay
+	array_obj_ref_450_array_obj_ref_512_delay
+	array_obj_ref_512_array_obj_ref_523_delay
+	array_obj_ref_523_array_obj_ref_539_delay
+	array_obj_ref_539_array_obj_ref_555_delay
+Info: reducing Control-path 
+Info: finding nucleii 
+Info:  Total number of strongly-connected-components is 234
+Info: SCC 0
+	e_169
+Info: SCC 1
+	e_166
+Info: SCC 2
+	e_232
+Info: SCC 3
+	e_156
+Info: SCC 4
+	e_153
+Info: SCC 5
+	e_231
+Info: SCC 6
+	e_143
+Info: SCC 7
+	e_140
+Info: SCC 8
+	e_230
+Info: SCC 9
+	e_135
+Info: SCC 10
+	e_132
+Info: SCC 11
+	e_229
+Info: SCC 12
+	e_104
+Info: SCC 13
+	e_103
+Info: SCC 14
+	e_228
+Info: SCC 15
+	e_95
+Info: SCC 16
+	e_94
+Info: SCC 17
+	e_227
+Info: SCC 18
+	e_86
+Info: SCC 19
+	e_85
+Info: SCC 20
+	e_226
+Info: SCC 21
+	e_77
+Info: SCC 22
+	e_76
+Info: SCC 23
+	e_225
+Info: SCC 24
+	e_68
+Info: SCC 25
+	e_67
+Info: SCC 26
+	e_224
+Info: SCC 27
+	e_59
+Info: SCC 28
+	e_58
+Info: SCC 29
+	e_223
+Info: SCC 30
+	e_50
+Info: SCC 31
+	e_49
+Info: SCC 32
+	e_222
+Info: SCC 33
+	e_41
+Info: SCC 34
+	e_40
+Info: SCC 35
+	e_221
+Info: SCC 36
+	e_32
+Info: SCC 37
+	e_31
+Info: SCC 38
+	e_220
+Info: SCC 39
+	e_26
+Info: SCC 40
+	e_25
+Info: SCC 41
+	e_219
+Info: SCC 42
+	e_20
+Info: SCC 43
+	e_19
+Info: SCC 44
+	e_218
+Info: SCC 45
+	e_14
+Info: SCC 46
+	e_13
+Info: SCC 47
+	e_17
+Info: SCC 48
+	e_16
+Info: SCC 49
+	e_199
+Info: SCC 50
+	e_12
+Info: SCC 51
+	e_233
+Info: SCC 52
+	e_15
+Info: SCC 53
+	e_23
+Info: SCC 54
+	e_22
+Info: SCC 55
+	e_200
+Info: SCC 56
+	e_18
+Info: SCC 57
+	e_21
+Info: SCC 58
+	e_29
+Info: SCC 59
+	e_28
+Info: SCC 60
+	e_201
+Info: SCC 61
+	e_24
+Info: SCC 62
+	e_27
+Info: SCC 63
+	e_38
+Info: SCC 64
+	e_37
+Info: SCC 65
+	e_202
+Info: SCC 66
+	e_182
+Info: SCC 67
+	e_179
+Info: SCC 68
+	e_198
+Info: SCC 69
+	e_174
+Info: SCC 70
+	e_171
+Info: SCC 71
+	e_197
+Info: SCC 72
+	e_161
+Info: SCC 73
+	e_158
+Info: SCC 74
+	e_196
+Info: SCC 75
+	e_148
+Info: SCC 76
+	e_145
+Info: SCC 77
+	e_195
+Info: SCC 78
+	e_125
+Info: SCC 79
+	e_124
+Info: SCC 80
+	e_194
+Info: SCC 81
+	e_119
+Info: SCC 82
+	e_118
+Info: SCC 83
+	e_193
+Info: SCC 84
+	e_113
+Info: SCC 85
+	e_112
+Info: SCC 86
+	e_192
+Info: SCC 87
+	e_107
+Info: SCC 88
+	e_106
+Info: SCC 89
+	e_191
+Info: SCC 90
+	e_98
+Info: SCC 91
+	e_97
+Info: SCC 92
+	e_190
+Info: SCC 93
+	e_89
+Info: SCC 94
+	e_88
+Info: SCC 95
+	e_189
+Info: SCC 96
+	e_80
+Info: SCC 97
+	e_79
+Info: SCC 98
+	e_188
+Info: SCC 99
+	e_71
+Info: SCC 100
+	e_70
+Info: SCC 101
+	e_187
+Info: SCC 102
+	e_62
+Info: SCC 103
+	e_61
+Info: SCC 104
+	e_186
+Info: SCC 105
+	e_53
+Info: SCC 106
+	e_52
+Info: SCC 107
+	e_185
+Info: SCC 108
+	e_44
+Info: SCC 109
+	e_43
+Info: SCC 110
+	e_184
+Info: SCC 111
+	e_35
+Info: SCC 112
+	e_34
+Info: SCC 113
+	e_30
+Info: SCC 114
+	e_3
+Info: SCC 115
+	e_138
+Info: SCC 116
+	e_137
+Info: SCC 117
+	e_47
+Info: SCC 118
+	e_46
+Info: SCC 119
+	e_4
+Info: SCC 120
+	e_78
+Info: SCC 121
+	e_65
+Info: SCC 122
+	e_64
+Info: SCC 123
+	e_205
+Info: SCC 124
+	e_57
+Info: SCC 125
+	e_149
+Info: SCC 126
+	e_164
+Info: SCC 127
+	e_163
+Info: SCC 128
+	e_216
+Info: SCC 129
+	e_152
+Info: SCC 130
+	e_133
+Info: SCC 131
+	e_134
+Info: SCC 132
+	e_69
+Info: SCC 133
+	e_1
+Info: SCC 134
+	e_5
+Info: SCC 135
+	e_151
+Info: SCC 136
+	e_150
+Info: SCC 137
+	e_74
+Info: SCC 138
+	e_73
+Info: SCC 139
+	e_56
+Info: SCC 140
+	e_55
+Info: SCC 141
+	e_6
+Info: SCC 142
+	e_127
+Info: SCC 143
+	e_130
+Info: SCC 144
+	e_129
+Info: SCC 145
+	e_177
+Info: SCC 146
+	e_176
+Info: SCC 147
+	e_128
+Info: SCC 148
+	e_214
+Info: SCC 149
+	e_131
+Info: SCC 150
+	e_213
+Info: SCC 151
+	e_123
+Info: SCC 152
+	e_217
+Info: SCC 153
+	e_165
+Info: SCC 154
+	e_167
+Info: SCC 155
+	e_11
+Info: SCC 156
+	e_2
+Info: SCC 157
+	e_206
+Info: SCC 158
+	e_66
+Info: SCC 159
+	e_96
+Info: SCC 160
+	e_215
+Info: SCC 161
+	e_139
+Info: SCC 162
+	e_180
+Info: SCC 163
+	e_181
+Info: SCC 164
+	e_183
+Info: SCC 165
+	e_126
+Info: SCC 166
+	e_9
+Info: SCC 167
+	e_122
+Info: SCC 168
+	e_121
+Info: SCC 169
+	e_110
+Info: SCC 170
+	e_109
+Info: SCC 171
+	e_116
+Info: SCC 172
+	e_115
+Info: SCC 173
+	e_10
+Info: SCC 174
+	e_81
+Info: SCC 175
+	e_87
+Info: SCC 176
+	e_212
+Info: SCC 177
+	e_117
+Info: SCC 178
+	e_120
+Info: SCC 179
+	e_210
+Info: SCC 180
+	e_102
+Info: SCC 181
+	e_63
+Info: SCC 182
+	e_159
+Info: SCC 183
+	e_160
+Info: SCC 184
+	e_162
+Info: SCC 185
+	e_136
+Info: SCC 186
+	e_72
+Info: SCC 187
+	e_7
+Info: SCC 188
+	e_101
+Info: SCC 189
+	e_100
+Info: SCC 190
+	e_92
+Info: SCC 191
+	e_91
+Info: SCC 192
+	e_83
+Info: SCC 193
+	e_82
+Info: SCC 194
+	e_8
+Info: SCC 195
+	e_141
+Info: SCC 196
+	e_142
+Info: SCC 197
+	e_178
+Info: SCC 198
+	e_99
+Info: SCC 199
+	e_207
+Info: SCC 200
+	e_75
+Info: SCC 201
+	e_209
+Info: SCC 202
+	e_93
+Info: SCC 203
+	e_211
+Info: SCC 204
+	e_111
+Info: SCC 205
+	e_146
+Info: SCC 206
+	e_147
+Info: SCC 207
+	e_170
+Info: SCC 208
+	e_108
+Info: SCC 209
+	e_168
+Info: SCC 210
+	e_60
+Info: SCC 211
+	e_157
+Info: SCC 212
+	e_173
+Info: SCC 213
+	e_172
+Info: SCC 214
+	e_90
+Info: SCC 215
+	e_105
+Info: SCC 216
+	e_154
+Info: SCC 217
+	e_155
+Info: SCC 218
+	e_114
+Info: SCC 219
+	e_144
+Info: SCC 220
+	e_208
+Info: SCC 221
+	e_84
+Info: SCC 222
+	e_175
+Info: SCC 223
+	e_33
+Info: SCC 224
+	e_36
+Info: SCC 225
+	e_203
+Info: SCC 226
+	e_39
+Info: SCC 227
+	e_42
+Info: SCC 228
+	e_45
+Info: SCC 229
+	e_204
+Info: SCC 230
+	e_48
+Info: SCC 231
+	e_51
+Info: SCC 232
+	e_54
+Info: SCC 233
+	e_0
+Info: Info: transition [array_obj_ref_678_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_681_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_688_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_691_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_698_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_701_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_708_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_711_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_718_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_721_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_728_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_731_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_738_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_741_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_748_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_751_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_758_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_761_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_768_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_771_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_778_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_781_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_788_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_791_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_798_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_801_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_808_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_811_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_818_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_821_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_828_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_831_base_address_calculated] is isolated, removed.
+Warning: exit not reachable from every element in region assign_stmt_624_to_assign_stmt_924
+	 un-visited elements
+	MUX_647_sample_start_
+	MUX_647_sample_completed_
+	MUX_647_start
+	MUX_661_sample_start_
+	MUX_661_sample_completed_
+	MUX_661_start
+	MUX_673_sample_start_
+	MUX_673_sample_completed_
+	MUX_673_start
+	type_cast_683_sample_start_
+	type_cast_683_sample_completed_
+	type_cast_683_update_start_
+	type_cast_683_update_completed_
+	array_obj_ref_678_sample_start_
+	array_obj_ref_678_sample_completed_
+	array_obj_ref_678_update_start_
+	array_obj_ref_678_update_completed_
+	array_obj_ref_678_word_address_calculated
+	array_obj_ref_678_root_address_calculated
+	array_obj_ref_678_offset_calculated
+	array_obj_ref_678_final_index_sum_regn_update_start
+	array_obj_ref_678_final_index_sum_regn_Update
+	array_obj_ref_678_base_plus_offset
+	array_obj_ref_678_word_addrgen
+	array_obj_ref_678_Sample
+	array_obj_ref_678_Update
+	array_obj_ref_681_sample_start_
+	array_obj_ref_681_sample_completed_
+	array_obj_ref_681_update_start_
+	array_obj_ref_681_update_completed_
+	array_obj_ref_681_word_address_calculated
+	array_obj_ref_681_root_address_calculated
+	array_obj_ref_681_Sample
+	array_obj_ref_681_Update
+	type_cast_683_Sample
+	type_cast_683_Update
+	type_cast_693_sample_start_
+	type_cast_693_sample_completed_
+	type_cast_693_update_start_
+	type_cast_693_update_completed_
+	array_obj_ref_688_sample_start_
+	array_obj_ref_688_sample_completed_
+	array_obj_ref_688_update_start_
+	array_obj_ref_688_update_completed_
+	array_obj_ref_688_word_address_calculated
+	array_obj_ref_688_root_address_calculated
+	array_obj_ref_688_offset_calculated
+	array_obj_ref_688_final_index_sum_regn_update_start
+	array_obj_ref_688_final_index_sum_regn_Update
+	array_obj_ref_688_base_plus_offset
+	array_obj_ref_688_word_addrgen
+	array_obj_ref_688_Sample
+	array_obj_ref_688_Update
+	array_obj_ref_691_sample_start_
+	array_obj_ref_691_sample_completed_
+	array_obj_ref_691_update_start_
+	array_obj_ref_691_update_completed_
+	array_obj_ref_691_word_address_calculated
+	array_obj_ref_691_root_address_calculated
+	array_obj_ref_691_Sample
+	array_obj_ref_691_Update
+	type_cast_693_Sample
+	type_cast_693_Update
+	type_cast_703_sample_start_
+	type_cast_703_sample_completed_
+	type_cast_703_update_start_
+	type_cast_703_update_completed_
+	array_obj_ref_698_sample_start_
+	array_obj_ref_698_sample_completed_
+	array_obj_ref_698_update_start_
+	array_obj_ref_698_update_completed_
+	array_obj_ref_698_word_address_calculated
+	array_obj_ref_698_root_address_calculated
+	array_obj_ref_698_offset_calculated
+	array_obj_ref_698_final_index_sum_regn_update_start
+	array_obj_ref_698_final_index_sum_regn_Update
+	array_obj_ref_698_base_plus_offset
+	array_obj_ref_698_word_addrgen
+	array_obj_ref_698_Sample
+	array_obj_ref_698_Update
+	array_obj_ref_701_sample_start_
+	array_obj_ref_701_sample_completed_
+	array_obj_ref_701_update_start_
+	array_obj_ref_701_update_completed_
+	array_obj_ref_701_word_address_calculated
+	array_obj_ref_701_root_address_calculated
+	array_obj_ref_701_Sample
+	array_obj_ref_701_Update
+	type_cast_703_Sample
+	type_cast_703_Update
+	type_cast_713_sample_start_
+	type_cast_713_sample_completed_
+	type_cast_713_update_start_
+	type_cast_713_update_completed_
+	array_obj_ref_708_sample_start_
+	array_obj_ref_708_sample_completed_
+	array_obj_ref_708_update_start_
+	array_obj_ref_708_update_completed_
+	array_obj_ref_708_word_address_calculated
+	array_obj_ref_708_root_address_calculated
+	array_obj_ref_708_offset_calculated
+	array_obj_ref_708_final_index_sum_regn_update_start
+	array_obj_ref_708_final_index_sum_regn_Update
+	array_obj_ref_708_base_plus_offset
+	array_obj_ref_708_word_addrgen
+	array_obj_ref_708_Sample
+	array_obj_ref_708_Update
+	array_obj_ref_711_sample_start_
+	array_obj_ref_711_sample_completed_
+	array_obj_ref_711_update_start_
+	array_obj_ref_711_update_completed_
+	array_obj_ref_711_word_address_calculated
+	array_obj_ref_711_root_address_calculated
+	array_obj_ref_711_Sample
+	array_obj_ref_711_Update
+	type_cast_713_Sample
+	type_cast_713_Update
+	type_cast_723_sample_start_
+	type_cast_723_sample_completed_
+	type_cast_723_update_start_
+	type_cast_723_update_completed_
+	array_obj_ref_718_sample_start_
+	array_obj_ref_718_sample_completed_
+	array_obj_ref_718_update_start_
+	array_obj_ref_718_update_completed_
+	array_obj_ref_718_word_address_calculated
+	array_obj_ref_718_root_address_calculated
+	array_obj_ref_718_offset_calculated
+	array_obj_ref_718_final_index_sum_regn_update_start
+	array_obj_ref_718_final_index_sum_regn_Update
+	array_obj_ref_718_base_plus_offset
+	array_obj_ref_718_word_addrgen
+	array_obj_ref_718_Sample
+	array_obj_ref_718_Update
+	array_obj_ref_721_sample_start_
+	array_obj_ref_721_sample_completed_
+	array_obj_ref_721_update_start_
+	array_obj_ref_721_update_completed_
+	array_obj_ref_721_word_address_calculated
+	array_obj_ref_721_root_address_calculated
+	array_obj_ref_721_Sample
+	array_obj_ref_721_Update
+	type_cast_723_Sample
+	type_cast_723_Update
+	type_cast_733_sample_start_
+	type_cast_733_sample_completed_
+	type_cast_733_update_start_
+	type_cast_733_update_completed_
+	array_obj_ref_728_sample_start_
+	array_obj_ref_728_sample_completed_
+	array_obj_ref_728_update_start_
+	array_obj_ref_728_update_completed_
+	array_obj_ref_728_word_address_calculated
+	array_obj_ref_728_root_address_calculated
+	array_obj_ref_728_offset_calculated
+	array_obj_ref_728_final_index_sum_regn_update_start
+	array_obj_ref_728_final_index_sum_regn_Update
+	array_obj_ref_728_base_plus_offset
+	array_obj_ref_728_word_addrgen
+	array_obj_ref_728_Sample
+	array_obj_ref_728_Update
+	array_obj_ref_731_sample_start_
+	array_obj_ref_731_sample_completed_
+	array_obj_ref_731_update_start_
+	array_obj_ref_731_update_completed_
+	array_obj_ref_731_word_address_calculated
+	array_obj_ref_731_root_address_calculated
+	array_obj_ref_731_Sample
+	array_obj_ref_731_Update
+	type_cast_733_Sample
+	type_cast_733_Update
+	type_cast_743_sample_start_
+	type_cast_743_sample_completed_
+	type_cast_743_update_start_
+	type_cast_743_update_completed_
+	array_obj_ref_738_sample_start_
+	array_obj_ref_738_sample_completed_
+	array_obj_ref_738_update_start_
+	array_obj_ref_738_update_completed_
+	array_obj_ref_738_word_address_calculated
+	array_obj_ref_738_root_address_calculated
+	array_obj_ref_738_offset_calculated
+	array_obj_ref_738_final_index_sum_regn_update_start
+	array_obj_ref_738_final_index_sum_regn_Update
+	array_obj_ref_738_base_plus_offset
+	array_obj_ref_738_word_addrgen
+	array_obj_ref_738_Sample
+	array_obj_ref_738_Update
+	array_obj_ref_741_sample_start_
+	array_obj_ref_741_sample_completed_
+	array_obj_ref_741_update_start_
+	array_obj_ref_741_update_completed_
+	array_obj_ref_741_word_address_calculated
+	array_obj_ref_741_root_address_calculated
+	array_obj_ref_741_Sample
+	array_obj_ref_741_Update
+	type_cast_743_Sample
+	type_cast_743_Update
+	type_cast_753_sample_start_
+	type_cast_753_sample_completed_
+	type_cast_753_update_start_
+	type_cast_753_update_completed_
+	array_obj_ref_748_sample_start_
+	array_obj_ref_748_sample_completed_
+	array_obj_ref_748_update_start_
+	array_obj_ref_748_update_completed_
+	array_obj_ref_748_word_address_calculated
+	array_obj_ref_748_root_address_calculated
+	array_obj_ref_748_offset_calculated
+	array_obj_ref_748_final_index_sum_regn_update_start
+	array_obj_ref_748_final_index_sum_regn_Update
+	array_obj_ref_748_base_plus_offset
+	array_obj_ref_748_word_addrgen
+	array_obj_ref_748_Sample
+	array_obj_ref_748_Update
+	array_obj_ref_751_sample_start_
+	array_obj_ref_751_sample_completed_
+	array_obj_ref_751_update_start_
+	array_obj_ref_751_update_completed_
+	array_obj_ref_751_word_address_calculated
+	array_obj_ref_751_root_address_calculated
+	array_obj_ref_751_Sample
+	array_obj_ref_751_Update
+	type_cast_753_Sample
+	type_cast_753_Update
+	type_cast_763_sample_start_
+	type_cast_763_sample_completed_
+	type_cast_763_update_start_
+	type_cast_763_update_completed_
+	array_obj_ref_758_sample_start_
+	array_obj_ref_758_sample_completed_
+	array_obj_ref_758_update_start_
+	array_obj_ref_758_update_completed_
+	array_obj_ref_758_word_address_calculated
+	array_obj_ref_758_root_address_calculated
+	array_obj_ref_758_offset_calculated
+	array_obj_ref_758_final_index_sum_regn_update_start
+	array_obj_ref_758_final_index_sum_regn_Update
+	array_obj_ref_758_base_plus_offset
+	array_obj_ref_758_word_addrgen
+	array_obj_ref_758_Sample
+	array_obj_ref_758_Update
+	array_obj_ref_761_sample_start_
+	array_obj_ref_761_sample_completed_
+	array_obj_ref_761_update_start_
+	array_obj_ref_761_update_completed_
+	array_obj_ref_761_word_address_calculated
+	array_obj_ref_761_root_address_calculated
+	array_obj_ref_761_Sample
+	array_obj_ref_761_Update
+	type_cast_763_Sample
+	type_cast_763_Update
+	type_cast_773_sample_start_
+	type_cast_773_sample_completed_
+	type_cast_773_update_start_
+	type_cast_773_update_completed_
+	array_obj_ref_768_sample_start_
+	array_obj_ref_768_sample_completed_
+	array_obj_ref_768_update_start_
+	array_obj_ref_768_update_completed_
+	array_obj_ref_768_word_address_calculated
+	array_obj_ref_768_root_address_calculated
+	array_obj_ref_768_offset_calculated
+	array_obj_ref_768_final_index_sum_regn_update_start
+	array_obj_ref_768_final_index_sum_regn_Update
+	array_obj_ref_768_base_plus_offset
+	array_obj_ref_768_word_addrgen
+	array_obj_ref_768_Sample
+	array_obj_ref_768_Update
+	array_obj_ref_771_sample_start_
+	array_obj_ref_771_sample_completed_
+	array_obj_ref_771_update_start_
+	array_obj_ref_771_update_completed_
+	array_obj_ref_771_word_address_calculated
+	array_obj_ref_771_root_address_calculated
+	array_obj_ref_771_Sample
+	array_obj_ref_771_Update
+	type_cast_773_Sample
+	type_cast_773_Update
+	type_cast_783_sample_start_
+	type_cast_783_sample_completed_
+	type_cast_783_update_start_
+	type_cast_783_update_completed_
+	array_obj_ref_778_sample_start_
+	array_obj_ref_778_sample_completed_
+	array_obj_ref_778_update_start_
+	array_obj_ref_778_update_completed_
+	array_obj_ref_778_word_address_calculated
+	array_obj_ref_778_root_address_calculated
+	array_obj_ref_778_offset_calculated
+	array_obj_ref_778_final_index_sum_regn_update_start
+	array_obj_ref_778_final_index_sum_regn_Update
+	array_obj_ref_778_base_plus_offset
+	array_obj_ref_778_word_addrgen
+	array_obj_ref_778_Sample
+	array_obj_ref_778_Update
+	array_obj_ref_781_sample_start_
+	array_obj_ref_781_sample_completed_
+	array_obj_ref_781_update_start_
+	array_obj_ref_781_update_completed_
+	array_obj_ref_781_word_address_calculated
+	array_obj_ref_781_root_address_calculated
+	array_obj_ref_781_Sample
+	array_obj_ref_781_Update
+	type_cast_783_Sample
+	type_cast_783_Update
+	type_cast_793_sample_start_
+	type_cast_793_sample_completed_
+	type_cast_793_update_start_
+	type_cast_793_update_completed_
+	array_obj_ref_788_sample_start_
+	array_obj_ref_788_sample_completed_
+	array_obj_ref_788_update_start_
+	array_obj_ref_788_update_completed_
+	array_obj_ref_788_word_address_calculated
+	array_obj_ref_788_root_address_calculated
+	array_obj_ref_788_offset_calculated
+	array_obj_ref_788_final_index_sum_regn_update_start
+	array_obj_ref_788_final_index_sum_regn_Update
+	array_obj_ref_788_base_plus_offset
+	array_obj_ref_788_word_addrgen
+	array_obj_ref_788_Sample
+	array_obj_ref_788_Update
+	array_obj_ref_791_sample_start_
+	array_obj_ref_791_sample_completed_
+	array_obj_ref_791_update_start_
+	array_obj_ref_791_update_completed_
+	array_obj_ref_791_word_address_calculated
+	array_obj_ref_791_root_address_calculated
+	array_obj_ref_791_Sample
+	array_obj_ref_791_Update
+	type_cast_793_Sample
+	type_cast_793_Update
+	type_cast_803_sample_start_
+	type_cast_803_sample_completed_
+	type_cast_803_update_start_
+	type_cast_803_update_completed_
+	array_obj_ref_798_sample_start_
+	array_obj_ref_798_sample_completed_
+	array_obj_ref_798_update_start_
+	array_obj_ref_798_update_completed_
+	array_obj_ref_798_word_address_calculated
+	array_obj_ref_798_root_address_calculated
+	array_obj_ref_798_offset_calculated
+	array_obj_ref_798_final_index_sum_regn_update_start
+	array_obj_ref_798_final_index_sum_regn_Update
+	array_obj_ref_798_base_plus_offset
+	array_obj_ref_798_word_addrgen
+	array_obj_ref_798_Sample
+	array_obj_ref_798_Update
+	array_obj_ref_801_sample_start_
+	array_obj_ref_801_sample_completed_
+	array_obj_ref_801_update_start_
+	array_obj_ref_801_update_completed_
+	array_obj_ref_801_word_address_calculated
+	array_obj_ref_801_root_address_calculated
+	array_obj_ref_801_Sample
+	array_obj_ref_801_Update
+	type_cast_803_Sample
+	type_cast_803_Update
+	type_cast_813_sample_start_
+	type_cast_813_sample_completed_
+	type_cast_813_update_start_
+	type_cast_813_update_completed_
+	array_obj_ref_808_sample_start_
+	array_obj_ref_808_sample_completed_
+	array_obj_ref_808_update_start_
+	array_obj_ref_808_update_completed_
+	array_obj_ref_808_word_address_calculated
+	array_obj_ref_808_root_address_calculated
+	array_obj_ref_808_offset_calculated
+	array_obj_ref_808_final_index_sum_regn_update_start
+	array_obj_ref_808_final_index_sum_regn_Update
+	array_obj_ref_808_base_plus_offset
+	array_obj_ref_808_word_addrgen
+	array_obj_ref_808_Sample
+	array_obj_ref_808_Update
+	array_obj_ref_811_sample_start_
+	array_obj_ref_811_sample_completed_
+	array_obj_ref_811_update_start_
+	array_obj_ref_811_update_completed_
+	array_obj_ref_811_word_address_calculated
+	array_obj_ref_811_root_address_calculated
+	array_obj_ref_811_Sample
+	array_obj_ref_811_Update
+	type_cast_813_Sample
+	type_cast_813_Update
+	type_cast_823_sample_start_
+	type_cast_823_sample_completed_
+	type_cast_823_update_start_
+	type_cast_823_update_completed_
+	array_obj_ref_818_sample_start_
+	array_obj_ref_818_sample_completed_
+	array_obj_ref_818_update_start_
+	array_obj_ref_818_update_completed_
+	array_obj_ref_818_word_address_calculated
+	array_obj_ref_818_root_address_calculated
+	array_obj_ref_818_offset_calculated
+	array_obj_ref_818_final_index_sum_regn_update_start
+	array_obj_ref_818_final_index_sum_regn_Update
+	array_obj_ref_818_base_plus_offset
+	array_obj_ref_818_word_addrgen
+	array_obj_ref_818_Sample
+	array_obj_ref_818_Update
+	array_obj_ref_821_sample_start_
+	array_obj_ref_821_sample_completed_
+	array_obj_ref_821_update_start_
+	array_obj_ref_821_update_completed_
+	array_obj_ref_821_word_address_calculated
+	array_obj_ref_821_root_address_calculated
+	array_obj_ref_821_Sample
+	array_obj_ref_821_Update
+	type_cast_823_Sample
+	type_cast_823_Update
+	type_cast_833_sample_start_
+	type_cast_833_sample_completed_
+	type_cast_833_update_start_
+	type_cast_833_update_completed_
+	array_obj_ref_828_sample_start_
+	array_obj_ref_828_sample_completed_
+	array_obj_ref_828_update_start_
+	array_obj_ref_828_update_completed_
+	array_obj_ref_828_word_address_calculated
+	array_obj_ref_828_root_address_calculated
+	array_obj_ref_828_offset_calculated
+	array_obj_ref_828_final_index_sum_regn_update_start
+	array_obj_ref_828_final_index_sum_regn_Update
+	array_obj_ref_828_base_plus_offset
+	array_obj_ref_828_word_addrgen
+	array_obj_ref_828_Sample
+	array_obj_ref_828_Update
+	array_obj_ref_831_sample_start_
+	array_obj_ref_831_sample_completed_
+	array_obj_ref_831_update_start_
+	array_obj_ref_831_update_completed_
+	array_obj_ref_831_word_address_calculated
+	array_obj_ref_831_root_address_calculated
+	array_obj_ref_831_Sample
+	array_obj_ref_831_Update
+	type_cast_833_Sample
+	type_cast_833_Update
+	type_cast_839_sample_start_
+	type_cast_839_sample_completed_
+	type_cast_839_update_start_
+	type_cast_839_update_completed_
+	type_cast_839_Sample
+	type_cast_839_Update
+	type_cast_845_sample_start_
+	type_cast_845_sample_completed_
+	type_cast_845_update_start_
+	type_cast_845_update_completed_
+	type_cast_845_Sample
+	type_cast_845_Update
+	type_cast_851_sample_start_
+	type_cast_851_sample_completed_
+	type_cast_851_update_start_
+	type_cast_851_update_completed_
+	type_cast_851_Sample
+	type_cast_851_Update
+	type_cast_857_sample_start_
+	type_cast_857_sample_completed_
+	type_cast_857_update_start_
+	type_cast_857_update_completed_
+	type_cast_857_Sample
+	type_cast_857_Update
+	type_cast_863_sample_start_
+	type_cast_863_sample_completed_
+	type_cast_863_update_start_
+	type_cast_863_update_completed_
+	type_cast_863_Sample
+	type_cast_863_Update
+	type_cast_869_sample_start_
+	type_cast_869_sample_completed_
+	type_cast_869_update_start_
+	type_cast_869_update_completed_
+	type_cast_869_Sample
+	type_cast_869_Update
+	type_cast_875_sample_start_
+	type_cast_875_sample_completed_
+	type_cast_875_update_start_
+	type_cast_875_update_completed_
+	type_cast_875_Sample
+	type_cast_875_Update
+	type_cast_881_sample_start_
+	type_cast_881_sample_completed_
+	type_cast_881_update_start_
+	type_cast_881_update_completed_
+	type_cast_881_Sample
+	type_cast_881_Update
+	type_cast_887_sample_start_
+	type_cast_887_sample_completed_
+	type_cast_887_update_start_
+	type_cast_887_update_completed_
+	type_cast_887_Sample
+	type_cast_887_Update
+	type_cast_893_sample_start_
+	type_cast_893_sample_completed_
+	type_cast_893_update_start_
+	type_cast_893_update_completed_
+	type_cast_893_Sample
+	type_cast_893_Update
+	type_cast_899_sample_start_
+	type_cast_899_sample_completed_
+	type_cast_899_update_start_
+	type_cast_899_update_completed_
+	type_cast_899_Sample
+	type_cast_899_Update
+	type_cast_905_sample_start_
+	type_cast_905_sample_completed_
+	type_cast_905_update_start_
+	type_cast_905_update_completed_
+	type_cast_905_Sample
+	type_cast_905_Update
+	type_cast_911_sample_start_
+	type_cast_911_sample_completed_
+	type_cast_911_update_start_
+	type_cast_911_update_completed_
+	type_cast_911_Sample
+	type_cast_911_Update
+	type_cast_917_sample_start_
+	type_cast_917_sample_completed_
+	type_cast_917_update_start_
+	type_cast_917_update_completed_
+	type_cast_917_Sample
+	type_cast_917_Update
+	type_cast_923_sample_start_
+	type_cast_923_sample_completed_
+	type_cast_923_Sample
+Info: reducing Control-path 
+Info: finding nucleii 
+Info:  Total number of strongly-connected-components is 197
+Info: SCC 0
+	e_3
+Info: SCC 1
+	e_196
+Info: SCC 2
+	e_80
+Info: SCC 3
+	e_89
+Info: SCC 4
+	e_98
+Info: SCC 5
+	e_107
+Info: SCC 6
+	e_4
+Info: SCC 7
+	e_1
+Info: SCC 8
+	e_59
+Info: SCC 9
+	e_52
+Info: SCC 10
+	e_58
+Info: SCC 11
+	e_68
+Info: SCC 12
+	e_61
+Info: SCC 13
+	e_67
+Info: SCC 14
+	e_93
+Info: SCC 15
+	e_111
+Info: SCC 16
+	e_55
+Info: SCC 17
+	e_54
+Info: SCC 18
+	e_50
+Info: SCC 19
+	e_43
+Info: SCC 20
+	e_49
+Info: SCC 21
+	e_44
+Info: SCC 22
+	e_53
+Info: SCC 23
+	e_62
+Info: SCC 24
+	e_71
+Info: SCC 25
+	e_2
+Info: SCC 26
+	e_104
+Info: SCC 27
+	e_97
+Info: SCC 28
+	e_101
+Info: SCC 29
+	e_145
+Info: SCC 30
+	e_144
+Info: SCC 31
+	e_113
+Info: SCC 32
+	e_106
+Info: SCC 33
+	e_112
+Info: SCC 34
+	e_95
+Info: SCC 35
+	e_88
+Info: SCC 36
+	e_92
+Info: SCC 37
+	e_138
+Info: SCC 38
+	e_164
+Info: SCC 39
+	e_163
+Info: SCC 40
+	e_105
+Info: SCC 41
+	e_179
+Info: SCC 42
+	e_178
+Info: SCC 43
+	e_162
+Info: SCC 44
+	e_194
+Info: SCC 45
+	e_193
+Info: SCC 46
+	e_189
+Info: SCC 47
+	e_131
+Info: SCC 48
+	e_124
+Info: SCC 49
+	e_128
+Info: SCC 50
+	e_188
+Info: SCC 51
+	e_187
+Info: SCC 52
+	e_177
+Info: SCC 53
+	e_192
+Info: SCC 54
+	e_195
+Info: SCC 55
+	e_158
+Info: SCC 56
+	e_157
+Info: SCC 57
+	e_132
+Info: SCC 58
+	e_91
+Info: SCC 59
+	e_90
+Info: SCC 60
+	e_118
+Info: SCC 61
+	e_117
+Info: SCC 62
+	e_173
+Info: SCC 63
+	e_172
+Info: SCC 64
+	e_78
+Info: SCC 65
+	e_170
+Info: SCC 66
+	e_169
+Info: SCC 67
+	e_150
+Info: SCC 68
+	e_149
+Info: SCC 69
+	e_142
+Info: SCC 70
+	e_146
+Info: SCC 71
+	e_100
+Info: SCC 72
+	e_99
+Info: SCC 73
+	e_185
+Info: SCC 74
+	e_184
+Info: SCC 75
+	e_174
+Info: SCC 76
+	e_41
+Info: SCC 77
+	e_34
+Info: SCC 78
+	e_40
+Info: SCC 79
+	e_77
+Info: SCC 80
+	e_70
+Info: SCC 81
+	e_74
+Info: SCC 82
+	e_86
+Info: SCC 83
+	e_79
+Info: SCC 84
+	e_83
+Info: SCC 85
+	e_182
+Info: SCC 86
+	e_181
+Info: SCC 87
+	e_165
+Info: SCC 88
+	e_46
+Info: SCC 89
+	e_45
+Info: SCC 90
+	e_56
+Info: SCC 91
+	e_82
+Info: SCC 92
+	e_81
+Info: SCC 93
+	e_136
+Info: SCC 94
+	e_135
+Info: SCC 95
+	e_140
+Info: SCC 96
+	e_133
+Info: SCC 97
+	e_137
+Info: SCC 98
+	e_66
+Info: SCC 99
+	e_147
+Info: SCC 100
+	e_148
+Info: SCC 101
+	e_176
+Info: SCC 102
+	e_175
+Info: SCC 103
+	e_156
+Info: SCC 104
+	e_159
+Info: SCC 105
+	e_57
+Info: SCC 106
+	e_139
+Info: SCC 107
+	e_120
+Info: SCC 108
+	e_109
+Info: SCC 109
+	e_108
+Info: SCC 110
+	e_110
+Info: SCC 111
+	e_96
+Info: SCC 112
+	e_42
+Info: SCC 113
+	e_75
+Info: SCC 114
+	e_85
+Info: SCC 115
+	e_84
+Info: SCC 116
+	e_103
+Info: SCC 117
+	e_180
+Info: SCC 118
+	e_191
+Info: SCC 119
+	e_190
+Info: SCC 120
+	e_183
+Info: SCC 121
+	e_168
+Info: SCC 122
+	e_171
+Info: SCC 123
+	e_127
+Info: SCC 124
+	e_126
+Info: SCC 125
+	e_141
+Info: SCC 126
+	e_161
+Info: SCC 127
+	e_160
+Info: SCC 128
+	e_60
+Info: SCC 129
+	e_122
+Info: SCC 130
+	e_115
+Info: SCC 131
+	e_119
+Info: SCC 132
+	e_152
+Info: SCC 133
+	e_151
+Info: SCC 134
+	e_87
+Info: SCC 135
+	e_155
+Info: SCC 136
+	e_154
+Info: SCC 137
+	e_51
+Info: SCC 138
+	e_102
+Info: SCC 139
+	e_73
+Info: SCC 140
+	e_72
+Info: SCC 141
+	e_39
+Info: SCC 142
+	e_47
+Info: SCC 143
+	e_65
+Info: SCC 144
+	e_167
+Info: SCC 145
+	e_166
+Info: SCC 146
+	e_69
+Info: SCC 147
+	e_121
+Info: SCC 148
+	e_94
+Info: SCC 149
+	e_48
+Info: SCC 150
+	e_123
+Info: SCC 151
+	e_64
+Info: SCC 152
+	e_63
+Info: SCC 153
+	e_186
+Info: SCC 154
+	e_153
+Info: SCC 155
+	e_114
+Info: SCC 156
+	e_5
+Info: SCC 157
+	e_143
+Info: SCC 158
+	e_116
+Info: SCC 159
+	e_125
+Info: SCC 160
+	e_134
+Info: SCC 161
+	e_6
+Info: SCC 162
+	e_8
+Info: SCC 163
+	e_10
+Info: SCC 164
+	e_9
+Info: SCC 165
+	e_14
+Info: SCC 166
+	e_7
+Info: SCC 167
+	e_11
+Info: SCC 168
+	e_12
+Info: SCC 169
+	e_13
+Info: SCC 170
+	e_15
+Info: SCC 171
+	e_76
+Info: SCC 172
+	e_129
+Info: SCC 173
+	e_130
+Info: SCC 174
+	e_17
+Info: SCC 175
+	e_19
+Info: SCC 176
+	e_18
+Info: SCC 177
+	e_23
+Info: SCC 178
+	e_16
+Info: SCC 179
+	e_20
+Info: SCC 180
+	e_21
+Info: SCC 181
+	e_22
+Info: SCC 182
+	e_24
+Info: SCC 183
+	e_26
+Info: SCC 184
+	e_28
+Info: SCC 185
+	e_27
+Info: SCC 186
+	e_32
+Info: SCC 187
+	e_25
+Info: SCC 188
+	e_29
+Info: SCC 189
+	e_30
+Info: SCC 190
+	e_31
+Info: SCC 191
+	e_33
+Info: SCC 192
+	e_35
+Info: SCC 193
+	e_37
+Info: SCC 194
+	e_36
+Info: SCC 195
+	e_38
+Info: SCC 196
+	e_0
+Info: Info: transition [array_obj_ref_988_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_991_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_998_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1001_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1008_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1011_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1018_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1021_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1028_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1031_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1038_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1041_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1048_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1051_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1058_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1061_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1068_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1071_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1078_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1081_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1088_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1091_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1098_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1101_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1108_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1111_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1118_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1121_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1128_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1131_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1138_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_1141_base_address_calculated] is isolated, removed.
+Warning: exit not reachable from every element in region assign_stmt_934_to_assign_stmt_1234
+	 un-visited elements
+	MUX_957_sample_start_
+	MUX_957_sample_completed_
+	MUX_957_start
+	MUX_971_sample_start_
+	MUX_971_sample_completed_
+	MUX_971_start
+	MUX_983_sample_start_
+	MUX_983_sample_completed_
+	MUX_983_start
+	type_cast_993_sample_start_
+	type_cast_993_sample_completed_
+	type_cast_993_update_start_
+	type_cast_993_update_completed_
+	array_obj_ref_988_sample_start_
+	array_obj_ref_988_sample_completed_
+	array_obj_ref_988_update_start_
+	array_obj_ref_988_update_completed_
+	array_obj_ref_988_word_address_calculated
+	array_obj_ref_988_root_address_calculated
+	array_obj_ref_988_offset_calculated
+	array_obj_ref_988_final_index_sum_regn_update_start
+	array_obj_ref_988_final_index_sum_regn_Update
+	array_obj_ref_988_base_plus_offset
+	array_obj_ref_988_word_addrgen
+	array_obj_ref_988_Sample
+	array_obj_ref_988_Update
+	array_obj_ref_991_sample_start_
+	array_obj_ref_991_sample_completed_
+	array_obj_ref_991_update_start_
+	array_obj_ref_991_update_completed_
+	array_obj_ref_991_word_address_calculated
+	array_obj_ref_991_root_address_calculated
+	array_obj_ref_991_Sample
+	array_obj_ref_991_Update
+	type_cast_993_Sample
+	type_cast_993_Update
+	type_cast_1003_sample_start_
+	type_cast_1003_sample_completed_
+	type_cast_1003_update_start_
+	type_cast_1003_update_completed_
+	array_obj_ref_998_sample_start_
+	array_obj_ref_998_sample_completed_
+	array_obj_ref_998_update_start_
+	array_obj_ref_998_update_completed_
+	array_obj_ref_998_word_address_calculated
+	array_obj_ref_998_root_address_calculated
+	array_obj_ref_998_offset_calculated
+	array_obj_ref_998_final_index_sum_regn_update_start
+	array_obj_ref_998_final_index_sum_regn_Update
+	array_obj_ref_998_base_plus_offset
+	array_obj_ref_998_word_addrgen
+	array_obj_ref_998_Sample
+	array_obj_ref_998_Update
+	array_obj_ref_1001_sample_start_
+	array_obj_ref_1001_sample_completed_
+	array_obj_ref_1001_update_start_
+	array_obj_ref_1001_update_completed_
+	array_obj_ref_1001_word_address_calculated
+	array_obj_ref_1001_root_address_calculated
+	array_obj_ref_1001_Sample
+	array_obj_ref_1001_Update
+	type_cast_1003_Sample
+	type_cast_1003_Update
+	type_cast_1013_sample_start_
+	type_cast_1013_sample_completed_
+	type_cast_1013_update_start_
+	type_cast_1013_update_completed_
+	array_obj_ref_1008_sample_start_
+	array_obj_ref_1008_sample_completed_
+	array_obj_ref_1008_update_start_
+	array_obj_ref_1008_update_completed_
+	array_obj_ref_1008_word_address_calculated
+	array_obj_ref_1008_root_address_calculated
+	array_obj_ref_1008_offset_calculated
+	array_obj_ref_1008_final_index_sum_regn_update_start
+	array_obj_ref_1008_final_index_sum_regn_Update
+	array_obj_ref_1008_base_plus_offset
+	array_obj_ref_1008_word_addrgen
+	array_obj_ref_1008_Sample
+	array_obj_ref_1008_Update
+	array_obj_ref_1011_sample_start_
+	array_obj_ref_1011_sample_completed_
+	array_obj_ref_1011_update_start_
+	array_obj_ref_1011_update_completed_
+	array_obj_ref_1011_word_address_calculated
+	array_obj_ref_1011_root_address_calculated
+	array_obj_ref_1011_Sample
+	array_obj_ref_1011_Update
+	type_cast_1013_Sample
+	type_cast_1013_Update
+	type_cast_1023_sample_start_
+	type_cast_1023_sample_completed_
+	type_cast_1023_update_start_
+	type_cast_1023_update_completed_
+	array_obj_ref_1018_sample_start_
+	array_obj_ref_1018_sample_completed_
+	array_obj_ref_1018_update_start_
+	array_obj_ref_1018_update_completed_
+	array_obj_ref_1018_word_address_calculated
+	array_obj_ref_1018_root_address_calculated
+	array_obj_ref_1018_offset_calculated
+	array_obj_ref_1018_final_index_sum_regn_update_start
+	array_obj_ref_1018_final_index_sum_regn_Update
+	array_obj_ref_1018_base_plus_offset
+	array_obj_ref_1018_word_addrgen
+	array_obj_ref_1018_Sample
+	array_obj_ref_1018_Update
+	array_obj_ref_1021_sample_start_
+	array_obj_ref_1021_sample_completed_
+	array_obj_ref_1021_update_start_
+	array_obj_ref_1021_update_completed_
+	array_obj_ref_1021_word_address_calculated
+	array_obj_ref_1021_root_address_calculated
+	array_obj_ref_1021_Sample
+	array_obj_ref_1021_Update
+	type_cast_1023_Sample
+	type_cast_1023_Update
+	type_cast_1033_sample_start_
+	type_cast_1033_sample_completed_
+	type_cast_1033_update_start_
+	type_cast_1033_update_completed_
+	array_obj_ref_1028_sample_start_
+	array_obj_ref_1028_sample_completed_
+	array_obj_ref_1028_update_start_
+	array_obj_ref_1028_update_completed_
+	array_obj_ref_1028_word_address_calculated
+	array_obj_ref_1028_root_address_calculated
+	array_obj_ref_1028_offset_calculated
+	array_obj_ref_1028_final_index_sum_regn_update_start
+	array_obj_ref_1028_final_index_sum_regn_Update
+	array_obj_ref_1028_base_plus_offset
+	array_obj_ref_1028_word_addrgen
+	array_obj_ref_1028_Sample
+	array_obj_ref_1028_Update
+	array_obj_ref_1031_sample_start_
+	array_obj_ref_1031_sample_completed_
+	array_obj_ref_1031_update_start_
+	array_obj_ref_1031_update_completed_
+	array_obj_ref_1031_word_address_calculated
+	array_obj_ref_1031_root_address_calculated
+	array_obj_ref_1031_Sample
+	array_obj_ref_1031_Update
+	type_cast_1033_Sample
+	type_cast_1033_Update
+	type_cast_1043_sample_start_
+	type_cast_1043_sample_completed_
+	type_cast_1043_update_start_
+	type_cast_1043_update_completed_
+	array_obj_ref_1038_sample_start_
+	array_obj_ref_1038_sample_completed_
+	array_obj_ref_1038_update_start_
+	array_obj_ref_1038_update_completed_
+	array_obj_ref_1038_word_address_calculated
+	array_obj_ref_1038_root_address_calculated
+	array_obj_ref_1038_offset_calculated
+	array_obj_ref_1038_final_index_sum_regn_update_start
+	array_obj_ref_1038_final_index_sum_regn_Update
+	array_obj_ref_1038_base_plus_offset
+	array_obj_ref_1038_word_addrgen
+	array_obj_ref_1038_Sample
+	array_obj_ref_1038_Update
+	array_obj_ref_1041_sample_start_
+	array_obj_ref_1041_sample_completed_
+	array_obj_ref_1041_update_start_
+	array_obj_ref_1041_update_completed_
+	array_obj_ref_1041_word_address_calculated
+	array_obj_ref_1041_root_address_calculated
+	array_obj_ref_1041_Sample
+	array_obj_ref_1041_Update
+	type_cast_1043_Sample
+	type_cast_1043_Update
+	type_cast_1053_sample_start_
+	type_cast_1053_sample_completed_
+	type_cast_1053_update_start_
+	type_cast_1053_update_completed_
+	array_obj_ref_1048_sample_start_
+	array_obj_ref_1048_sample_completed_
+	array_obj_ref_1048_update_start_
+	array_obj_ref_1048_update_completed_
+	array_obj_ref_1048_word_address_calculated
+	array_obj_ref_1048_root_address_calculated
+	array_obj_ref_1048_offset_calculated
+	array_obj_ref_1048_final_index_sum_regn_update_start
+	array_obj_ref_1048_final_index_sum_regn_Update
+	array_obj_ref_1048_base_plus_offset
+	array_obj_ref_1048_word_addrgen
+	array_obj_ref_1048_Sample
+	array_obj_ref_1048_Update
+	array_obj_ref_1051_sample_start_
+	array_obj_ref_1051_sample_completed_
+	array_obj_ref_1051_update_start_
+	array_obj_ref_1051_update_completed_
+	array_obj_ref_1051_word_address_calculated
+	array_obj_ref_1051_root_address_calculated
+	array_obj_ref_1051_Sample
+	array_obj_ref_1051_Update
+	type_cast_1053_Sample
+	type_cast_1053_Update
+	type_cast_1063_sample_start_
+	type_cast_1063_sample_completed_
+	type_cast_1063_update_start_
+	type_cast_1063_update_completed_
+	array_obj_ref_1058_sample_start_
+	array_obj_ref_1058_sample_completed_
+	array_obj_ref_1058_update_start_
+	array_obj_ref_1058_update_completed_
+	array_obj_ref_1058_word_address_calculated
+	array_obj_ref_1058_root_address_calculated
+	array_obj_ref_1058_offset_calculated
+	array_obj_ref_1058_final_index_sum_regn_update_start
+	array_obj_ref_1058_final_index_sum_regn_Update
+	array_obj_ref_1058_base_plus_offset
+	array_obj_ref_1058_word_addrgen
+	array_obj_ref_1058_Sample
+	array_obj_ref_1058_Update
+	array_obj_ref_1061_sample_start_
+	array_obj_ref_1061_sample_completed_
+	array_obj_ref_1061_update_start_
+	array_obj_ref_1061_update_completed_
+	array_obj_ref_1061_word_address_calculated
+	array_obj_ref_1061_root_address_calculated
+	array_obj_ref_1061_Sample
+	array_obj_ref_1061_Update
+	type_cast_1063_Sample
+	type_cast_1063_Update
+	type_cast_1073_sample_start_
+	type_cast_1073_sample_completed_
+	type_cast_1073_update_start_
+	type_cast_1073_update_completed_
+	array_obj_ref_1068_sample_start_
+	array_obj_ref_1068_sample_completed_
+	array_obj_ref_1068_update_start_
+	array_obj_ref_1068_update_completed_
+	array_obj_ref_1068_word_address_calculated
+	array_obj_ref_1068_root_address_calculated
+	array_obj_ref_1068_offset_calculated
+	array_obj_ref_1068_final_index_sum_regn_update_start
+	array_obj_ref_1068_final_index_sum_regn_Update
+	array_obj_ref_1068_base_plus_offset
+	array_obj_ref_1068_word_addrgen
+	array_obj_ref_1068_Sample
+	array_obj_ref_1068_Update
+	array_obj_ref_1071_sample_start_
+	array_obj_ref_1071_sample_completed_
+	array_obj_ref_1071_update_start_
+	array_obj_ref_1071_update_completed_
+	array_obj_ref_1071_word_address_calculated
+	array_obj_ref_1071_root_address_calculated
+	array_obj_ref_1071_Sample
+	array_obj_ref_1071_Update
+	type_cast_1073_Sample
+	type_cast_1073_Update
+	type_cast_1083_sample_start_
+	type_cast_1083_sample_completed_
+	type_cast_1083_update_start_
+	type_cast_1083_update_completed_
+	array_obj_ref_1078_sample_start_
+	array_obj_ref_1078_sample_completed_
+	array_obj_ref_1078_update_start_
+	array_obj_ref_1078_update_completed_
+	array_obj_ref_1078_word_address_calculated
+	array_obj_ref_1078_root_address_calculated
+	array_obj_ref_1078_offset_calculated
+	array_obj_ref_1078_final_index_sum_regn_update_start
+	array_obj_ref_1078_final_index_sum_regn_Update
+	array_obj_ref_1078_base_plus_offset
+	array_obj_ref_1078_word_addrgen
+	array_obj_ref_1078_Sample
+	array_obj_ref_1078_Update
+	array_obj_ref_1081_sample_start_
+	array_obj_ref_1081_sample_completed_
+	array_obj_ref_1081_update_start_
+	array_obj_ref_1081_update_completed_
+	array_obj_ref_1081_word_address_calculated
+	array_obj_ref_1081_root_address_calculated
+	array_obj_ref_1081_Sample
+	array_obj_ref_1081_Update
+	type_cast_1083_Sample
+	type_cast_1083_Update
+	type_cast_1093_sample_start_
+	type_cast_1093_sample_completed_
+	type_cast_1093_update_start_
+	type_cast_1093_update_completed_
+	array_obj_ref_1088_sample_start_
+	array_obj_ref_1088_sample_completed_
+	array_obj_ref_1088_update_start_
+	array_obj_ref_1088_update_completed_
+	array_obj_ref_1088_word_address_calculated
+	array_obj_ref_1088_root_address_calculated
+	array_obj_ref_1088_offset_calculated
+	array_obj_ref_1088_final_index_sum_regn_update_start
+	array_obj_ref_1088_final_index_sum_regn_Update
+	array_obj_ref_1088_base_plus_offset
+	array_obj_ref_1088_word_addrgen
+	array_obj_ref_1088_Sample
+	array_obj_ref_1088_Update
+	array_obj_ref_1091_sample_start_
+	array_obj_ref_1091_sample_completed_
+	array_obj_ref_1091_update_start_
+	array_obj_ref_1091_update_completed_
+	array_obj_ref_1091_word_address_calculated
+	array_obj_ref_1091_root_address_calculated
+	array_obj_ref_1091_Sample
+	array_obj_ref_1091_Update
+	type_cast_1093_Sample
+	type_cast_1093_Update
+	type_cast_1103_sample_start_
+	type_cast_1103_sample_completed_
+	type_cast_1103_update_start_
+	type_cast_1103_update_completed_
+	array_obj_ref_1098_sample_start_
+	array_obj_ref_1098_sample_completed_
+	array_obj_ref_1098_update_start_
+	array_obj_ref_1098_update_completed_
+	array_obj_ref_1098_word_address_calculated
+	array_obj_ref_1098_root_address_calculated
+	array_obj_ref_1098_offset_calculated
+	array_obj_ref_1098_final_index_sum_regn_update_start
+	array_obj_ref_1098_final_index_sum_regn_Update
+	array_obj_ref_1098_base_plus_offset
+	array_obj_ref_1098_word_addrgen
+	array_obj_ref_1098_Sample
+	array_obj_ref_1098_Update
+	array_obj_ref_1101_sample_start_
+	array_obj_ref_1101_sample_completed_
+	array_obj_ref_1101_update_start_
+	array_obj_ref_1101_update_completed_
+	array_obj_ref_1101_word_address_calculated
+	array_obj_ref_1101_root_address_calculated
+	array_obj_ref_1101_Sample
+	array_obj_ref_1101_Update
+	type_cast_1103_Sample
+	type_cast_1103_Update
+	type_cast_1113_sample_start_
+	type_cast_1113_sample_completed_
+	type_cast_1113_update_start_
+	type_cast_1113_update_completed_
+	array_obj_ref_1108_sample_start_
+	array_obj_ref_1108_sample_completed_
+	array_obj_ref_1108_update_start_
+	array_obj_ref_1108_update_completed_
+	array_obj_ref_1108_word_address_calculated
+	array_obj_ref_1108_root_address_calculated
+	array_obj_ref_1108_offset_calculated
+	array_obj_ref_1108_final_index_sum_regn_update_start
+	array_obj_ref_1108_final_index_sum_regn_Update
+	array_obj_ref_1108_base_plus_offset
+	array_obj_ref_1108_word_addrgen
+	array_obj_ref_1108_Sample
+	array_obj_ref_1108_Update
+	array_obj_ref_1111_sample_start_
+	array_obj_ref_1111_sample_completed_
+	array_obj_ref_1111_update_start_
+	array_obj_ref_1111_update_completed_
+	array_obj_ref_1111_word_address_calculated
+	array_obj_ref_1111_root_address_calculated
+	array_obj_ref_1111_Sample
+	array_obj_ref_1111_Update
+	type_cast_1113_Sample
+	type_cast_1113_Update
+	type_cast_1123_sample_start_
+	type_cast_1123_sample_completed_
+	type_cast_1123_update_start_
+	type_cast_1123_update_completed_
+	array_obj_ref_1118_sample_start_
+	array_obj_ref_1118_sample_completed_
+	array_obj_ref_1118_update_start_
+	array_obj_ref_1118_update_completed_
+	array_obj_ref_1118_word_address_calculated
+	array_obj_ref_1118_root_address_calculated
+	array_obj_ref_1118_offset_calculated
+	array_obj_ref_1118_final_index_sum_regn_update_start
+	array_obj_ref_1118_final_index_sum_regn_Update
+	array_obj_ref_1118_base_plus_offset
+	array_obj_ref_1118_word_addrgen
+	array_obj_ref_1118_Sample
+	array_obj_ref_1118_Update
+	array_obj_ref_1121_sample_start_
+	array_obj_ref_1121_sample_completed_
+	array_obj_ref_1121_update_start_
+	array_obj_ref_1121_update_completed_
+	array_obj_ref_1121_word_address_calculated
+	array_obj_ref_1121_root_address_calculated
+	array_obj_ref_1121_Sample
+	array_obj_ref_1121_Update
+	type_cast_1123_Sample
+	type_cast_1123_Update
+	type_cast_1133_sample_start_
+	type_cast_1133_sample_completed_
+	type_cast_1133_update_start_
+	type_cast_1133_update_completed_
+	array_obj_ref_1128_sample_start_
+	array_obj_ref_1128_sample_completed_
+	array_obj_ref_1128_update_start_
+	array_obj_ref_1128_update_completed_
+	array_obj_ref_1128_word_address_calculated
+	array_obj_ref_1128_root_address_calculated
+	array_obj_ref_1128_offset_calculated
+	array_obj_ref_1128_final_index_sum_regn_update_start
+	array_obj_ref_1128_final_index_sum_regn_Update
+	array_obj_ref_1128_base_plus_offset
+	array_obj_ref_1128_word_addrgen
+	array_obj_ref_1128_Sample
+	array_obj_ref_1128_Update
+	array_obj_ref_1131_sample_start_
+	array_obj_ref_1131_sample_completed_
+	array_obj_ref_1131_update_start_
+	array_obj_ref_1131_update_completed_
+	array_obj_ref_1131_word_address_calculated
+	array_obj_ref_1131_root_address_calculated
+	array_obj_ref_1131_Sample
+	array_obj_ref_1131_Update
+	type_cast_1133_Sample
+	type_cast_1133_Update
+	type_cast_1143_sample_start_
+	type_cast_1143_sample_completed_
+	type_cast_1143_update_start_
+	type_cast_1143_update_completed_
+	array_obj_ref_1138_sample_start_
+	array_obj_ref_1138_sample_completed_
+	array_obj_ref_1138_update_start_
+	array_obj_ref_1138_update_completed_
+	array_obj_ref_1138_word_address_calculated
+	array_obj_ref_1138_root_address_calculated
+	array_obj_ref_1138_offset_calculated
+	array_obj_ref_1138_final_index_sum_regn_update_start
+	array_obj_ref_1138_final_index_sum_regn_Update
+	array_obj_ref_1138_base_plus_offset
+	array_obj_ref_1138_word_addrgen
+	array_obj_ref_1138_Sample
+	array_obj_ref_1138_Update
+	array_obj_ref_1141_sample_start_
+	array_obj_ref_1141_sample_completed_
+	array_obj_ref_1141_update_start_
+	array_obj_ref_1141_update_completed_
+	array_obj_ref_1141_word_address_calculated
+	array_obj_ref_1141_root_address_calculated
+	array_obj_ref_1141_Sample
+	array_obj_ref_1141_Update
+	type_cast_1143_Sample
+	type_cast_1143_Update
+	type_cast_1149_sample_start_
+	type_cast_1149_sample_completed_
+	type_cast_1149_update_start_
+	type_cast_1149_update_completed_
+	type_cast_1149_Sample
+	type_cast_1149_Update
+	type_cast_1155_sample_start_
+	type_cast_1155_sample_completed_
+	type_cast_1155_update_start_
+	type_cast_1155_update_completed_
+	type_cast_1155_Sample
+	type_cast_1155_Update
+	type_cast_1161_sample_start_
+	type_cast_1161_sample_completed_
+	type_cast_1161_update_start_
+	type_cast_1161_update_completed_
+	type_cast_1161_Sample
+	type_cast_1161_Update
+	type_cast_1167_sample_start_
+	type_cast_1167_sample_completed_
+	type_cast_1167_update_start_
+	type_cast_1167_update_completed_
+	type_cast_1167_Sample
+	type_cast_1167_Update
+	type_cast_1173_sample_start_
+	type_cast_1173_sample_completed_
+	type_cast_1173_update_start_
+	type_cast_1173_update_completed_
+	type_cast_1173_Sample
+	type_cast_1173_Update
+	type_cast_1179_sample_start_
+	type_cast_1179_sample_completed_
+	type_cast_1179_update_start_
+	type_cast_1179_update_completed_
+	type_cast_1179_Sample
+	type_cast_1179_Update
+	type_cast_1185_sample_start_
+	type_cast_1185_sample_completed_
+	type_cast_1185_update_start_
+	type_cast_1185_update_completed_
+	type_cast_1185_Sample
+	type_cast_1185_Update
+	type_cast_1191_sample_start_
+	type_cast_1191_sample_completed_
+	type_cast_1191_update_start_
+	type_cast_1191_update_completed_
+	type_cast_1191_Sample
+	type_cast_1191_Update
+	type_cast_1197_sample_start_
+	type_cast_1197_sample_completed_
+	type_cast_1197_update_start_
+	type_cast_1197_update_completed_
+	type_cast_1197_Sample
+	type_cast_1197_Update
+	type_cast_1203_sample_start_
+	type_cast_1203_sample_completed_
+	type_cast_1203_update_start_
+	type_cast_1203_update_completed_
+	type_cast_1203_Sample
+	type_cast_1203_Update
+	type_cast_1209_sample_start_
+	type_cast_1209_sample_completed_
+	type_cast_1209_update_start_
+	type_cast_1209_update_completed_
+	type_cast_1209_Sample
+	type_cast_1209_Update
+	type_cast_1215_sample_start_
+	type_cast_1215_sample_completed_
+	type_cast_1215_update_start_
+	type_cast_1215_update_completed_
+	type_cast_1215_Sample
+	type_cast_1215_Update
+	type_cast_1221_sample_start_
+	type_cast_1221_sample_completed_
+	type_cast_1221_update_start_
+	type_cast_1221_update_completed_
+	type_cast_1221_Sample
+	type_cast_1221_Update
+	type_cast_1227_sample_start_
+	type_cast_1227_sample_completed_
+	type_cast_1227_update_start_
+	type_cast_1227_update_completed_
+	type_cast_1227_Sample
+	type_cast_1227_Update
+	type_cast_1233_sample_start_
+	type_cast_1233_sample_completed_
+	type_cast_1233_Sample
+Info: reducing Control-path 
+Info: finding nucleii 
+Info:  Total number of strongly-connected-components is 197
+Info: SCC 0
+	e_131
+Info: SCC 1
+	e_124
+Info: SCC 2
+	e_128
+Info: SCC 3
+	e_30
+Info: SCC 4
+	e_113
+Info: SCC 5
+	e_106
+Info: SCC 6
+	e_112
+Info: SCC 7
+	e_170
+Info: SCC 8
+	e_169
+Info: SCC 9
+	e_150
+Info: SCC 10
+	e_59
+Info: SCC 11
+	e_52
+Info: SCC 12
+	e_58
+Info: SCC 13
+	e_50
+Info: SCC 14
+	e_43
+Info: SCC 15
+	e_47
+Info: SCC 16
+	e_93
+Info: SCC 17
+	e_95
+Info: SCC 18
+	e_88
+Info: SCC 19
+	e_94
+Info: SCC 20
+	e_28
+Info: SCC 21
+	e_27
+Info: SCC 22
+	e_179
+Info: SCC 23
+	e_178
+Info: SCC 24
+	e_162
+Info: SCC 25
+	e_176
+Info: SCC 26
+	e_175
+Info: SCC 27
+	e_156
+Info: SCC 28
+	e_55
+Info: SCC 29
+	e_54
+Info: SCC 30
+	e_129
+Info: SCC 31
+	e_46
+Info: SCC 32
+	e_45
+Info: SCC 33
+	e_196
+Info: SCC 34
+	e_26
+Info: SCC 35
+	e_1
+Info: SCC 36
+	e_44
+Info: SCC 37
+	e_53
+Info: SCC 38
+	e_62
+Info: SCC 39
+	e_71
+Info: SCC 40
+	e_2
+Info: SCC 41
+	e_3
+Info: SCC 42
+	e_64
+Info: SCC 43
+	e_63
+Info: SCC 44
+	e_48
+Info: SCC 45
+	e_120
+Info: SCC 46
+	e_149
+Info: SCC 47
+	e_142
+Info: SCC 48
+	e_146
+Info: SCC 49
+	e_194
+Info: SCC 50
+	e_193
+Info: SCC 51
+	e_192
+Info: SCC 52
+	e_57
+Info: SCC 53
+	e_75
+Info: SCC 54
+	e_191
+Info: SCC 55
+	e_190
+Info: SCC 56
+	e_186
+Info: SCC 57
+	e_189
+Info: SCC 58
+	e_66
+Info: SCC 59
+	e_49
+Info: SCC 60
+	e_89
+Info: SCC 61
+	e_80
+Info: SCC 62
+	e_98
+Info: SCC 63
+	e_107
+Info: SCC 64
+	e_4
+Info: SCC 65
+	e_5
+Info: SCC 66
+	e_143
+Info: SCC 67
+	e_125
+Info: SCC 68
+	e_134
+Info: SCC 69
+	e_116
+Info: SCC 70
+	e_6
+Info: SCC 71
+	e_102
+Info: SCC 72
+	e_104
+Info: SCC 73
+	e_97
+Info: SCC 74
+	e_103
+Info: SCC 75
+	e_161
+Info: SCC 76
+	e_160
+Info: SCC 77
+	e_60
+Info: SCC 78
+	e_56
+Info: SCC 79
+	e_68
+Info: SCC 80
+	e_61
+Info: SCC 81
+	e_67
+Info: SCC 82
+	e_167
+Info: SCC 83
+	e_166
+Info: SCC 84
+	e_69
+Info: SCC 85
+	e_65
+Info: SCC 86
+	e_8
+Info: SCC 87
+	e_10
+Info: SCC 88
+	e_9
+Info: SCC 89
+	e_14
+Info: SCC 90
+	e_7
+Info: SCC 91
+	e_11
+Info: SCC 92
+	e_12
+Info: SCC 93
+	e_13
+Info: SCC 94
+	e_155
+Info: SCC 95
+	e_154
+Info: SCC 96
+	e_15
+Info: SCC 97
+	e_17
+Info: SCC 98
+	e_19
+Info: SCC 99
+	e_18
+Info: SCC 100
+	e_39
+Info: SCC 101
+	e_138
+Info: SCC 102
+	e_140
+Info: SCC 103
+	e_133
+Info: SCC 104
+	e_139
+Info: SCC 105
+	e_41
+Info: SCC 106
+	e_34
+Info: SCC 107
+	e_40
+Info: SCC 108
+	e_73
+Info: SCC 109
+	e_72
+Info: SCC 110
+	e_77
+Info: SCC 111
+	e_70
+Info: SCC 112
+	e_74
+Info: SCC 113
+	e_76
+Info: SCC 114
+	e_173
+Info: SCC 115
+	e_172
+Info: SCC 116
+	e_78
+Info: SCC 117
+	e_42
+Info: SCC 118
+	e_182
+Info: SCC 119
+	e_181
+Info: SCC 120
+	e_168
+Info: SCC 121
+	e_82
+Info: SCC 122
+	e_81
+Info: SCC 123
+	e_86
+Info: SCC 124
+	e_79
+Info: SCC 125
+	e_83
+Info: SCC 126
+	e_84
+Info: SCC 127
+	e_85
+Info: SCC 128
+	e_152
+Info: SCC 129
+	e_151
+Info: SCC 130
+	e_87
+Info: SCC 131
+	e_91
+Info: SCC 132
+	e_90
+Info: SCC 133
+	e_92
+Info: SCC 134
+	e_158
+Info: SCC 135
+	e_157
+Info: SCC 136
+	e_96
+Info: SCC 137
+	e_100
+Info: SCC 138
+	e_99
+Info: SCC 139
+	e_101
+Info: SCC 140
+	e_132
+Info: SCC 141
+	e_164
+Info: SCC 142
+	e_163
+Info: SCC 143
+	e_105
+Info: SCC 144
+	e_109
+Info: SCC 145
+	e_108
+Info: SCC 146
+	e_110
+Info: SCC 147
+	e_111
+Info: SCC 148
+	e_114
+Info: SCC 149
+	e_127
+Info: SCC 150
+	e_126
+Info: SCC 151
+	e_188
+Info: SCC 152
+	e_187
+Info: SCC 153
+	e_180
+Info: SCC 154
+	e_195
+Info: SCC 155
+	e_51
+Info: SCC 156
+	e_165
+Info: SCC 157
+	e_141
+Info: SCC 158
+	e_130
+Info: SCC 159
+	e_35
+Info: SCC 160
+	e_137
+Info: SCC 161
+	e_38
+Info: SCC 162
+	e_122
+Info: SCC 163
+	e_115
+Info: SCC 164
+	e_119
+Info: SCC 165
+	e_185
+Info: SCC 166
+	e_184
+Info: SCC 167
+	e_171
+Info: SCC 168
+	e_32
+Info: SCC 169
+	e_25
+Info: SCC 170
+	e_31
+Info: SCC 171
+	e_123
+Info: SCC 172
+	e_153
+Info: SCC 173
+	e_37
+Info: SCC 174
+	e_36
+Info: SCC 175
+	e_29
+Info: SCC 176
+	e_136
+Info: SCC 177
+	e_135
+Info: SCC 178
+	e_33
+Info: SCC 179
+	e_118
+Info: SCC 180
+	e_117
+Info: SCC 181
+	e_145
+Info: SCC 182
+	e_144
+Info: SCC 183
+	e_147
+Info: SCC 184
+	e_148
+Info: SCC 185
+	e_174
+Info: SCC 186
+	e_159
+Info: SCC 187
+	e_121
+Info: SCC 188
+	e_177
+Info: SCC 189
+	e_183
+Info: SCC 190
+	e_23
+Info: SCC 191
+	e_16
+Info: SCC 192
+	e_20
+Info: SCC 193
+	e_21
+Info: SCC 194
+	e_22
+Info: SCC 195
+	e_24
+Info: SCC 196
+	e_0
+Warning: all elements not reachable from entry in region branch_block_stmt_1416/do_while_stmt_1417/do_while_stmt_1417_loop_body
+	 un-visited elements
+	back_edge_to_loop_body
+	first_time_through_loop_body
+	loop_body_start
+	condition_evaluated
+	call_stmt_1443_update_start_
+	call_stmt_1443_update_completed_
+	call_stmt_1443_Update
+	WPIPE_env_mem_response_1_1444_sample_start_
+	WPIPE_env_mem_response_1_1444_sample_completed_
+	WPIPE_env_mem_response_1_1444_update_start_
+	WPIPE_env_mem_response_1_1444_update_completed_
+	WPIPE_env_mem_response_1_1444_Sample
+	WPIPE_env_mem_response_1_1444_Update
+	loop_body_delay_to_condition_start
+	$exit
+Warning: exit not reachable from every element in region branch_block_stmt_1416/do_while_stmt_1417/do_while_stmt_1417_loop_body
+	 un-visited elements
+	back_edge_to_loop_body
+	first_time_through_loop_body
+	loop_body_start
+	condition_evaluated
+	RPIPE_env_mem_request_1_1420_sample_start_
+	RPIPE_env_mem_request_1_1420_sample_completed_
+	RPIPE_env_mem_request_1_1420_update_start_
+	RPIPE_env_mem_request_1_1420_update_completed_
+	RPIPE_env_mem_request_1_1420_Sample
+	RPIPE_env_mem_request_1_1420_Update
+	call_stmt_1443_sample_start_
+	call_stmt_1443_sample_completed_
+	call_stmt_1443_Sample
+	loop_body_delay_to_condition_start
+	$entry
+Info: removed redundant marked link: [call_stmt_1443_update_start_] o<-& [call_stmt_1443_update_completed_]
+Info: reducing Control-path 
+Info: finding nucleii 
+Info:  Total number of strongly-connected-components is 16
+Info: SCC 0
+	e_0
+Info: SCC 1
+	e_1
+Info: SCC 2
+	e_2
+Info: SCC 3
+	e_24
+Info: SCC 4
+	e_3
+Info: SCC 5
+	e_4
+Info: SCC 6
+	e_22
+Info: SCC 7
+	e_23
+Info: SCC 8
+	e_5
+Info: SCC 9
+	e_6
+Info: SCC 10
+	e_7
+Info: SCC 11
+	e_8
+Info: SCC 12
+	e_10
+	e_11
+	e_12
+	e_13
+	e_14
+	e_16
+Info: SCC 13
+	e_21
+Info: SCC 14
+	e_9
+Info: SCC 15
+	e_15
+	e_17
+	e_18
+	e_19
+	e_20
+Warning: all elements not reachable from entry in region branch_block_stmt_1452/do_while_stmt_1453/do_while_stmt_1453_loop_body
+	 un-visited elements
+	back_edge_to_loop_body
+	first_time_through_loop_body
+	loop_body_start
+	condition_evaluated
+	call_stmt_1479_update_start_
+	call_stmt_1479_update_completed_
+	call_stmt_1479_Update
+	WPIPE_env_mem_response_2_1480_sample_start_
+	WPIPE_env_mem_response_2_1480_sample_completed_
+	WPIPE_env_mem_response_2_1480_update_start_
+	WPIPE_env_mem_response_2_1480_update_completed_
+	WPIPE_env_mem_response_2_1480_Sample
+	WPIPE_env_mem_response_2_1480_Update
+	loop_body_delay_to_condition_start
+	$exit
+Warning: exit not reachable from every element in region branch_block_stmt_1452/do_while_stmt_1453/do_while_stmt_1453_loop_body
+	 un-visited elements
+	back_edge_to_loop_body
+	first_time_through_loop_body
+	loop_body_start
+	condition_evaluated
+	RPIPE_env_mem_request_2_1456_sample_start_
+	RPIPE_env_mem_request_2_1456_sample_completed_
+	RPIPE_env_mem_request_2_1456_update_start_
+	RPIPE_env_mem_request_2_1456_update_completed_
+	RPIPE_env_mem_request_2_1456_Sample
+	RPIPE_env_mem_request_2_1456_Update
+	call_stmt_1479_sample_start_
+	call_stmt_1479_sample_completed_
+	call_stmt_1479_Sample
+	loop_body_delay_to_condition_start
+	$entry
+Info: removed redundant marked link: [call_stmt_1479_update_start_] o<-& [call_stmt_1479_update_completed_]
+Info: reducing Control-path 
+Info: finding nucleii 
+Info:  Total number of strongly-connected-components is 16
+Info: SCC 0
+	e_0
+Info: SCC 1
+	e_1
+Info: SCC 2
+	e_2
+Info: SCC 3
+	e_24
+Info: SCC 4
+	e_3
+Info: SCC 5
+	e_4
+Info: SCC 6
+	e_22
+Info: SCC 7
+	e_23
+Info: SCC 8
+	e_5
+Info: SCC 9
+	e_6
+Info: SCC 10
+	e_7
+Info: SCC 11
+	e_8
+Info: SCC 12
+	e_10
+	e_11
+	e_12
+	e_13
+	e_14
+	e_16
+Info: SCC 13
+	e_21
+Info: SCC 14
+	e_9
+Info: SCC 15
+	e_15
+	e_17
+	e_18
+	e_19
+	e_20
+Info: RPIPE_acc_mem_request_1_85_inst included in vcInport group 0
+Info: WPIPE_acc_mem_response_1_109_inst included in vcOutport group 0
+Info: call_stmt_108_call included in vcCall group 0
+Info: ADD_u16_u16_1255_inst included in vcBinarySplitOperator group 0
+Info: ADD_u5_u5_1320_inst included in vcBinarySplitOperator group 1
+Info: ADD_u6_u6_1298_inst included in vcBinarySplitOperator group 2
+Info: ADD_u6_u6_1331_inst included in vcBinarySplitOperator group 3
+Info: ADD_u7_u7_1311_inst included in vcBinarySplitOperator group 4
+Info: EQ_u16_u1_1251_inst included in vcBinarySplitOperator group 5
+Info: EQ_u2_u1_1269_inst included in vcBinarySplitOperator group 6
+Info: EQ_u5_u1_1328_inst included in vcBinarySplitOperator group 7
+Info: EQ_u6_u1_1351_inst included in vcBinarySplitOperator group 8
+Info: RPIPE_start_accelerator_1246_inst included in vcInport group 0
+Info: ULT_u5_u1_1317_inst included in vcBinarySplitOperator group 9
+Info: ULT_u7_u1_1399_inst included in vcBinarySplitOperator group 10
+Info: WPIPE_accelerator_done_1401_inst included in vcOutport group 0
+Info: WPIPE_read_sums_1364_inst included in vcOutport group 1
+Info: call_stmt_1259_call included in vcCall group 0
+Info: call_stmt_1307_call included in vcCall group 1
+Info: call_stmt_1339_call included in vcCall group 2
+Info: call_stmt_1347_call included in vcCall group 3
+Info: call_stmt_1363_call included in vcCall group 4
+Info: call_stmt_1379_call included in vcCall group 5
+Info: call_stmt_1395_call included in vcCall group 5
+Info: array_obj_ref_62_index_0_scale included in vcBinarySplitOperator group 0
+Info: array_obj_ref_62_index_sum_1 included in vcBinarySplitOperator group 1
+Info: array_obj_ref_62_load_0 included in vcLoad group 0
+Info: array_obj_ref_67_index_0_scale included in vcBinarySplitOperator group 0
+Info: array_obj_ref_67_index_sum_1 included in vcBinarySplitOperator group 2
+Info: array_obj_ref_67_store_0 included in vcStore group 0
+Info: ADD_u2_u2_595_inst included in vcBinarySplitOperator group 0
+Info: EQ_u2_u1_590_inst included in vcBinarySplitOperator group 1
+Info: EQ_u5_u1_602_inst included in vcBinarySplitOperator group 2
+Info: ADD_u5_u5_142_inst included in vcBinarySplitOperator group 0
+Info: ADD_u5_u5_150_inst included in vcBinarySplitOperator group 1
+Info: ADD_u6_u6_161_inst included in vcBinarySplitOperator group 2
+Info: EQ_u5_u1_158_inst included in vcBinarySplitOperator group 3
+Info: ULE_u5_u1_147_inst included in vcBinarySplitOperator group 4
+Info: ULT_u5_u1_186_inst included in vcBinarySplitOperator group 5
+Info: array_obj_ref_180_index_0_scale included in vcBinarySplitOperator group 6
+Info: array_obj_ref_180_index_sum_1 included in vcBinarySplitOperator group 7
+Info: array_obj_ref_180_store_0 included in vcStore group 0
+Info: call_stmt_171_call included in vcCall group 0
+Info: ADD_u5_u5_501_inst included in vcBinarySplitOperator group 0
+Info: ADD_u6_u6_216_inst included in vcBinarySplitOperator group 1
+Info: ADD_u6_u6_222_inst included in vcBinarySplitOperator group 2
+Info: ADD_u6_u6_228_inst included in vcBinarySplitOperator group 3
+Info: ADD_u6_u6_234_inst included in vcBinarySplitOperator group 4
+Info: EQ_u5_u1_202_inst included in vcBinarySplitOperator group 5
+Info: array_obj_ref_259_store_0 included in vcStore group 0
+Info: array_obj_ref_272_store_0 included in vcStore group 0
+Info: array_obj_ref_285_store_0 included in vcStore group 0
+Info: array_obj_ref_298_store_0 included in vcStore group 0
+Info: array_obj_ref_304_store_0 included in vcStore group 1
+Info: array_obj_ref_317_store_0 included in vcStore group 0
+Info: array_obj_ref_323_store_0 included in vcStore group 1
+Info: array_obj_ref_336_store_0 included in vcStore group 0
+Info: array_obj_ref_342_store_0 included in vcStore group 1
+Info: array_obj_ref_355_store_0 included in vcStore group 0
+Info: array_obj_ref_361_store_0 included in vcStore group 1
+Info: array_obj_ref_374_store_0 included in vcStore group 0
+Info: array_obj_ref_380_store_0 included in vcStore group 1
+Info: array_obj_ref_393_store_0 included in vcStore group 0
+Info: array_obj_ref_399_store_0 included in vcStore group 1
+Info: array_obj_ref_412_store_0 included in vcStore group 0
+Info: array_obj_ref_418_store_0 included in vcStore group 1
+Info: array_obj_ref_431_store_0 included in vcStore group 0
+Info: array_obj_ref_437_store_0 included in vcStore group 1
+Info: array_obj_ref_450_store_0 included in vcStore group 0
+Info: array_obj_ref_456_store_0 included in vcStore group 1
+Info: array_obj_ref_469_store_0 included in vcStore group 1
+Info: array_obj_ref_482_store_0 included in vcStore group 1
+Info: array_obj_ref_495_store_0 included in vcStore group 1
+Info: array_obj_ref_512_index_offset included in vcBinarySplitOperator group 6
+Info: array_obj_ref_512_store_0 included in vcStore group 0
+Info: array_obj_ref_523_index_offset included in vcBinarySplitOperator group 7
+Info: array_obj_ref_523_store_0 included in vcStore group 0
+Info: array_obj_ref_528_index_offset included in vcBinarySplitOperator group 8
+Info: array_obj_ref_528_store_0 included in vcStore group 1
+Info: array_obj_ref_539_index_offset included in vcBinarySplitOperator group 9
+Info: array_obj_ref_539_store_0 included in vcStore group 0
+Info: array_obj_ref_544_index_offset included in vcBinarySplitOperator group 10
+Info: array_obj_ref_544_store_0 included in vcStore group 1
+Info: array_obj_ref_555_index_offset included in vcBinarySplitOperator group 11
+Info: array_obj_ref_555_store_0 included in vcStore group 0
+Info: array_obj_ref_560_index_offset included in vcBinarySplitOperator group 12
+Info: array_obj_ref_560_store_0 included in vcStore group 1
+Info: array_obj_ref_571_index_offset included in vcBinarySplitOperator group 13
+Info: array_obj_ref_571_store_0 included in vcStore group 1
+Info: call_stmt_255_call included in vcCall group 0
+Info: call_stmt_268_call included in vcCall group 0
+Info: call_stmt_281_call included in vcCall group 0
+Info: call_stmt_294_call included in vcCall group 0
+Info: call_stmt_313_call included in vcCall group 0
+Info: call_stmt_332_call included in vcCall group 0
+Info: call_stmt_351_call included in vcCall group 0
+Info: call_stmt_370_call included in vcCall group 0
+Info: call_stmt_389_call included in vcCall group 0
+Info: call_stmt_408_call included in vcCall group 0
+Info: call_stmt_427_call included in vcCall group 0
+Info: call_stmt_446_call included in vcCall group 0
+Info: call_stmt_465_call included in vcCall group 0
+Info: call_stmt_478_call included in vcCall group 0
+Info: call_stmt_491_call included in vcCall group 0
+Info: call_stmt_509_call included in vcCall group 0
+Info: call_stmt_520_call included in vcCall group 0
+Info: call_stmt_536_call included in vcCall group 0
+Info: call_stmt_552_call included in vcCall group 0
+Info: call_stmt_568_call included in vcCall group 0
+Info: ADD_u16_u16_838_inst included in vcBinarySplitOperator group 0
+Info: ADD_u16_u16_844_inst included in vcBinarySplitOperator group 1
+Info: ADD_u16_u16_850_inst included in vcBinarySplitOperator group 2
+Info: ADD_u16_u16_856_inst included in vcBinarySplitOperator group 3
+Info: ADD_u16_u16_862_inst included in vcBinarySplitOperator group 4
+Info: ADD_u16_u16_868_inst included in vcBinarySplitOperator group 5
+Info: ADD_u16_u16_874_inst included in vcBinarySplitOperator group 6
+Info: ADD_u16_u16_880_inst included in vcBinarySplitOperator group 7
+Info: ADD_u16_u16_886_inst included in vcBinarySplitOperator group 8
+Info: ADD_u16_u16_892_inst included in vcBinarySplitOperator group 9
+Info: ADD_u16_u16_898_inst included in vcBinarySplitOperator group 10
+Info: ADD_u16_u16_904_inst included in vcBinarySplitOperator group 11
+Info: ADD_u16_u16_910_inst included in vcBinarySplitOperator group 12
+Info: ADD_u16_u16_916_inst included in vcBinarySplitOperator group 13
+Info: ADD_u16_u16_922_inst included in vcBinarySplitOperator group 14
+Info: ADD_u2_u2_659_inst included in vcBinarySplitOperator group 15
+Info: ADD_u2_u2_671_inst included in vcBinarySplitOperator group 16
+Info: EQ_u2_u1_640_inst included in vcBinarySplitOperator group 17
+Info: EQ_u2_u1_666_inst included in vcBinarySplitOperator group 18
+Info: MUL_u16_u16_682_inst included in vcBinarySplitOperator group 19
+Info: MUL_u16_u16_692_inst included in vcBinarySplitOperator group 20
+Info: MUL_u16_u16_702_inst included in vcBinarySplitOperator group 21
+Info: MUL_u16_u16_712_inst included in vcBinarySplitOperator group 22
+Info: MUL_u16_u16_722_inst included in vcBinarySplitOperator group 23
+Info: MUL_u16_u16_732_inst included in vcBinarySplitOperator group 24
+Info: MUL_u16_u16_742_inst included in vcBinarySplitOperator group 25
+Info: MUL_u16_u16_752_inst included in vcBinarySplitOperator group 26
+Info: MUL_u16_u16_762_inst included in vcBinarySplitOperator group 27
+Info: MUL_u16_u16_772_inst included in vcBinarySplitOperator group 28
+Info: MUL_u16_u16_782_inst included in vcBinarySplitOperator group 29
+Info: MUL_u16_u16_792_inst included in vcBinarySplitOperator group 30
+Info: MUL_u16_u16_802_inst included in vcBinarySplitOperator group 31
+Info: MUL_u16_u16_812_inst included in vcBinarySplitOperator group 32
+Info: MUL_u16_u16_822_inst included in vcBinarySplitOperator group 33
+Info: MUL_u16_u16_832_inst included in vcBinarySplitOperator group 34
+Info: SUB_u2_u2_645_inst included in vcBinarySplitOperator group 35
+Info: SUB_u2_u2_655_inst included in vcBinarySplitOperator group 36
+Info: UGE_u2_u1_652_inst included in vcBinarySplitOperator group 37
+Info: array_obj_ref_678_index_offset included in vcBinarySplitOperator group 38
+Info: array_obj_ref_678_load_0 included in vcLoad group 0
+Info: array_obj_ref_681_load_0 included in vcLoad group 1
+Info: array_obj_ref_688_index_offset included in vcBinarySplitOperator group 39
+Info: array_obj_ref_688_load_0 included in vcLoad group 0
+Info: array_obj_ref_691_load_0 included in vcLoad group 1
+Info: array_obj_ref_698_index_offset included in vcBinarySplitOperator group 40
+Info: array_obj_ref_698_load_0 included in vcLoad group 0
+Info: array_obj_ref_701_load_0 included in vcLoad group 1
+Info: array_obj_ref_708_index_offset included in vcBinarySplitOperator group 41
+Info: array_obj_ref_708_load_0 included in vcLoad group 0
+Info: array_obj_ref_711_load_0 included in vcLoad group 1
+Info: array_obj_ref_718_index_offset included in vcBinarySplitOperator group 42
+Info: array_obj_ref_718_load_0 included in vcLoad group 0
+Info: array_obj_ref_721_load_0 included in vcLoad group 1
+Info: array_obj_ref_728_index_offset included in vcBinarySplitOperator group 43
+Info: array_obj_ref_728_load_0 included in vcLoad group 0
+Info: array_obj_ref_731_load_0 included in vcLoad group 1
+Info: array_obj_ref_738_index_offset included in vcBinarySplitOperator group 44
+Info: array_obj_ref_738_load_0 included in vcLoad group 0
+Info: array_obj_ref_741_load_0 included in vcLoad group 1
+Info: array_obj_ref_748_index_offset included in vcBinarySplitOperator group 45
+Info: array_obj_ref_748_load_0 included in vcLoad group 0
+Info: array_obj_ref_751_load_0 included in vcLoad group 1
+Info: array_obj_ref_758_index_offset included in vcBinarySplitOperator group 46
+Info: array_obj_ref_758_load_0 included in vcLoad group 0
+Info: array_obj_ref_761_load_0 included in vcLoad group 1
+Info: array_obj_ref_768_index_offset included in vcBinarySplitOperator group 47
+Info: array_obj_ref_768_load_0 included in vcLoad group 0
+Info: array_obj_ref_771_load_0 included in vcLoad group 1
+Info: array_obj_ref_778_index_offset included in vcBinarySplitOperator group 48
+Info: array_obj_ref_778_load_0 included in vcLoad group 0
+Info: array_obj_ref_781_load_0 included in vcLoad group 1
+Info: array_obj_ref_788_index_offset included in vcBinarySplitOperator group 49
+Info: array_obj_ref_788_load_0 included in vcLoad group 0
+Info: array_obj_ref_791_load_0 included in vcLoad group 1
+Info: array_obj_ref_798_index_offset included in vcBinarySplitOperator group 50
+Info: array_obj_ref_798_load_0 included in vcLoad group 0
+Info: array_obj_ref_801_load_0 included in vcLoad group 1
+Info: array_obj_ref_808_index_offset included in vcBinarySplitOperator group 51
+Info: array_obj_ref_808_load_0 included in vcLoad group 0
+Info: array_obj_ref_811_load_0 included in vcLoad group 1
+Info: array_obj_ref_818_index_offset included in vcBinarySplitOperator group 52
+Info: array_obj_ref_818_load_0 included in vcLoad group 0
+Info: array_obj_ref_821_load_0 included in vcLoad group 1
+Info: array_obj_ref_828_index_offset included in vcBinarySplitOperator group 53
+Info: array_obj_ref_828_load_0 included in vcLoad group 0
+Info: array_obj_ref_831_load_0 included in vcLoad group 1
+Info: ADD_u16_u16_1148_inst included in vcBinarySplitOperator group 0
+Info: ADD_u16_u16_1154_inst included in vcBinarySplitOperator group 1
+Info: ADD_u16_u16_1160_inst included in vcBinarySplitOperator group 2
+Info: ADD_u16_u16_1166_inst included in vcBinarySplitOperator group 3
+Info: ADD_u16_u16_1172_inst included in vcBinarySplitOperator group 4
+Info: ADD_u16_u16_1178_inst included in vcBinarySplitOperator group 5
+Info: ADD_u16_u16_1184_inst included in vcBinarySplitOperator group 6
+Info: ADD_u16_u16_1190_inst included in vcBinarySplitOperator group 7
+Info: ADD_u16_u16_1196_inst included in vcBinarySplitOperator group 8
+Info: ADD_u16_u16_1202_inst included in vcBinarySplitOperator group 9
+Info: ADD_u16_u16_1208_inst included in vcBinarySplitOperator group 10
+Info: ADD_u16_u16_1214_inst included in vcBinarySplitOperator group 11
+Info: ADD_u16_u16_1220_inst included in vcBinarySplitOperator group 12
+Info: ADD_u16_u16_1226_inst included in vcBinarySplitOperator group 13
+Info: ADD_u16_u16_1232_inst included in vcBinarySplitOperator group 14
+Info: ADD_u2_u2_969_inst included in vcBinarySplitOperator group 15
+Info: ADD_u2_u2_981_inst included in vcBinarySplitOperator group 16
+Info: EQ_u2_u1_950_inst included in vcBinarySplitOperator group 17
+Info: EQ_u2_u1_976_inst included in vcBinarySplitOperator group 18
+Info: MUL_u16_u16_1002_inst included in vcBinarySplitOperator group 19
+Info: MUL_u16_u16_1012_inst included in vcBinarySplitOperator group 20
+Info: MUL_u16_u16_1022_inst included in vcBinarySplitOperator group 21
+Info: MUL_u16_u16_1032_inst included in vcBinarySplitOperator group 22
+Info: MUL_u16_u16_1042_inst included in vcBinarySplitOperator group 23
+Info: MUL_u16_u16_1052_inst included in vcBinarySplitOperator group 24
+Info: MUL_u16_u16_1062_inst included in vcBinarySplitOperator group 25
+Info: MUL_u16_u16_1072_inst included in vcBinarySplitOperator group 26
+Info: MUL_u16_u16_1082_inst included in vcBinarySplitOperator group 27
+Info: MUL_u16_u16_1092_inst included in vcBinarySplitOperator group 28
+Info: MUL_u16_u16_1102_inst included in vcBinarySplitOperator group 29
+Info: MUL_u16_u16_1112_inst included in vcBinarySplitOperator group 30
+Info: MUL_u16_u16_1122_inst included in vcBinarySplitOperator group 31
+Info: MUL_u16_u16_1132_inst included in vcBinarySplitOperator group 32
+Info: MUL_u16_u16_1142_inst included in vcBinarySplitOperator group 33
+Info: MUL_u16_u16_992_inst included in vcBinarySplitOperator group 34
+Info: SUB_u2_u2_955_inst included in vcBinarySplitOperator group 35
+Info: SUB_u2_u2_965_inst included in vcBinarySplitOperator group 36
+Info: UGE_u2_u1_962_inst included in vcBinarySplitOperator group 37
+Info: array_obj_ref_1001_load_0 included in vcLoad group 0
+Info: array_obj_ref_1008_index_offset included in vcBinarySplitOperator group 38
+Info: array_obj_ref_1008_load_0 included in vcLoad group 1
+Info: array_obj_ref_1011_load_0 included in vcLoad group 0
+Info: array_obj_ref_1018_index_offset included in vcBinarySplitOperator group 39
+Info: array_obj_ref_1018_load_0 included in vcLoad group 2
+Info: array_obj_ref_1021_load_0 included in vcLoad group 0
+Info: array_obj_ref_1028_index_offset included in vcBinarySplitOperator group 40
+Info: array_obj_ref_1028_load_0 included in vcLoad group 1
+Info: array_obj_ref_1031_load_0 included in vcLoad group 0
+Info: array_obj_ref_1038_index_offset included in vcBinarySplitOperator group 41
+Info: array_obj_ref_1038_load_0 included in vcLoad group 1
+Info: array_obj_ref_1041_load_0 included in vcLoad group 0
+Info: array_obj_ref_1048_index_offset included in vcBinarySplitOperator group 42
+Info: array_obj_ref_1048_load_0 included in vcLoad group 1
+Info: array_obj_ref_1051_load_0 included in vcLoad group 0
+Info: array_obj_ref_1058_index_offset included in vcBinarySplitOperator group 43
+Info: array_obj_ref_1058_load_0 included in vcLoad group 1
+Info: array_obj_ref_1061_load_0 included in vcLoad group 0
+Info: array_obj_ref_1068_index_offset included in vcBinarySplitOperator group 44
+Info: array_obj_ref_1068_load_0 included in vcLoad group 1
+Info: array_obj_ref_1071_load_0 included in vcLoad group 0
+Info: array_obj_ref_1078_index_offset included in vcBinarySplitOperator group 45
+Info: array_obj_ref_1078_load_0 included in vcLoad group 1
+Info: array_obj_ref_1081_load_0 included in vcLoad group 0
+Info: array_obj_ref_1088_index_offset included in vcBinarySplitOperator group 46
+Info: array_obj_ref_1088_load_0 included in vcLoad group 1
+Info: array_obj_ref_1091_load_0 included in vcLoad group 0
+Info: array_obj_ref_1098_index_offset included in vcBinarySplitOperator group 47
+Info: array_obj_ref_1098_load_0 included in vcLoad group 1
+Info: array_obj_ref_1101_load_0 included in vcLoad group 0
+Info: array_obj_ref_1108_index_offset included in vcBinarySplitOperator group 48
+Info: array_obj_ref_1108_load_0 included in vcLoad group 1
+Info: array_obj_ref_1111_load_0 included in vcLoad group 0
+Info: array_obj_ref_1118_index_offset included in vcBinarySplitOperator group 49
+Info: array_obj_ref_1118_load_0 included in vcLoad group 1
+Info: array_obj_ref_1121_load_0 included in vcLoad group 0
+Info: array_obj_ref_1128_index_offset included in vcBinarySplitOperator group 50
+Info: array_obj_ref_1128_load_0 included in vcLoad group 1
+Info: array_obj_ref_1131_load_0 included in vcLoad group 0
+Info: array_obj_ref_1138_index_offset included in vcBinarySplitOperator group 51
+Info: array_obj_ref_1138_load_0 included in vcLoad group 1
+Info: array_obj_ref_1141_load_0 included in vcLoad group 0
+Info: array_obj_ref_988_index_offset included in vcBinarySplitOperator group 52
+Info: array_obj_ref_988_load_0 included in vcLoad group 1
+Info: array_obj_ref_991_load_0 included in vcLoad group 0
+Info: array_obj_ref_998_index_offset included in vcBinarySplitOperator group 53
+Info: array_obj_ref_998_load_0 included in vcLoad group 1
+Info: RPIPE_env_mem_request_1_1420_inst included in vcInport group 0
+Info: WPIPE_env_mem_response_1_1444_inst included in vcOutport group 0
+Info: call_stmt_1443_call included in vcCall group 0
+Info: RPIPE_env_mem_request_2_1456_inst included in vcInport group 0
+Info: WPIPE_env_mem_response_2_1480_inst included in vcOutport group 0
+Info: call_stmt_1479_call included in vcCall group 0
+Info: printing VHDL global package
+Info: printing top-level system VHDL file ahir_system.unformatted_vhdl
+Info: printing VHDL model
+Info: printing VHDL model for module accMemAccessDaemon
+Info: resources used by CP accMemAccessDaemon_CP_248: ff-count=13 (saved 12), mux2-count= 8, and2-count= 0
+Info: estimated buffering for operator RPIPE_acc_mem_request_1_85_inst = 32
+Info: estimated buffering for operator call_stmt_108_call = 44
+Info: estimated buffering for operator call_stmt_108_call (call to accessMem)  = 44
+Info: estimated buffering in module accMemAccessDaemon is 76
+Info: printing VHDL model for module accelerator
+Info: resources used by CP accelerator_CP_6730: ff-count=373 (saved 32), mux2-count= 114, and2-count= 39
+Info: estimated buffering for operator RPIPE_start_accelerator_1246_inst = 16
+Info: estimated buffering for operator W_I_1457_delayed_4_0_1368_inst = 24
+Info: estimated buffering for operator W_I_1_1464_delayed_4_0_1383_inst = 24
+Info: estimated buffering for operator W_J_1458_delayed_4_0_1371_inst = 20
+Info: estimated buffering for operator W_J_1465_delayed_4_0_1386_inst = 20
+Info: estimated buffering for operator W_checkIFour_1462_delayed_4_0_1380_inst = 4
+Info: estimated buffering for operator call_stmt_1259_call = 8
+Info: estimated buffering for operator call_stmt_1259_call (call to initFilter)  = 8
+Info: estimated buffering for operator call_stmt_1307_call = 16
+Info: estimated buffering for operator call_stmt_1307_call (call to initIfMaps)  = 16
+Info: estimated buffering for operator call_stmt_1339_call = 18
+Info: estimated buffering for operator call_stmt_1339_call (call to cal_col_to_be_replaced)  = 18
+Info: estimated buffering for operator call_stmt_1347_call = 29
+Info: estimated buffering for operator call_stmt_1347_call (call to mainAcc)  = 29
+Info: estimated buffering for operator call_stmt_1363_call = 29
+Info: estimated buffering for operator call_stmt_1363_call (call to mainAcc2)  = 29
+Info: estimated buffering for operator call_stmt_1379_call = 44
+Info: estimated buffering for operator call_stmt_1379_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_1395_call = 44
+Info: estimated buffering for operator call_stmt_1395_call (call to accessMem)  = 44
+Info: estimated buffering for operator n_I_1335_1288_buf = 6
+Info: estimated buffering for operator n_J_1324_1283_buf = 5
+Info: estimated buffering for operator n_col_to_be_replaced_1342_1293_buf = 2
+Info: estimated buffering for operator n_ele_1313_1278_buf = 7
+Info: estimated buffering for operator n_iter_1256_1243_buf = 16
+Info: estimated buffering for operator phi_stmt_1239 = 16
+Info: estimated buffering for operator phi_stmt_1273 = 7
+Info: estimated buffering for operator phi_stmt_1279 = 5
+Info: estimated buffering for operator phi_stmt_1284 = 6
+Info: estimated buffering for operator phi_stmt_1289 = 2
+Info: estimated buffering for operator type_cast_1366_inst = 16
+Info: estimated buffering in module accelerator is 384
+Info: printing VHDL model for module accessMem
+Info: resources used by CP accessMem_CP_0: ff-count=101 (saved 14), mux2-count= 46, and2-count= 12
+Info: estimated buffering for operator MUX_77_inst = 16
+Info: estimated buffering for operator W_read_write_bar_1_71_delayed_4_0_70_inst = 4
+Info: estimated buffering for operator array_obj_ref_62_index_0_scale = 7
+Info: estimated buffering for operator array_obj_ref_62_index_sum_1 = 7
+Info: estimated buffering for operator array_obj_ref_62_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_67_index_0_scale = 7
+Info: estimated buffering for operator array_obj_ref_67_index_sum_1 = 7
+Info: estimated buffering in module accessMem is 64
+Warning: shared data-path element in pipelined section has buffering < 2... in data-path for module accessMem
+Warning: shared data-path element in pipelined section has buffering < 2... in data-path for module accessMem
+Info: printing VHDL model for module cal_col_to_be_replaced
+Info: resources used by CP cal_col_to_be_replaced_CP_2404: ff-count=0 (saved 0), mux2-count= 0, and2-count= 0
+Info: estimated buffering for operator MUX_597_inst = 2
+Info: estimated buffering for operator MUX_613_inst = 2
+Info: estimated buffering in module cal_col_to_be_replaced is 4
+Info: printing VHDL model for module initFilter
+Info: resources used by CP initFilter_CP_326: ff-count=123 (saved 8), mux2-count= 48, and2-count= 15
+Info: estimated buffering for operator W_I_173_delayed_7_0_172_inst = 42
+Info: estimated buffering for operator W_J_174_delayed_7_0_175_inst = 35
+Info: estimated buffering for operator array_obj_ref_180_index_0_scale = 24
+Info: estimated buffering for operator array_obj_ref_180_index_sum_1 = 24
+Info: estimated buffering for operator array_obj_ref_180_store_0 = 40
+Info: estimated buffering for operator call_stmt_171_call = 44
+Info: estimated buffering for operator call_stmt_171_call (call to accessMem)  = 44
+Info: estimated buffering for operator n_I_165_137_buf = 6
+Info: estimated buffering for operator n_J_154_132_buf = 5
+Info: estimated buffering for operator n_ele_143_127_buf = 5
+Info: estimated buffering for operator phi_stmt_123 = 5
+Info: estimated buffering for operator phi_stmt_128 = 5
+Info: estimated buffering for operator phi_stmt_133 = 6
+Info: estimated buffering in module initFilter is 241
+Info: printing VHDL model for module initIfMaps
+Info: resources used by CP initIfMaps_CP_641: ff-count=177 (saved 0), mux2-count= 177, and2-count= 125
+Info: estimated buffering for operator array_obj_ref_512_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_523_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_528_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_539_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_544_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_555_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_560_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_571_index_offset = 4
+Info: estimated buffering for operator call_stmt_255_call = 44
+Info: estimated buffering for operator call_stmt_255_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_268_call = 44
+Info: estimated buffering for operator call_stmt_268_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_281_call = 44
+Info: estimated buffering for operator call_stmt_281_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_294_call = 44
+Info: estimated buffering for operator call_stmt_294_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_313_call = 44
+Info: estimated buffering for operator call_stmt_313_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_332_call = 44
+Info: estimated buffering for operator call_stmt_332_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_351_call = 44
+Info: estimated buffering for operator call_stmt_351_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_370_call = 44
+Info: estimated buffering for operator call_stmt_370_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_389_call = 44
+Info: estimated buffering for operator call_stmt_389_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_408_call = 44
+Info: estimated buffering for operator call_stmt_408_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_427_call = 44
+Info: estimated buffering for operator call_stmt_427_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_446_call = 44
+Info: estimated buffering for operator call_stmt_446_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_465_call = 44
+Info: estimated buffering for operator call_stmt_465_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_478_call = 44
+Info: estimated buffering for operator call_stmt_478_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_491_call = 44
+Info: estimated buffering for operator call_stmt_491_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_509_call = 44
+Info: estimated buffering for operator call_stmt_509_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_520_call = 44
+Info: estimated buffering for operator call_stmt_520_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_536_call = 44
+Info: estimated buffering for operator call_stmt_536_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_552_call = 44
+Info: estimated buffering for operator call_stmt_552_call (call to accessMem)  = 44
+Info: estimated buffering for operator call_stmt_568_call = 44
+Info: estimated buffering for operator call_stmt_568_call (call to accessMem)  = 44
+Info: estimated buffering for operator type_cast_211_inst = 6
+Info: estimated buffering for operator type_cast_217_inst = 6
+Info: estimated buffering for operator type_cast_223_inst = 6
+Info: estimated buffering for operator type_cast_229_inst = 6
+Info: estimated buffering for operator type_cast_235_inst = 6
+Info: estimated buffering for operator type_cast_502_inst = 5
+Info: estimated buffering in module initIfMaps is 947
+Info: printing VHDL model for module mainAcc
+Info: resources used by CP mainAcc_CP_2438: ff-count=79 (saved 0), mux2-count= 79, and2-count= 47
+Info: estimated buffering for operator MUX_647_inst = 2
+Info: estimated buffering for operator MUX_661_inst = 2
+Info: estimated buffering for operator MUX_673_inst = 2
+Info: estimated buffering for operator array_obj_ref_678_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_678_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_681_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_688_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_688_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_691_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_698_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_698_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_701_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_708_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_708_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_711_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_718_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_718_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_721_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_728_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_728_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_731_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_738_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_738_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_741_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_748_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_748_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_751_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_758_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_758_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_761_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_768_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_768_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_771_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_778_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_778_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_781_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_788_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_788_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_791_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_798_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_798_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_801_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_808_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_808_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_811_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_818_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_818_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_821_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_828_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_828_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_831_load_0 = 16
+Info: estimated buffering for operator type_cast_683_inst = 16
+Info: estimated buffering for operator type_cast_693_inst = 16
+Info: estimated buffering for operator type_cast_703_inst = 16
+Info: estimated buffering for operator type_cast_713_inst = 16
+Info: estimated buffering for operator type_cast_723_inst = 16
+Info: estimated buffering for operator type_cast_733_inst = 16
+Info: estimated buffering for operator type_cast_743_inst = 16
+Info: estimated buffering for operator type_cast_753_inst = 16
+Info: estimated buffering for operator type_cast_763_inst = 16
+Info: estimated buffering for operator type_cast_773_inst = 16
+Info: estimated buffering for operator type_cast_783_inst = 16
+Info: estimated buffering for operator type_cast_793_inst = 16
+Info: estimated buffering for operator type_cast_803_inst = 16
+Info: estimated buffering for operator type_cast_813_inst = 16
+Info: estimated buffering for operator type_cast_823_inst = 16
+Info: estimated buffering for operator type_cast_833_inst = 16
+Info: estimated buffering for operator type_cast_839_inst = 16
+Info: estimated buffering for operator type_cast_845_inst = 16
+Info: estimated buffering for operator type_cast_851_inst = 16
+Info: estimated buffering for operator type_cast_857_inst = 16
+Info: estimated buffering for operator type_cast_863_inst = 16
+Info: estimated buffering for operator type_cast_869_inst = 16
+Info: estimated buffering for operator type_cast_875_inst = 16
+Info: estimated buffering for operator type_cast_881_inst = 16
+Info: estimated buffering for operator type_cast_887_inst = 16
+Info: estimated buffering for operator type_cast_893_inst = 16
+Info: estimated buffering for operator type_cast_899_inst = 16
+Info: estimated buffering for operator type_cast_905_inst = 16
+Info: estimated buffering for operator type_cast_911_inst = 16
+Info: estimated buffering for operator type_cast_917_inst = 16
+Info: estimated buffering for operator type_cast_923_inst = 16
+Info: estimated buffering in module mainAcc is 1078
+Info: printing VHDL model for module mainAcc2
+Info: resources used by CP mainAcc2_CP_4584: ff-count=79 (saved 0), mux2-count= 79, and2-count= 47
+Info: estimated buffering for operator MUX_957_inst = 2
+Info: estimated buffering for operator MUX_971_inst = 2
+Info: estimated buffering for operator MUX_983_inst = 2
+Info: estimated buffering for operator array_obj_ref_1001_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1008_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1008_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1011_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1018_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1018_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1021_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1028_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1028_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1031_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1038_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1038_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1041_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1048_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1048_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1051_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1058_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1058_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1061_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1068_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1068_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1071_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1078_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1078_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1081_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1088_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1088_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1091_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1098_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1098_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1101_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1108_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1108_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1111_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1118_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1118_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1121_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1128_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1128_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1131_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1138_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_1138_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_1141_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_988_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_988_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_991_load_0 = 16
+Info: estimated buffering for operator array_obj_ref_998_index_offset = 4
+Info: estimated buffering for operator array_obj_ref_998_load_0 = 16
+Info: estimated buffering for operator type_cast_1003_inst = 16
+Info: estimated buffering for operator type_cast_1013_inst = 16
+Info: estimated buffering for operator type_cast_1023_inst = 16
+Info: estimated buffering for operator type_cast_1033_inst = 16
+Info: estimated buffering for operator type_cast_1043_inst = 16
+Info: estimated buffering for operator type_cast_1053_inst = 16
+Info: estimated buffering for operator type_cast_1063_inst = 16
+Info: estimated buffering for operator type_cast_1073_inst = 16
+Info: estimated buffering for operator type_cast_1083_inst = 16
+Info: estimated buffering for operator type_cast_1093_inst = 16
+Info: estimated buffering for operator type_cast_1103_inst = 16
+Info: estimated buffering for operator type_cast_1113_inst = 16
+Info: estimated buffering for operator type_cast_1123_inst = 16
+Info: estimated buffering for operator type_cast_1133_inst = 16
+Info: estimated buffering for operator type_cast_1143_inst = 16
+Info: estimated buffering for operator type_cast_1149_inst = 16
+Info: estimated buffering for operator type_cast_1155_inst = 16
+Info: estimated buffering for operator type_cast_1161_inst = 16
+Info: estimated buffering for operator type_cast_1167_inst = 16
+Info: estimated buffering for operator type_cast_1173_inst = 16
+Info: estimated buffering for operator type_cast_1179_inst = 16
+Info: estimated buffering for operator type_cast_1185_inst = 16
+Info: estimated buffering for operator type_cast_1191_inst = 16
+Info: estimated buffering for operator type_cast_1197_inst = 16
+Info: estimated buffering for operator type_cast_1203_inst = 16
+Info: estimated buffering for operator type_cast_1209_inst = 16
+Info: estimated buffering for operator type_cast_1215_inst = 16
+Info: estimated buffering for operator type_cast_1221_inst = 16
+Info: estimated buffering for operator type_cast_1227_inst = 16
+Info: estimated buffering for operator type_cast_1233_inst = 16
+Info: estimated buffering for operator type_cast_993_inst = 16
+Info: estimated buffering in module mainAcc2 is 1078
+Info: printing VHDL model for module memAccessDaemon
+Info: resources used by CP memAccessDaemon_CP_7349: ff-count=13 (saved 12), mux2-count= 8, and2-count= 0
+Info: estimated buffering for operator RPIPE_env_mem_request_1_1420_inst = 32
+Info: estimated buffering for operator call_stmt_1443_call = 44
+Info: estimated buffering for operator call_stmt_1443_call (call to accessMem)  = 44
+Info: estimated buffering in module memAccessDaemon is 76
+Info: printing VHDL model for module memAccessDaemon2
+Info: resources used by CP memAccessDaemon2_CP_7427: ff-count=13 (saved 12), mux2-count= 8, and2-count= 0
+Info: estimated buffering for operator RPIPE_env_mem_request_2_1456_inst = 32
+Info: estimated buffering for operator call_stmt_1479_call = 44
+Info: estimated buffering for operator call_stmt_1479_call (call to accessMem)  = 44
+Info: estimated buffering in module memAccessDaemon2 is 76
+Info: total estimated buffering in system ahir_system is 4024
+Warning: pipe acc_mem_request_2 not used in the system, ignored
+Warning: pipe acc_mem_response_2 not used in the system, ignored
+Warning: pipe filter_fill_request not used in the system, ignored
+Warning: pipe filter_response not used in the system, ignored
+Info: finished printing VHDL model
+Info: number of register bits used in FIFO's = 672
+Info: printing Dot-file of CP for module accMemAccessDaemon
+Info: printing Dot-file of CP for module accelerator
+Info: printing Dot-file of CP for module accessMem
+Info: printing Dot-file of CP for module cal_col_to_be_replaced
+Info: printing Dot-file of CP for module initFilter
+Info: printing Dot-file of CP for module initIfMaps
+Info: printing Dot-file of CP for module mainAcc
+Info: printing Dot-file of CP for module mainAcc2
+Info: printing Dot-file of CP for module memAccessDaemon
+Info: printing Dot-file of CP for module memAccessDaemon2
+Info: printing Dot-file of DP for module accMemAccessDaemon
+Info: printing Dot-file of DP for module accelerator
+Info: printing Dot-file of DP for module accessMem
+Info: printing Dot-file of DP for module cal_col_to_be_replaced
+Info: printing Dot-file of DP for module initFilter
+Info: printing Dot-file of DP for module initIfMaps
+Info: printing Dot-file of DP for module mainAcc
+Info: printing Dot-file of DP for module mainAcc2
+Info: printing Dot-file of DP for module memAccessDaemon
+Info: printing Dot-file of DP for module memAccessDaemon2
+vhdlFormat < ahir_system_global_package.unformatted_vhdl > ahir_system_global_package.vhdl
+vhdlFormat < ahir_system.unformatted_vhdl > ahir_system.vhdl
+vhdlFormat < ahir_system_test_bench.unformatted_vhdl > ahir_system_test_bench.vhdl
+gcc -c vhdlCStubs.c  -I./src -I./ -I/home/neelam/Downloads/release/include
+gcc -c ./src/testbench.c -I/home/neelam/Downloads/release/include -I./src -I./
+gcc -o testbench_hw testbench.o vhdlCStubs.o  -L/home/neelam/Downloads/release/lib -lSocketLibPipeHandler -lpthread
+ghdl --clean
+ghdl --remove
+ghdl -i --work=GhdlLink  /home/neelam/Downloads/release/vhdl/GhdlLink.vhdl
+ghdl -i --work=aHiR_ieee_proposed  /home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl
+ghdl -i --work=ahir  /home/neelam/Downloads/release/vhdl/ahir.vhdl
+ghdl -i --work=work ahir_system_global_package.vhdl
+ghdl -i --work=work ahir_system.vhdl
+ghdl -i --work=work ahir_system_test_bench.vhdl
+ghdl -m --work=work -Wl,-L/home/neelam/Downloads/release/lib -Wl,-lVhpi ahir_system_test_bench 
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:10017:12:warning: function "or_reduce" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:10062:12:warning: function "and_reduce" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:10166:12:warning: function "qnoteq" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:10236:12:warning: function "is_x" is never referenced
+analyze /home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:909:12:warning: function "or_reduce" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:954:12:warning: function "and_reduce" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:1058:12:warning: function "qnoteq" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:1128:12:warning: function "is_x" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:5463:12:warning: function "or_reduce" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:5508:12:warning: function "and_reduce" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:5612:12:warning: function "qnoteq" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:5682:12:warning: function "is_x" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:10017:12:warning: function "or_reduce" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:10062:12:warning: function "and_reduce" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:10166:12:warning: function "qnoteq" is never referenced
+/home/neelam/Downloads/release/vhdl/aHiR_ieee_proposed.vhdl:10236:12:warning: function "is_x" is never referenced
+analyze /home/neelam/Downloads/release/vhdl/ahir.vhdl
+analyze /home/neelam/Downloads/release/vhdl/GhdlLink.vhdl
+analyze ahir_system_global_package.vhdl
+analyze ahir_system_test_bench.vhdl
+analyze ahir_system.vhdl
+elaborate ahir_system_test_bench
+rm -rf aa2c
+mkdir aa2c
+Aa2C -P simple_mem_ -o aa2c -T memAccessDaemon -T memAccessDaemon2 -T accMemAccessDaemon -T accelerator  prog.linked.opt.aa 
+Info: C function name prefix set to simple_mem_. 
+Info: C output directory set to aa2c. 
+Info: marked memAccessDaemon as a top-level daemon. 
+Info: marked memAccessDaemon2 as a top-level daemon. 
+Info: marked accMemAccessDaemon as a top-level daemon. 
+Info: marked accelerator as a top-level daemon. 
+Info: Added module accessMem
+Info: Added module accMemAccessDaemon
+Info: Added module initFilter
+Info: Added module initIfMaps
+Info: Added module cal_col_to_be_replaced
+Info: Added module mainAcc
+Info: Added module mainAcc2
+Info: Added module accelerator
+Info: Added module global_storage_initializer_
+Info: Added module memAccessDaemon
+Info: Added module memAccessDaemon2
+Info: elaborating the program .... initializing the call-graph
+Info: mapping target object references..
+Info: mapping source object references..
+Info: checking for cycles in the call-graph ... 
+Info: module order:
+	accessMem
+	accMemAccessDaemon
+	initFilter
+	initIfMaps
+	cal_col_to_be_replaced
+	mainAcc
+	mainAcc2
+	accelerator
+	global_storage_initializer_
+	memAccessDaemon
+	memAccessDaemon2
+Info: marking modules reachable from root-modules ... 
+Info: module accMemAccessDaemon is reachable from a specified root module.
+Info: module accessMem is reachable from a specified root module.
+Info: module accelerator is reachable from a specified root module.
+Info: module initIfMaps is reachable from a specified root module.
+Info: module initFilter is reachable from a specified root module.
+Info: module cal_col_to_be_replaced is reachable from a specified root module.
+Info: module mainAcc is reachable from a specified root module.
+Info: module mainAcc2 is reachable from a specified root module.
+Info: module global_storage_initializer_ is reachable from a specified root module.
+Info: module memAccessDaemon is reachable from a specified root module.
+Info: module memAccessDaemon2 is reachable from a specified root module.
+Info: propagating types in the program ... 
+Info: coalescing storage into distinct memory spaces ... 
+Info: Marking foreign pointers in modules which are not called from the program
+Info: Coalescing storage from native objects..
+Info: Finished coalescing storage.. identified 4 disjoint memory space(s)
+Info: Memory space 0: filter 
+Info: Memory space 1: ifmaps 
+Info: Memory space 2: ifmaps2 
+Info: Memory space 3: mem_array 
+Info: propagating constants in the program ... 
+gcc -g -c -I /home/neelam/Downloads/release/include -I aa2c/ -o aa2c/simple_mem_aa_c_model.o aa2c/simple_mem_aa_c_model.c
+gcc -g -c -I /home/neelam/Downloads/release/include -I aa2c/ -D AA2C -o aa2c/testbench.o ./src/testbench.c
+gcc -g -o testbench_aa2c aa2c/testbench.o aa2c/simple_mem_aa_c_model.o -lBitVectors -lSockPipes -lPipeHandlerDebugPthreads -lpthread -L /home/neelam/Downloads/release/lib 
